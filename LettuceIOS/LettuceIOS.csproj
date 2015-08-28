@@ -66,7 +66,19 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.13.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.MonoTouch">
+      <HintPath>..\Components\restsharp-105.0.1.0\lib\ios-unified\RestSharp.MonoTouch.dll</HintPath>
+    </Reference>
+    <Reference Include="HockeyApp.iOS">
+      <HintPath>..\Components\hockeyappios-3.7.1.0\lib\ios-unified\HockeyApp.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Xamarin.Facebook.iOS.4.5.1.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text.XamarinIOS">
+      <HintPath>..\Components\servicestacktext-3.9.61.3\lib\ios-unified\ServiceStack.Text.XamarinIOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -90,4 +102,22 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <XamarinComponentReference Include="restsharp">
+      <Version>105.0.1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="hockeyappios">
+      <Version>3.7.1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="facebookios">
+      <Version>4.5.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="servicestacktext">
+      <Version>3.9.61.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
 </Project>
