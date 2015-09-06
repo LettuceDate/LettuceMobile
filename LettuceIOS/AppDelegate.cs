@@ -1,13 +1,25 @@
 ﻿using Foundation;
 using UIKit;
+using Flurry.Analytics;
+using HockeyApp;
+using System;
+using System.Threading.Tasks;
+using Facebook.CoreKit;
 
-namespace LettuceIOS
+
+namespace Lettuce.IOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
+		// Various app keys - Facebook, Flurry, HockeyApp
+		private string FlurryKey = "5YW4HP9W2P8YMQWRGQB2";
+		private string HockeyID = "13567c35d7940036ee8035d18ecd04a3";
+		private string FacebookAppID = "822825007835530";
+		private string FacebookAppName = "Lettuce";
+
 		// class-level declarations
 
 		public override UIWindow Window {
@@ -25,7 +37,49 @@ namespace LettuceIOS
 			Xamarin.Calabash.Start();
 			#endif
 
-			return true;
+			// Flurry
+			FlurryAgent.StartSession(FlurryKey);
+
+			// HockeyApp
+			//We MUST wrap our setup in this block to wire up
+			// Mono's SIGSEGV and SIGBUS signals
+			HockeyApp.Setup.EnableCustomCrashReporting (() => {
+
+				//Get the shared instance
+				var manager = BITHockeyManager.SharedHockeyManager;
+
+				//Configure it to use our APP_ID
+				manager.Configure (HockeyID);
+
+				//Start the manager
+				manager.StartManager ();
+
+				//Authenticate (there are other authentication options)
+				manager.Authenticator.AuthenticateInstallation ();
+
+				//Rethrow any unhandled .NET exceptions as native iOS 
+				// exceptions so the stack traces appear nicely in HockeyApp
+				AppDomain.CurrentDomain.UnhandledException += (sender, e) => 
+					Setup.ThrowExceptionAsNative(e.ExceptionObject);
+
+				TaskScheduler.UnobservedTaskException += (sender, e) => 
+					Setup.ThrowExceptionAsNative(e.Exception);
+			});
+
+			// Facebook
+			Profile.EnableUpdatesOnAccessTokenChange (true);
+			Settings.AppID = FacebookAppID;
+			Settings.DisplayName = FacebookAppName;
+
+
+			// This method verifies if you have been logged into the app before, and keep you logged in after you reopen or kill your app.
+			return ApplicationDelegate.SharedInstance.FinishedLaunching (application, launchOptions);
+		}
+
+		public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+		{
+			// We need to handle URLs by passing them to their own OpenUrl in order to make the SSO authentication works.
+			return ApplicationDelegate.SharedInstance.OpenUrl (application, url, sourceApplication, annotation);
 		}
 
 		public override void OnResignActivation (UIApplication application)

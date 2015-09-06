@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="Lettuce_light_green">#96c747</color>
+  <color name="Lettuce_dark_green">#57742b</color>
+  <color name="Lettuce_red">#ff3b76</color>
+  <color name="Lettuce_white">#FFFFFF</color>
+  <color name="Lettuce_black">#000000</color>
+</resources>

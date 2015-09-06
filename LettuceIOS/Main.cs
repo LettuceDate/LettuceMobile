@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace LettuceIOS
+namespace Lettuce.IOS
 {
 	public class Application
 	{

@@ -5,7 +5,7 @@
 //
 using Foundation;
 
-namespace LettuceIOS
+namespace Lettuce.IOS
 {
 	[Register ("ViewController")]
 	partial class ViewController
