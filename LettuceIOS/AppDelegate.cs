@@ -5,6 +5,8 @@ using HockeyApp;
 using System;
 using System.Threading.Tasks;
 using Facebook.CoreKit;
+using JVMenuPopover;
+using System.Collections.Generic;
 
 
 namespace Lettuce.IOS
@@ -19,6 +21,8 @@ namespace Lettuce.IOS
 		private string HockeyID = "13567c35d7940036ee8035d18ecd04a3";
 		private string FacebookAppID = "822825007835530";
 		private string FacebookAppName = "Lettuce";
+		public UINavigationController NavigationController {get; set;}
+		public static ProfileViewController ProfileController { get; set; }
 
 		// class-level declarations
 
@@ -71,9 +75,67 @@ namespace Lettuce.IOS
 			Settings.AppID = FacebookAppID;
 			Settings.DisplayName = FacebookAppName;
 
+			//create the initial view controller
+			ConfigNavMenu ();
 
 			// This method verifies if you have been logged into the app before, and keep you logged in after you reopen or kill your app.
 			return ApplicationDelegate.SharedInstance.FinishedLaunching (application, launchOptions);
+		}
+
+		private void ConfigNavMenu()
+		{
+			//create the initial view controller
+			//var rootController = (UIViewController)board.InstantiateViewController ("HomeViewController");
+			var rootController = new HomeViewController();
+			ProfileController = new ProfileViewController ();
+
+			//build the shared menu
+			JVMenuPopoverConfig.SharedInstance.MenuItems = new List<JVMenuItem>()
+			{
+				new JVMenuViewControllerItem()
+				{
+					//View exisiting view controller, will be reused everytime the item is selected
+					Icon = UIImage.FromBundle(@"HomeIcon"),
+					Title = @"Home",
+					ViewController = rootController,
+				},
+
+				new JVMenuViewControllerItem()
+				{
+					//New view controller, will be reused everytime the item is selected
+					Icon = UIImage.FromBundle(@"ProfileIcon"),
+					Title = @"Profile",
+					ViewController = ProfileController
+				},
+
+
+				new JVMenuViewControllerItem()
+				{
+					//New view controller, will be reused everytime the item is selected
+					Icon = UIImage.FromBundle(@"SettingsIcon"),
+					Title = @"Settings",
+					ViewController = new SettingsViewController()
+				},
+
+				new JVMenuViewControllerItem()
+				{
+					Icon = UIImage.FromBundle(@"AboutIcon"),
+					Title = @"About Open Date",
+					ViewController = new AboutViewController()
+				},
+			};
+
+			//create a Nav controller an set the root controller
+			NavigationController = new UINavigationController(rootController);
+
+			//setup the window
+			Window = new UIWindow(UIScreen.MainScreen.Bounds);
+			Window.RootViewController = NavigationController;
+			Window.ContentMode = UIViewContentMode.ScaleAspectFill;
+			Window.BackgroundColor = UIColor.FromPatternImage(JVMenuHelper.ImageWithImage(UIImage.FromBundle("app_bg1.jpg"),this.Window.Frame.Width));
+			Window.Add(NavigationController.View);
+			Window.MakeKeyAndVisible();
+
 		}
 
 		public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)

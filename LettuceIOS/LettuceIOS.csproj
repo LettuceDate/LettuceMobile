@@ -59,6 +59,8 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -77,19 +79,33 @@
     <Reference Include="ServiceStack.Text.XamarinIOS">
       <HintPath>..\Components\servicestacktext-3.9.61.3\lib\ios-unified\ServiceStack.Text.XamarinIOS.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
     <Reference Include="SDWebImage">
       <HintPath>..\Components\sdwebimage-3.7.3.0\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
     <Reference Include="Flurry.Analytics.iOS">
       <HintPath>..\packages\Flurry.Analytics.1.2.1\lib\Xamarin.iOS10\Flurry.Analytics.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.16.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="JVMenuPopover">
+      <HintPath>..\Components\jvmenupopover-1.4\lib\ios-unified\JVMenuPopover.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="ViewControllers\ProposeDatesViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\BrowseDatesViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\ProfileViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\AboutViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\HomeViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\DateViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\CurrentDatesViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\MatchingDatesViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\AppliedDatesViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\InterestedDatesViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\SettingsViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -105,6 +121,50 @@
     </Compile>
     <Compile Include="..\LettuceCore\LettuceRest.cs">
       <Link>LettuceCore\LettuceRest.cs</Link>
+    </Compile>
+    <Compile Include="ViewControllers\ProposeDatesViewController.cs" />
+    <Compile Include="ViewControllers\ProposeDatesViewController.designer.cs">
+      <DependentUpon>ProposeDatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\BrowseDatesViewController.cs" />
+    <Compile Include="ViewControllers\BrowseDatesViewController.designer.cs">
+      <DependentUpon>BrowseDatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ProfileViewController.cs" />
+    <Compile Include="ViewControllers\ProfileViewController.designer.cs">
+      <DependentUpon>ProfileViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\AboutViewController.cs" />
+    <Compile Include="ViewControllers\AboutViewController.designer.cs">
+      <DependentUpon>AboutViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\HomeViewController.cs" />
+    <Compile Include="ViewControllers\HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\DateViewController.cs" />
+    <Compile Include="ViewControllers\DateViewController.designer.cs">
+      <DependentUpon>DateViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CurrentDatesViewController.cs" />
+    <Compile Include="ViewControllers\CurrentDatesViewController.designer.cs">
+      <DependentUpon>CurrentDatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\MatchingDatesViewController.cs" />
+    <Compile Include="ViewControllers\MatchingDatesViewController.designer.cs">
+      <DependentUpon>MatchingDatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\AppliedDatesViewController.cs" />
+    <Compile Include="ViewControllers\AppliedDatesViewController.designer.cs">
+      <DependentUpon>AppliedDatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\InterestedDatesViewController.cs" />
+    <Compile Include="ViewControllers\InterestedDatesViewController.designer.cs">
+      <DependentUpon>InterestedDatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingsViewController.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.designer.cs">
+      <DependentUpon>SettingsViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -129,10 +189,15 @@
       <Version>3.7.3.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="jvmenupopover">
+      <Version>1.4</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\AppIcons.appiconset\" />
     <Folder Include="LettuceCore\" />
+    <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -146,15 +211,36 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\MatchingDatesIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CurrentDatesIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppliedDatesIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\HomeIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AboutIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AboutIcon.imageset\about-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppliedDatesIcon.imageset\ask_question-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\CurrentDatesIcon.imageset\cancel_filled-50%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\HomeIcon.imageset\home-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\MatchingDatesIcon.imageset\business_contact-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\delete_sign-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\ask_question-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\settings-48%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-60.png" />
-    <BundleResource Include="Resources\Icon-72.png" />
-    <BundleResource Include="Resources\Icon-72%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-50.png" />
-    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
-    <BundleResource Include="Resources\Icon.png" />
-    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\about-48%402x.png" />
+    <BundleResource Include="Resources\app_bg1%402x.jpg" />
+    <BundleResource Include="Resources\app_bg2%402x.jpg" />
+    <BundleResource Include="Resources\ask_question-48%402x.png" />
+    <BundleResource Include="Resources\business_contact-48%402x.png" />
+    <BundleResource Include="Resources\cancel_filled-50%402x.png" />
+    <BundleResource Include="Resources\cancel-48%402x.png" />
+    <BundleResource Include="Resources\delete_sign-48%402x.png" />
+    <BundleResource Include="Resources\home-48%402x.png" />
+    <BundleResource Include="Resources\menu_black-48%402x.png" />
+    <BundleResource Include="Resources\menu-48%402x.png" />
+    <BundleResource Include="Resources\settings-48%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />

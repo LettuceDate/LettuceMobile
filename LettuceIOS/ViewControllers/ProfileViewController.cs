@@ -1,35 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System;
 
+using Foundation;
 using UIKit;
+using JVMenuPopover;
 using Facebook.LoginKit;
 using Facebook.CoreKit;
+using System.Collections.Generic;
 using CoreGraphics;
-using Foundation;
-using JVMenuPopover;
-
 
 namespace Lettuce.IOS
 {
-	public partial class ViewController : JVMenuViewController
+	public partial class ProfileViewController : JVMenuViewController
 	{
-		public ViewController (IntPtr handle) : base (handle)
-		{
-		}
-
 		List<string> readPermissions = new List<string> { "public_profile" };
-
 		LoginButton loginButton;
 		ProfilePictureView pictureView;
 		UILabel nameLabel;
 
+
+		public ProfileViewController () : base ()
+		{
+		}
+
+		public override void DidReceiveMemoryWarning ()
+		{
+			// Releases the view if it doesn't have a superview.
+			base.DidReceiveMemoryWarning ();
+			
+			// Release any cached data, images, etc that aren't in use.
+		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			InitFacebookLogin ();
 
-			// If was send true to Profile.EnableUpdatesOnAccessTokenChange method
-			// this notification will be called after the user is logged in and
-			// after the AccessToken is gotten
+		}
+
+		private void InitFacebookLogin()
+		{
 			Profile.Notifications.ObserveDidChange ((sender, e) => {
 
 				if (e.NewProfile == null)
@@ -37,9 +47,11 @@ namespace Lettuce.IOS
 
 				nameLabel.Text = e.NewProfile.Name;
 			});
+			CGRect viewBounds = View.Bounds;
 
 			// Set the Read and Publish permissions you want to get
-			loginButton = new LoginButton (new CGRect (80, 20, 220, 46)) {
+			nfloat leftEdge = (viewBounds.Width - 220) /2;
+			loginButton = new LoginButton (new CGRect (leftEdge, 60, 220, 46)) {
 				LoginBehavior = LoginBehavior.Native,
 				ReadPermissions = readPermissions.ToArray ()
 			};
@@ -64,10 +76,10 @@ namespace Lettuce.IOS
 			};
 
 			// The user image profile is set automatically once is logged in
-			pictureView = new ProfilePictureView (new CGRect (80, 100, 220, 220));
+			pictureView = new ProfilePictureView (new CGRect (leftEdge, 140, 220, 220));
 
 			// Create the label that will hold user's facebook name
-			nameLabel = new UILabel (new CGRect (20, 319, 280, 21)) {
+			nameLabel = new UILabel (new CGRect (20, 360, viewBounds.Width - 40, 21)) {
 				TextAlignment = UITextAlignment.Center,
 				BackgroundColor = UIColor.Clear
 			};
@@ -92,12 +104,6 @@ namespace Lettuce.IOS
 			View.AddSubview (loginButton);
 			View.AddSubview (pictureView);
 			View.AddSubview (nameLabel);
-		}
-
-		public override void DidReceiveMemoryWarning ()
-		{
-			base.DidReceiveMemoryWarning ();
-			// Release any cached data, images, etc that aren't in use.
 		}
 	}
 }
