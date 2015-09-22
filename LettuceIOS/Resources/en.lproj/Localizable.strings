@@ -1,0 +1,15 @@
+﻿// Menu
+"Home_Menu" = "Home";
+"Profile_Menu" = "Profile";
+"Settings_Menu" = "Settings";
+"About_Menu" = "About";
+
+// Dates Screen Tabs
+"CurrentDates_Tab" = "Current";
+"MatchingDates_Tab" = "Matching";
+"InterestedPeople_Tab" = "Interested";
+"PostedDates_Tab" = "Posted";
+
+// CurrentDatesViewController
+"LookingForDates_String" = "Looking for matching dates...";
+"FoundDates_String" = "XX matching dates";

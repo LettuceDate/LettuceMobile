@@ -92,7 +92,9 @@ namespace Lettuce.IOS
 
 				if (e.NewProfile == null)
 					return;
-
+				
+				LoginView.Hidden = true;
+				LightBox.Hidden = true;
 				nameLabel.Text = e.NewProfile.Name;
 			});
 			CGRect viewBounds = LoginView.Bounds;

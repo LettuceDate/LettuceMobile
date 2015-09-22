@@ -9,6 +9,7 @@ using RestSharp;
 using System.Runtime.Serialization;
 using ServiceStack.Text;
 using System.Threading.Tasks;
+
 #if ANDROID
 using Xamarin.Facebook;
 #elif IOS
@@ -19,6 +20,8 @@ namespace Lettuce.Core
 {
     public delegate void string_callback(String theResult);
 	public delegate void null_callback();
+	public delegate void CommittedDateList_callback(List<CommittedDate> theResult);
+
 
     public class LettuceServer
     {
@@ -48,6 +51,13 @@ namespace Lettuce.Core
                 return _singleton;
             }
         }
+
+		public void GetCurrentDates(CommittedDateList_callback callback)
+		{
+			if (callback != null)
+				callback(CommittedDate.GenerateTestList(new Random().Next(5,20)));
+
+		}
 		/*
 
         public User CurrentUser

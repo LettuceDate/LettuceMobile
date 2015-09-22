@@ -96,7 +96,7 @@ namespace Lettuce.IOS
 				{
 					//View exisiting view controller, will be reused everytime the item is selected
 					Icon = UIImage.FromBundle(@"HomeIcon"),
-					Title = @"Home",
+					Title = "Home_Menu".Localize(),
 					ViewController = rootController,
 				},
 
@@ -104,7 +104,7 @@ namespace Lettuce.IOS
 				{
 					//New view controller, will be reused everytime the item is selected
 					Icon = UIImage.FromBundle(@"ProfileIcon"),
-					Title = @"Profile",
+					Title = "Profile_Menu".Localize(),
 					ViewController = ProfileController
 				},
 
@@ -113,14 +113,14 @@ namespace Lettuce.IOS
 				{
 					//New view controller, will be reused everytime the item is selected
 					Icon = UIImage.FromBundle(@"SettingsIcon"),
-					Title = @"Settings",
+					Title = "Settings_Menu".Localize(),
 					ViewController = new SettingsViewController()
 				},
 
 				new JVMenuViewControllerItem()
 				{
 					Icon = UIImage.FromBundle(@"AboutIcon"),
-					Title = @"About Open Date",
+					Title = "About_Menu".Localize(),
 					ViewController = new AboutViewController()
 				},
 			};

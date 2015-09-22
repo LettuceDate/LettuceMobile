@@ -82,30 +82,34 @@
     <Reference Include="Flurry.Analytics.iOS">
       <HintPath>..\packages\Flurry.Analytics.1.2.1\lib\Xamarin.iOS10\Flurry.Analytics.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.16.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
     <Reference Include="SDWebImage">
       <HintPath>..\Components\sdwebimage-3.7.3.0\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
     <Reference Include="JVMenuPopover">
       <HintPath>..\Components\jvmenupopover-1.4\lib\ios-unified\JVMenuPopover.dll</HintPath>
     </Reference>
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.16.2\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
-    <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="ViewControllers\ProposeDatesViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\BrowseDatesViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\ProfileViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\AboutViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\HomeViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\DateViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\CurrentDatesViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\MatchingDatesViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\AppliedDatesViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\InterestedDatesViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\SettingsViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\AboutViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\AppliedDatesViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\BrowseDatesViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\CurrentDatesViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\DateViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\HomeViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\InterestedDatesViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\MatchingDatesViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\ProfileViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\ProposeDatesViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\SettingsViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\Main.storyboard" />
+    <InterfaceDefinition Include="Base.lproj\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Base.lproj\CommittedDatesCell.xib" />
+    <InterfaceDefinition Include="Base.lproj\InterestedPersonCell.xib" />
+    <InterfaceDefinition Include="Base.lproj\MatchingDatesCell.xib" />
+    <InterfaceDefinition Include="Base.lproj\PostedDatesCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -166,6 +170,25 @@
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
       <DependentUpon>SettingsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UIResources.cs" />
+    <Compile Include="Views\CommittedDatesCell.cs" />
+    <Compile Include="Views\CommittedDatesCell.designer.cs">
+      <DependentUpon>CommittedDatesCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchingDatesCell.cs" />
+    <Compile Include="Views\MatchingDatesCell.designer.cs">
+      <DependentUpon>MatchingDatesCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterestedPersonCell.cs" />
+    <Compile Include="Views\InterestedPersonCell.designer.cs">
+      <DependentUpon>InterestedPersonCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostedDatesCell.cs" />
+    <Compile Include="Views\PostedDatesCell.designer.cs">
+      <DependentUpon>PostedDatesCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\CurrentDatesTableSource.cs" />
+    <Compile Include="LettuceCore\Dates.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -198,6 +221,13 @@
     <Folder Include="Resources\Images.xcassets\AppIcons.appiconset\" />
     <Folder Include="LettuceCore\" />
     <Folder Include="ViewControllers\" />
+    <Folder Include="Base.lproj\" />
+    <Folder Include="Resources\en.lproj\" />
+    <Folder Include="Resources\zh-Hans.lproj\" />
+    <Folder Include="Resources\es.lproj\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Collections\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -227,6 +257,8 @@
     <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\delete_sign-48%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\ask_question-48%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\settings-48%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchIcon.imageset\Icon_1024.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\about-48%402x.png" />
@@ -241,6 +273,11 @@
     <BundleResource Include="Resources\menu_black-48%402x.png" />
     <BundleResource Include="Resources\menu-48%402x.png" />
     <BundleResource Include="Resources\settings-48%402x.png" />
+    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\es.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\zh-Hans.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\en.lproj\CurrentDatesViewController.strings" />
+    <BundleResource Include="Resources\en.lproj\Localizable.stringsdict" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />
