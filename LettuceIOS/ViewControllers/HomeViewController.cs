@@ -8,6 +8,7 @@ using Facebook.LoginKit;
 using Facebook.CoreKit;
 using CoreGraphics;
 using System.Collections.Generic;
+using Lettuce.Core;
 
 namespace Lettuce.IOS
 {
@@ -43,8 +44,7 @@ namespace Lettuce.IOS
 			if (AccessToken.CurrentAccessToken == null) {
 				InitFacebookLogin ();
 			} else {
-				LoginView.Hidden = true;
-				LightBox.Hidden = true;
+				FinalizeLogin ();
 			}
 
 			// set up events
@@ -71,6 +71,30 @@ namespace Lettuce.IOS
 					this.NavigationController.PushViewController (proposeController, true);
 				}
 			};
+
+
+		}
+
+		private void FinalizeLogin()
+		{
+			if (AccessToken.CurrentAccessToken != null) {
+				var request = new GraphRequest ("/me?fields=name,id", null, AccessToken.CurrentAccessToken.TokenString, null, "GET");
+				request.Start ((connection, result, error) => {
+					// Handle if something went wrong with the request
+					if (error != null) {
+						new UIAlertView ("Error...", error.Description, null, "Ok", null).Show ();
+						return;
+					}
+
+					// Get your profile name
+					var userInfo = result as NSDictionary;
+
+					LettuceServer.Instance.FacebookLogin (userInfo["id"].ToString(), AccessToken.CurrentAccessToken.TokenString, (theUser) => {
+						LoginView.Hidden = true;
+						LightBox.Hidden = true;
+						});
+				});
+			}
 
 
 		}
@@ -115,6 +139,7 @@ namespace Lettuce.IOS
 				}
 
 				// Handle your successful login
+				FinalizeLogin();
 			};
 
 			// Handle actions once the user is logged out

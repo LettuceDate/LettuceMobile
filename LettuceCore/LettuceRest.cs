@@ -19,6 +19,8 @@ namespace Lettuce.Core
 {
     public delegate void string_callback(String theResult);
 	public delegate void null_callback();
+	public delegate void UserRecord_callback(UserRecord theRec);
+
 
     public class LettuceServer
     {
@@ -29,8 +31,7 @@ namespace Lettuce.Core
         private string _uploadURL;
         private string _catchURL;
         private string _userImageURL;
-        //private User _currentUser = null;
-        //public PhotoRecord CurrentImage { get; set; }
+		private UserRecord _currentUser;
         
 		public LettuceServer()
         {
@@ -48,6 +49,28 @@ namespace Lettuce.Core
                 return _singleton;
             }
         }
+
+		public void FacebookLogin(string userId, string token, UserRecord_callback callback)
+		{
+			string fullURL = "api/v1/user/facebooklogin";
+
+			RestRequest request = new RestRequest(fullURL, Method.POST);
+			request.AddParameter("id", userId);
+			request.AddParameter("token", token);
+
+			apiClient.ExecuteAsync<UserRecord>(request, (response) =>
+				{
+					UserRecord newUser = response.Data;
+					if (newUser != null)
+					{
+						_currentUser = newUser;
+						callback(newUser);
+					}
+					else
+						callback(null);
+				});
+		}
+
 		/*
 
         public User CurrentUser
@@ -99,27 +122,7 @@ namespace Lettuce.Core
 
 
 
-        public void FacebookLogin(string userId, string token, User_callback callback)
-        {
-            string fullURL = "user/facebooklogin";
-
-            RestRequest request = new RestRequest(fullURL, Method.POST);
-            request.AddParameter("id", userId);
-            request.AddParameter("token", token);
-
-            apiClient.ExecuteAsync<User>(request, (response) =>
-                {
-                    User newUser = response.Data;
-                    if (newUser != null)
-                    {
-                        _currentUser = newUser;
-                        callback(newUser);
-                    }
-                    else
-                        callback(null);
-                });
-        }
-
+        
   
 
         public void GetUploadURL(String_callback callback)
