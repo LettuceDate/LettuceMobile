@@ -9,6 +9,7 @@ using RestSharp;
 using System.Runtime.Serialization;
 using ServiceStack.Text;
 using System.Threading.Tasks;
+
 #if ANDROID
 using Xamarin.Facebook;
 #elif IOS
@@ -19,7 +20,11 @@ namespace Lettuce.Core
 {
     public delegate void string_callback(String theResult);
 	public delegate void null_callback();
+
 	public delegate void UserRecord_callback(UserRecord theRec);
+
+	public delegate void CommittedDateList_callback(List<CommittedDate> theResult);
+
 
 
     public class LettuceServer
@@ -50,6 +55,7 @@ namespace Lettuce.Core
             }
         }
 
+
 		public void FacebookLogin(string userId, string token, UserRecord_callback callback)
 		{
 			string fullURL = "api/v1/user/facebooklogin";
@@ -69,6 +75,14 @@ namespace Lettuce.Core
 					else
 						callback(null);
 				});
+		}
+
+
+		public void GetCurrentDates(CommittedDateList_callback callback)
+		{
+			if (callback != null)
+				callback(CommittedDate.GenerateTestList(new Random().Next(5,20)));
+
 		}
 
 		/*

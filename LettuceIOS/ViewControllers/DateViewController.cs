@@ -29,20 +29,21 @@ namespace Lettuce.IOS
 		public override void ViewDidLoad ()
 		{
 			tab1 = new CurrentDatesViewController();
-			tab1.TabBarItem = new UITabBarItem ("Current", UIImage.FromBundle ("CurrentDatesIcon"), 0);
+			tab1.TabBarItem = new UITabBarItem ("CurrentDates_Tab".Localize(), UIImage.FromBundle ("CurrentDatesIcon"), 0);
 
 
 			tab2 = new MatchingDatesViewController();
-			tab2.TabBarItem = new UITabBarItem ("Matching", UIImage.FromBundle ("MatchingDatesIcon"), 1);
+			tab2.TabBarItem = new UITabBarItem ("MatchingDates_Tab".Localize(), UIImage.FromBundle ("MatchingDatesIcon"), 1);
 			tab2.View.BackgroundColor = UIColor.Orange;
 
 			tab3 = new AppliedDatesViewController();
-			tab3.TabBarItem = new UITabBarItem ("Interested", UIImage.FromBundle ("AppliedDatesIcon"), 2);
+			tab3.TabBarItem = new UITabBarItem ("InterestedPeople_Tab".Localize(), UIImage.FromBundle ("AppliedDatesIcon"), 2);
 			tab3.View.BackgroundColor = UIColor.Red;
 
 			tab4 = new InterestedDatesViewController();
-			tab4.TabBarItem = new UITabBarItem ("Posted", UIImage.FromBundle ("PostedDatesIcon"), 2);
+			tab4.TabBarItem = new UITabBarItem ("PostedDates_Tab".Localize(), UIImage.FromBundle ("PostedDatesIcon"), 2);
 			tab4.View.BackgroundColor = UIColor.Red;
+
 
 			var tabs = new UIViewController[] {
 				tab1, tab2, tab3, tab4
