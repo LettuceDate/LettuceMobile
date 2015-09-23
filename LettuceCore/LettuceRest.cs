@@ -31,8 +31,7 @@ namespace Lettuce.Core
     {
         private RestClient apiClient;
 		private static LettuceServer _singleton = null;
-		private string apiPath = "http://localhost:8080/api/v1";  //"http://localhost:8080/api/";  //"http://phototoss-server-01.appspot.com/api/v1";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
-        //private Random rndBase = new Random();
+		private string apiPath = "http://lettuce-1045.appspot.com/api/v1";  //"http://localhost:8080/api/";  //"http://lettuce-1045.appspot.com/api/v1";
         private string _uploadURL;
         private string _catchURL;
         private string _userImageURL;
@@ -61,8 +60,8 @@ namespace Lettuce.Core
 			string fullURL = "user/facebooklogin";
 
 			RestRequest request = new RestRequest(fullURL, Method.POST);
-			request.AddHeader("Content-Type", "application/json; charset=utf-8");
-			request.RequestFormat = DataFormat.Json;
+			//request.AddHeader("Content-Type", "application/json; charset=utf-8");
+			//request.RequestFormat = DataFormat.Json;
 			request.AddParameter("id", userId);
 			request.AddParameter("token", token);
 

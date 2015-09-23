@@ -14,7 +14,7 @@ namespace Lettuce.IOS
 {
 	public partial class HomeViewController : JVMenuViewController
 	{
-		List<string> readPermissions = new List<string> { "public_profile" };
+		List<string> readPermissions = new List<string> { "public_profile", "user_birthday" };
 		LoginButton loginButton;
 		ProfilePictureView pictureView;
 		UILabel nameLabel;
@@ -78,7 +78,7 @@ namespace Lettuce.IOS
 		private void FinalizeLogin()
 		{
 			if (AccessToken.CurrentAccessToken != null) {
-				var request = new GraphRequest ("/me?fields=name,id", null, AccessToken.CurrentAccessToken.TokenString, null, "GET");
+				var request = new GraphRequest ("/me?fields=name,id,birthday,first_name,gender,last_name,interested_in", null, AccessToken.CurrentAccessToken.TokenString, null, "GET");
 				request.Start ((connection, result, error) => {
 					// Handle if something went wrong with the request
 					if (error != null) {
@@ -90,8 +90,10 @@ namespace Lettuce.IOS
 					var userInfo = result as NSDictionary;
 
 					LettuceServer.Instance.FacebookLogin (userInfo["id"].ToString(), AccessToken.CurrentAccessToken.TokenString, (theUser) => {
-						LoginView.Hidden = true;
-						LightBox.Hidden = true;
+						InvokeOnMainThread(() => {
+							LoginView.Hidden = true;
+							LightBox.Hidden = true;
+							});
 						});
 				});
 			}
