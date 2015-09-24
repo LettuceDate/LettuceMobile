@@ -20,21 +20,22 @@ using Android.Support.V7.App;
 using Android.Support.V4.Widget;
 using Android.Graphics;
 using Android.Media;
-
+using ServiceStack.Text;
 using Flurry.Analytics;
-
 
 using Xamarin.Facebook;
 using Xamarin.Facebook.AppEvents;
 using Xamarin.Facebook.Login;
 using Xamarin.Facebook.Login.Widget;
 
+using Lettuce.Core.Yelp;
+
 
 [assembly:MetaData ("com.facebook.sdk.ApplicationId", Value ="@string/app_id")]
 [assembly:MetaData ("com.facebook.sdk.ApplicationName", Value ="@string/app_name")]
 namespace Lettuce.AndroidApp
 {
-	[Activity(Label = "Lettuce", MainLauncher = true, Theme = "@style/Theme.AppCompat.Light", ScreenOrientation=Android.Content.PM.ScreenOrientation.Portrait )]
+	[Activity(Label = "Open Date", MainLauncher = true, Theme = "@style/Theme.AppCompat.Light", ScreenOrientation=Android.Content.PM.ScreenOrientation.Portrait )]
 	public class MainActivity : Android.Support.V7.App.AppCompatActivity
 	{
 		private String[] mDrawerTitles = new string[] { "Home", "Browse", "Stats", "Profile"};
@@ -51,6 +52,10 @@ namespace Lettuce.AndroidApp
 		private ProgressDialog progressDlg;
 		public static Typeface headlineFace;
 		public static Typeface bodyFace;
+
+        private EditText searchText;
+        private Button searchBtn;
+        private ListView searchResultList;
 
 		class MyDrawerToggle : Android.Support.V7.App.ActionBarDrawerToggle
 		{
@@ -124,8 +129,15 @@ namespace Lettuce.AndroidApp
 			headlineFace = Typeface.CreateFromAsset(Assets, "fonts/RammettoOne-Regular.ttf");
 			bodyFace = Typeface.CreateFromAsset(Assets, "fonts/SourceCodePro-Regular.ttf");
 
-			// set up drawer
-			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            searchText = FindViewById<EditText>(Resource.Id.searchText);
+            searchBtn = FindViewById<Button>(Resource.Id.searchBtn);
+            searchResultList = FindViewById<ListView>(Resource.Id.resultList);
+
+            searchBtn.Click += SearchBtn_Click;
+            searchResultList.ItemClick += SearchResultList_ItemClick;
+
+            // set up drawer
+            mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 			mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 			// Set the adapter for the list view
 			mDrawerList.Adapter = new DrawerItemAdapter<String>(this, Resource.Layout.DrawerListItem, mDrawerTitles);
@@ -224,7 +236,35 @@ namespace Lettuce.AndroidApp
 
 		}
 
-		protected override void OnDestroy ()
+        private void SearchResultList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Business theBiz = ((YelpAdapter)searchResultList.Adapter)[e.Position];
+            string theString = theBiz.name;
+            theString += "\n" + theBiz.snippet_text;
+            theString += "\n" + theBiz.location.city;
+            theString += "\n" + theBiz.phone;
+
+            YelpAPI yelp = new YelpAPI();
+
+            var theResult = yelp.GetBusiness(theBiz.id);
+            ShowAlert("Biz clicked", theResult, "ok");
+
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            string theStr = searchText.Text;
+
+            YelpAPI yelp = new YelpAPI();
+
+            var theResult = yelp.Search(theStr, "Los Angeles, CA");
+
+            YelpResults results = theResult.FromJson <YelpResults>();
+
+            searchResultList.Adapter = new YelpAdapter(this, results);
+        }
+
+        protected override void OnDestroy ()
 		{
 			base.OnDestroy ();
 
@@ -261,7 +301,12 @@ namespace Lettuce.AndroidApp
 			ProfilePictureView pic = loginView.FindViewById<ProfilePictureView> (Resource.Id.profilePicture);
 
 			if (enableButtons && profile != null) {
-				pic.ProfileId = profile.Id;
+                RunOnUiThread(() =>
+                {
+                    pic.ProfileId = profile.Id;
+                    loginView.Visibility = ViewStates.Gone;
+                });
+
 				/*
 				SupportActionBar.Show();
 				actionPrompt.Visibility = ViewStates.Invisible;
@@ -544,7 +589,45 @@ namespace Lettuce.AndroidApp
 		}
 	}
 
-	class FacebookCallback<TResult> : Java.Lang.Object, IFacebookCallback where TResult : Java.Lang.Object
+    public class YelpAdapter : BaseAdapter<Business>
+    {
+        YelpResults results;
+        Activity context;
+
+        public YelpAdapter(Activity context, YelpResults theResults) : base()
+        {
+            this.results = theResults ;
+            this.context = context;
+        }
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+        public override Business this[int position]
+        {
+            get { return results.businesses[position]; }
+        }
+        public override int Count
+        {
+            get { return results.businesses.Count; }
+        }
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            Business curItem = results.businesses[position];
+            View view = convertView; // re-use an existing view, if one is available
+            if (view == null) // otherwise create a new one
+                view = context.LayoutInflater.Inflate(Resource.Layout.YelpResultItem, null);
+            view.FindViewById<TextView>(Resource.Id.nameField).Text = curItem.name;
+            view.FindViewById<TextView>(Resource.Id.reviewText).Text = String.Format("{0} reviews", curItem.review_count);
+            var imageView = view.FindViewById<ImageView>(Resource.Id.image);
+            Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curItem.image_url);
+            var reviewImage = view.FindViewById<ImageView>(Resource.Id.reviewImage);
+            Koush.UrlImageViewHelper.SetUrlDrawable(reviewImage, curItem.rating_img_url_large);
+            return view;
+        }
+    }
+
+    class FacebookCallback<TResult> : Java.Lang.Object, IFacebookCallback where TResult : Java.Lang.Object
 	{
 		public Action HandleCancel { get; set; }
 		public Action<FacebookException> HandleError { get; set; }

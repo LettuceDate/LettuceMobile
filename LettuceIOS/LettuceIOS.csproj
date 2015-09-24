@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -66,6 +66,9 @@
     </IpaPackageName>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SDWebImage">
+      <HintPath>..\Components\sdwebimage-3.7.3.0\lib\ios-unified\SDWebImage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -81,9 +84,6 @@
     </Reference>
     <Reference Include="Flurry.Analytics.iOS">
       <HintPath>..\packages\Flurry.Analytics.1.2.1\lib\Xamarin.iOS10\Flurry.Analytics.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="SDWebImage">
-      <HintPath>..\Components\sdwebimage-3.7.3.0\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
     <Reference Include="JVMenuPopover">
       <HintPath>..\Components\jvmenupopover-1.4\lib\ios-unified\JVMenuPopover.dll</HintPath>
@@ -120,6 +120,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\LettuceCore\Dates.cs">
+      <Link>LettuceCore\Dates.cs</Link>
+    </Compile>
+    <Compile Include="..\LettuceCore\UserRecord.cs">
+      <Link>LettuceCore\UserRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\LettuceCore\Yelp\QueryString.cs">
+      <Link>LettuceCore\Yelp\QueryString.cs</Link>
+    </Compile>
+    <Compile Include="..\LettuceCore\Yelp\YelpAPI.cs">
+      <Link>LettuceCore\Yelp\YelpAPI.cs</Link>
+    </Compile>
+    <Compile Include="..\LettuceCore\Yelp\YelpClasses.cs">
+      <Link>LettuceCore\Yelp\YelpClasses.cs</Link>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="ViewController.cs" />
@@ -173,7 +188,6 @@
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
       <DependentUpon>SettingsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="LettuceCore\UserRecord.cs" />
     <Compile Include="Helpers\UIResources.cs" />
     <Compile Include="Views\CommittedDatesCell.cs" />
     <Compile Include="Views\CommittedDatesCell.designer.cs">
@@ -192,7 +206,6 @@
       <DependentUpon>PostedDatesCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Collections\CurrentDatesTableSource.cs" />
-    <Compile Include="LettuceCore\Dates.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -221,48 +234,95 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\Images.xcassets\AppIcons.appiconset\" />
-    <Folder Include="LettuceCore\" />
-    <Folder Include="ViewControllers\" />
-    <Folder Include="Base.lproj\" />
-    <Folder Include="Resources\en.lproj\" />
-    <Folder Include="Resources\zh-Hans.lproj\" />
-    <Folder Include="Resources\es.lproj\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Views\" />
-    <Folder Include="Collections\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-40.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-40%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-40%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\MatchingDatesIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\CurrentDatesIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\AppliedDatesIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\HomeIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\AboutIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\AboutIcon.imageset\about-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppliedDatesIcon.imageset\ask_question-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\CurrentDatesIcon.imageset\cancel_filled-50%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HomeIcon.imageset\home-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\MatchingDatesIcon.imageset\business_contact-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\delete_sign-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\ask_question-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\settings-48%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchIcon.imageset\Icon_1024.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-40.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-40%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-40%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MatchingDatesIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CurrentDatesIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppliedDatesIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\HomeIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AboutIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AboutIcon.imageset\about-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppliedDatesIcon.imageset\ask_question-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CurrentDatesIcon.imageset\cancel_filled-50%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\HomeIcon.imageset\home-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MatchingDatesIcon.imageset\business_contact-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\PostedDatesIcon.imageset\delete_sign-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ProfileIcon.imageset\ask_question-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\SettingsIcon.imageset\settings-48%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchIcon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\LaunchIcon.imageset\Icon_1024.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\about-48%402x.png" />
