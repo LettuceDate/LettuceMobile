@@ -6,6 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProposeDatesViewController">
             <connections>
+                <outlet property="ActivityTableView" destination="R34-xF-xB8" id="uGb-K7-6ri"/>
+                <outlet property="AddActivityBtn" destination="xIC-YB-1qm" id="trv-6c-6Kb"/>
+                <outlet property="DateLabel" destination="XzY-q8-3AJ" id="mv4-dx-eHZ"/>
+                <outlet property="DescriptionText" destination="Guh-ev-Hzk" id="gWb-YY-THB"/>
+                <outlet property="HeadlineText" destination="AHB-os-Esa" id="766-m8-psp"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>
@@ -14,55 +19,103 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PV7-6m-LFK">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV7-6m-LFK">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdM-9V-gUY">
-                            <rect key="frame" x="0.0" y="292" width="50" height="21"/>
+                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-GM-nUc">
+                            <rect key="frame" x="0.0" y="-52" width="320" height="10"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="When:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdM-9V-gUY">
+                            <rect key="frame" x="8" y="8" width="50" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08G-mO-SEb">
-                            <rect key="frame" x="124" y="292" width="72" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tue Sept 29, 2015  8:30pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzY-q8-3AJ">
+                            <rect key="frame" x="66" y="8" width="246" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PX-xf-k5N">
-                            <rect key="frame" x="113" y="292" width="93" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08G-mO-SEb">
+                            <rect key="frame" x="8" y="37" width="72" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-9j-ag5">
-                            <rect key="frame" x="0.0" y="195" width="320" height="216"/>
-                            <date key="date" timeIntervalSinceReferenceDate="464903156.68397099">
-                                <!--2015-09-25 19:45:56 +0000-->
-                            </date>
-                            <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                <!--1970-01-01 11:00:00 +0000-->
-                            </date>
-                            <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                <!--2037-12-31 11:00:00 +0000-->
-                            </date>
-                        </datePicker>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHB-os-Esa">
-                            <rect key="frame" x="8" y="288" width="304" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHB-os-Esa">
+                            <rect key="frame" x="8" y="60" width="304" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Guh-ev-Hzk">
-                            <rect key="frame" x="8" y="239" width="304" height="128"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PX-xf-k5N">
+                            <rect key="frame" x="8" y="98" width="93" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="This is some super long text that will make people really feel like going on your date." translatesAutoresizingMaskIntoConstraints="NO" id="Guh-ev-Hzk">
+                            <rect key="frame" x="8" y="127" width="304" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="128" id="bsx-LQ-dh4"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ft-MP-7eo">
+                            <rect key="frame" x="8" y="263" width="70" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIC-YB-1qm">
+                            <rect key="frame" x="212" y="263" width="100" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="2sM-RM-35D"/>
+                                <constraint firstAttribute="height" constant="30" id="ROS-OA-ZnC"/>
+                            </constraints>
+                            <state key="normal" title="Add Activity"/>
+                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R34-xF-xB8">
+                            <rect key="frame" x="8" y="292" width="304" height="0.0"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="XdM-9V-gUY" firstAttribute="top" secondItem="PV7-6m-LFK" secondAttribute="top" constant="8" id="29c-TR-12l"/>
+                        <constraint firstItem="6PX-xf-k5N" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="4Pg-eZ-vB9"/>
+                        <constraint firstItem="08G-mO-SEb" firstAttribute="top" secondItem="XdM-9V-gUY" secondAttribute="bottom" constant="8" id="5iB-ad-yEu"/>
+                        <constraint firstItem="Guh-ev-Hzk" firstAttribute="top" secondItem="6PX-xf-k5N" secondAttribute="bottom" constant="8" id="6dT-7j-zew"/>
+                        <constraint firstItem="XdM-9V-gUY" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="ISv-Ah-P5d"/>
+                        <constraint firstItem="xIC-YB-1qm" firstAttribute="top" secondItem="Guh-ev-Hzk" secondAttribute="bottom" constant="8" id="K7j-vD-1pk"/>
+                        <constraint firstAttribute="trailing" secondItem="UY3-GM-nUc" secondAttribute="trailing" id="L9C-wm-j8g"/>
+                        <constraint firstItem="4ft-MP-7eo" firstAttribute="top" secondItem="Guh-ev-Hzk" secondAttribute="bottom" constant="8" id="QH4-mx-Bi4"/>
+                        <constraint firstItem="UY3-GM-nUc" firstAttribute="width" secondItem="PV7-6m-LFK" secondAttribute="width" id="TBc-cf-QeO"/>
+                        <constraint firstAttribute="trailing" secondItem="R34-xF-xB8" secondAttribute="trailing" constant="8" id="Y8e-Ul-SUa"/>
+                        <constraint firstItem="UY3-GM-nUc" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" id="Yfr-nt-dc2"/>
+                        <constraint firstItem="XzY-q8-3AJ" firstAttribute="leading" secondItem="XdM-9V-gUY" secondAttribute="trailing" constant="8" id="ba3-2q-tgz"/>
+                        <constraint firstItem="4ft-MP-7eo" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="bx3-22-a2y"/>
+                        <constraint firstItem="R34-xF-xB8" firstAttribute="top" secondItem="4ft-MP-7eo" secondAttribute="bottom" constant="8" id="eZZ-ON-qtI"/>
+                        <constraint firstItem="6PX-xf-k5N" firstAttribute="top" secondItem="AHB-os-Esa" secondAttribute="bottom" constant="8" id="fpM-fv-era"/>
+                        <constraint firstItem="Guh-ev-Hzk" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="g47-5f-Li0"/>
+                        <constraint firstAttribute="trailing" secondItem="xIC-YB-1qm" secondAttribute="trailing" constant="8" id="gRp-hT-WZS"/>
+                        <constraint firstItem="XzY-q8-3AJ" firstAttribute="top" secondItem="PV7-6m-LFK" secondAttribute="top" constant="8" id="ja0-Un-CHB"/>
+                        <constraint firstItem="R34-xF-xB8" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="jfH-Ou-CxC"/>
+                        <constraint firstAttribute="trailing" secondItem="XzY-q8-3AJ" secondAttribute="trailing" constant="8" id="mOt-PJ-p73"/>
+                        <constraint firstAttribute="trailing" secondItem="Guh-ev-Hzk" secondAttribute="trailing" constant="8" id="nHD-BJ-nHq"/>
+                        <constraint firstItem="08G-mO-SEb" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="nvC-4v-9m1"/>
+                        <constraint firstAttribute="trailing" secondItem="AHB-os-Esa" secondAttribute="trailing" constant="8" id="rN5-9a-fYX"/>
+                        <constraint firstItem="AHB-os-Esa" firstAttribute="leading" secondItem="PV7-6m-LFK" secondAttribute="leading" constant="8" id="sT6-18-3Ks"/>
+                        <constraint firstItem="AHB-os-Esa" firstAttribute="top" secondItem="08G-mO-SEb" secondAttribute="bottom" constant="2" id="xev-cm-QCk"/>
+                    </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="PV7-6m-LFK" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="1bT-JU-m7z"/>
                 <constraint firstItem="PV7-6m-LFK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Kka-4N-PJg"/>
+                <constraint firstItem="PV7-6m-LFK" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="XOo-ZS-GLu"/>
                 <constraint firstItem="PV7-6m-LFK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cYd-Ah-YRd"/>
                 <constraint firstAttribute="trailing" secondItem="PV7-6m-LFK" secondAttribute="trailing" id="kaC-Ji-z2z"/>
                 <constraint firstAttribute="bottom" secondItem="PV7-6m-LFK" secondAttribute="bottom" id="w26-kJ-hqR"/>
