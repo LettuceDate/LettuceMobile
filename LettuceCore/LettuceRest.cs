@@ -18,12 +18,15 @@ using Facebook;
 
 namespace Lettuce.Core
 {
-    public delegate void string_callback(String theResult);
+	public delegate void string_callback(String theResult);    
+	public delegate void Venue_callback(Venue theResult);
 	public delegate void null_callback();
+	public delegate void BaseDate_callback(BaseDate theDate);
 
 	public delegate void UserRecord_callback(UserRecord theRec);
 
 	public delegate void CommittedDateList_callback(List<CommittedDate> theResult);
+
 
 
 
@@ -36,13 +39,23 @@ namespace Lettuce.Core
         private string _catchURL;
         private string _userImageURL;
 		private UserRecord _currentUser;
-        
+		private Dictionary<int, ActivityType>	_activityTypes = new Dictionary<int, ActivityType>();
+		private Dictionary<string, Venue>	_venueList = new Dictionary<string, Venue>();
+		    
 		public LettuceServer()
         {
             System.Console.WriteLine("Using Production Server");
             apiClient = new RestClient(apiPath);
             apiClient.CookieContainer = new CookieContainer();
+			Initialize ();
         }
+
+
+		private void Initialize()
+		{
+
+			InitActivityNames (null);
+		}
 
 		public static LettuceServer Instance
         {
@@ -54,6 +67,91 @@ namespace Lettuce.Core
             }
         }
 
+		public ActivityType ActivityType(int activityTypeId)
+		{
+			if (_activityTypes.ContainsKey (activityTypeId))
+				return _activityTypes [activityTypeId];
+			else
+				return null;
+
+		}
+
+		public Dictionary<int, ActivityType> ActivityTypes {
+			get { return _activityTypes; }
+		}
+
+		public Venue Venue(string venueId)
+		{
+			if (_venueList.ContainsKey (venueId))
+				return _venueList [venueId];
+			else
+				return null;
+
+		}
+
+		public async Task<Venue> LoadVenue(string venueId)
+		{
+			Yelp.YelpAPI yelp = new Yelp.YelpAPI ();
+
+			string resultStr = await yelp.GetBusinessAsync (venueId);
+			Yelp.Business result = resultStr.FromJson<Yelp.Business> ();
+
+			if (result != null) {
+				var newVenue = new Venue (result);
+				_venueList [newVenue.id] = newVenue;
+				return newVenue;
+			}
+			else
+				return null;
+		}
+
+
+
+
+		private void InitActivityNames(null_callback callback)
+		{
+			string fullURL = "admin/activitynames";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync<List<ActivityType>>(request, (response) =>
+				{
+					List<ActivityType> map = response.Data;
+
+					if (map != null) {
+						foreach (ActivityType curType in map)
+						{
+							_activityTypes[curType.id] = curType;
+						}
+					}
+					else {
+						_activityTypes.Clear();
+					}
+
+					if (callback != null)
+						callback();
+				});
+
+		}
+
+		public void CreateDate(BaseDate theDate, BaseDate_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.POST);
+			request.AddParameter("date", theDate);
+
+			apiClient.ExecuteAsync<BaseDate>(request, (response) =>
+				{
+					BaseDate newDate = response.Data;
+					if (newDate != null)
+					{
+						callback(newDate);
+					}
+					else
+						callback(null);
+				});
+		}
 
 		public void FacebookLogin(string userId, string token, UserRecord_callback callback)
 		{
@@ -87,9 +185,8 @@ namespace Lettuce.Core
 
 		}
 
-		/*
 
-        public User CurrentUser
+        public UserRecord CurrentUser
         {
             get { return _currentUser; }
         }
@@ -102,28 +199,7 @@ namespace Lettuce.Core
                 return "https://s3-us-west-2.amazonaws.com/app.goheard.com/images/unknown-user.png";
         }
 
-        public void GetUserImages(PhotoRecordList_callback callback)
-        {
-            string fullURL = "images";
-
-            RestRequest request = new RestRequest(fullURL, Method.GET);
-
-            apiClient.ExecuteAsync<List<PhotoRecord>>(request, (response) =>
-            {
-                if (response == null)
-                    return;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    List<PhotoRecord> imageList = response.Data;
-
-                    //imageList.Sort(objListOrder.OrderBy(o=>o.OrderDate).ToList();
-
-                    callback(imageList.OrderByDescending(o => o.created).ToList());
-                }
-                else
-                    callback(null);
-            });
-        }
+        
 
         public void Logout()
         {
@@ -141,7 +217,7 @@ namespace Lettuce.Core
         
   
 
-        public void GetUploadURL(String_callback callback)
+        public void GetUploadURL(string_callback callback)
         {
             string fullURL = "image/upload";
 
@@ -155,70 +231,9 @@ namespace Lettuce.Core
 
         }
 
-        public void GetUserImageUploadURL(String_callback callback)
-        {
-            string fullURL = "user/image";
-
-            RestRequest request = new RestRequest(fullURL, Method.GET);
-
-            apiClient.ExecuteAsync(request, (response) =>
-            {
-                _userImageURL = response.Content;
-                callback(_userImageURL);
-            });
-
-        }
-
-        public void GetCatchURL(String_callback callback)
-        {
-            string fullURL = "catch";
-
-            RestRequest request = new RestRequest(fullURL, Method.GET);
-
-            apiClient.ExecuteAsync(request, (response) =>
-            {
-                _catchURL = response.Content;
-                callback(_catchURL);
-            });
-
-        }
 
 
 
-
-        public void GetImage(String_callback callback)
-        {
-            string fullURL = "image";
-
-            RestRequest request = new RestRequest(fullURL, Method.GET);
-
-            apiClient.ExecuteAsync(request, (response) =>
-            {
-                _uploadURL = response.Content;
-                callback(_uploadURL);
-            });
-        }
-
-
-        public void StartToss(long imageId, int gameType, double longitude, double latitude, Toss_callback callback)
-        {
-            string fullURL = "toss";
-
-            RestRequest request = new RestRequest(fullURL, Method.POST);
-            request.AddParameter("image", imageId);
-            request.AddParameter("game", gameType);
-            request.AddParameter("long", longitude);
-            request.AddParameter("lat", latitude);
-
-            apiClient.ExecuteAsync<TossRecord>(request, (response) =>
-            {
-                callback(response.Data);
-            });
-        }
-
-
-
-		*/
         public void UploadImage(Stream photoStream, double longitude, double latitude, string_callback callback)
         {
             RestClient onetimeClient = new RestClient(_uploadURL);

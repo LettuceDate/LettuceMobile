@@ -68,7 +68,7 @@ namespace Lettuce.IOS
 				ProposeDatesViewController proposeController = new ProposeDatesViewController ();
 				if (proposeController != null) {
 
-					this.NavigationController.PushViewController (proposeController, true);
+					this.NavigationController.PresentModalViewController (proposeController, true);
 				}
 			};
 

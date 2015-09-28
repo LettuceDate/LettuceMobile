@@ -19,29 +19,36 @@ namespace Lettuce.IOS
 		UIKit.UIButton AddActivityBtn { get; set; }
 
 		[Outlet]
-		UIKit.UILabel DateLabel { get; set; }
+		UIKit.UIButton CancelDateBtn { get; set; }
+
+		[Outlet]
+		UIKit.UIButton CreateDateBtn { get; set; }
+
+		[Outlet]
+		UIKit.UIButton DateStartBtn { get; set; }
 
 		[Outlet]
 		UIKit.UITextView DescriptionText { get; set; }
 
 		[Outlet]
 		UIKit.UITextField HeadlineText { get; set; }
+
+		[Outlet]
+		UIKit.UISegmentedControl PayTypeControl { get; set; }
+
+		[Outlet]
+		UIKit.UIScrollView Scroller { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (DateLabel != null) {
-				DateLabel.Dispose ();
-				DateLabel = null;
+			if (Scroller != null) {
+				Scroller.Dispose ();
+				Scroller = null;
 			}
 
-			if (HeadlineText != null) {
-				HeadlineText.Dispose ();
-				HeadlineText = null;
-			}
-
-			if (DescriptionText != null) {
-				DescriptionText.Dispose ();
-				DescriptionText = null;
+			if (ActivityTableView != null) {
+				ActivityTableView.Dispose ();
+				ActivityTableView = null;
 			}
 
 			if (AddActivityBtn != null) {
@@ -49,9 +56,34 @@ namespace Lettuce.IOS
 				AddActivityBtn = null;
 			}
 
-			if (ActivityTableView != null) {
-				ActivityTableView.Dispose ();
-				ActivityTableView = null;
+			if (CancelDateBtn != null) {
+				CancelDateBtn.Dispose ();
+				CancelDateBtn = null;
+			}
+
+			if (CreateDateBtn != null) {
+				CreateDateBtn.Dispose ();
+				CreateDateBtn = null;
+			}
+
+			if (DateStartBtn != null) {
+				DateStartBtn.Dispose ();
+				DateStartBtn = null;
+			}
+
+			if (DescriptionText != null) {
+				DescriptionText.Dispose ();
+				DescriptionText = null;
+			}
+
+			if (HeadlineText != null) {
+				HeadlineText.Dispose ();
+				HeadlineText = null;
+			}
+
+			if (PayTypeControl != null) {
+				PayTypeControl.Dispose ();
+				PayTypeControl = null;
 			}
 		}
 	}

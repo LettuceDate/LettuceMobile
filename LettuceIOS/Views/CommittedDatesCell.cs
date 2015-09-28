@@ -32,7 +32,7 @@ namespace Lettuce.IOS
 		public void ConformToRecord(CommittedDate theDate)
 		{
 			linkedDate = theDate;
-			DateTitle.Text = theDate.Title;
+			DateTitle.Text = theDate.title;
 		}
 	}
 }

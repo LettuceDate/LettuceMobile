@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using SimpleOAuth;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Yelp API v2.0 code sample.
@@ -104,6 +105,32 @@ namespace Lettuce.Core.Yelp
             return stream.ReadToEnd();
         }
 
+		private async Task<string> PerformRequestAsync(string baseURL, Dictionary<string, string> queryParams = null)
+		{
+			var query = new QueryString(queryParams);
+
+
+			var uriBuilder = new UriBuilder(baseURL);
+			uriBuilder.Query = query.ToString();
+
+			var request = WebRequest.Create(uriBuilder.ToString());
+			request.Method = "GET";
+
+			request.SignRequest(
+				new Tokens
+				{
+					ConsumerKey = CONSUMER_KEY,
+					ConsumerSecret = CONSUMER_SECRET,
+					AccessToken = TOKEN,
+					AccessTokenSecret = TOKEN_SECRET
+				}
+			).WithEncryption(EncryptionMethod.HMACSHA1).InHeader();
+
+			WebResponse response = await request.GetResponseAsync();
+			var stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+			return stream.ReadToEnd();
+		}
+
         /// <summary>
         /// Query the Search API by a search term and location.
         /// </summary>
@@ -132,6 +159,12 @@ namespace Lettuce.Core.Yelp
             string baseURL = API_HOST + BUSINESS_PATH + business_id;
             return PerformRequest(baseURL);
         }
+
+		public async Task<string> GetBusinessAsync(string business_id)
+		{
+			string baseURL = API_HOST + BUSINESS_PATH + business_id;
+			return await PerformRequestAsync(baseURL);
+		}
     }
 
     

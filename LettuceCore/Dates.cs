@@ -6,11 +6,17 @@ namespace Lettuce.Core
 
 	public class BaseDate
 	{
-		public string Title { get; set; }
+		public long id { get; set; }
+		public string title { get; set; }
+		public DateTime starttime { get; set; }
+		public DateTime endtime { get; set; }
+		public string description { get; set; }
+		public int paymentStyle { get; set; }
+		public List<Activity> activities { get; set; }
 
 		public BaseDate()
 		{
-
+			
 		}
 
 
@@ -42,7 +48,7 @@ namespace Lettuce.Core
 		public static CommittedDate GenerateTest()
 		{
 			CommittedDate newDate = new CommittedDate();
-			newDate.Title = "This is a date title";
+			newDate.title = "This is a date title";
 
 			return newDate;
 		}
@@ -53,7 +59,7 @@ namespace Lettuce.Core
 
 			for (int i = 0; i < numItems; i++) {
 				CommittedDate newDate = GenerateTest ();
-				newDate.Title = string.Format ("This is date {0}", i + 1);
+				newDate.title = string.Format ("This is date {0}", i + 1);
 				dateList.Add (newDate);
 			}
 
