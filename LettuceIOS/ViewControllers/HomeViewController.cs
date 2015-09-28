@@ -73,6 +73,8 @@ namespace Lettuce.IOS
 			};
 
 
+
+
 		}
 
 		private void FinalizeLogin()
@@ -93,12 +95,45 @@ namespace Lettuce.IOS
 						InvokeOnMainThread(() => {
 							LoginView.Hidden = true;
 							LightBox.Hidden = true;
+							RefreshButtonCounts();
 							});
 						});
 				});
 			}
 
 
+		}
+
+		private void RefreshButtonCounts()
+		{
+			int numMatches = 0;
+			int numBooked = 0;
+			int numOwn = 0;
+			int numInterested = 0;
+			if (LettuceServer.Instance.CurrentUser != null) {
+				LettuceServer.Instance.CountDatesForUser ((v1) => {
+					numMatches = v1;
+					LettuceServer.Instance.CountBookedDatesForUser((v2) => {
+						numBooked = v2;
+						LettuceServer.Instance.CountUsersOwnDates((v3) => {
+							numOwn = v3;
+							LettuceServer.Instance.CountInterestedUsers((v4) => {
+								numInterested = v4;
+								UpdateCounters(numMatches, numBooked, numOwn, numInterested);
+							});
+						});
+					});
+				});
+			}
+		}
+
+		private void UpdateCounters(int numMatches, int numBooked, int numOwn, int numInterested)
+		{
+			InvokeOnMainThread (() => {
+				ActiveDateString.Text = String.Format("You have {0} booked dates and {1} active", numBooked, numOwn);
+				DateMatchString.Text = String.Format("{0} dates match your profile", numMatches);
+				InterestedDateString.Text = String.Format("You have {0} interested in your dates!", numInterested);
+			});
 		}
 
 		private void ShowDateView(int whichView)

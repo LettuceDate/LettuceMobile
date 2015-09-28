@@ -7,10 +7,12 @@ namespace Lettuce.Core
 	public class BaseDate
 	{
 		public long id { get; set; }
+		public long proposerid { get; set; }
 		public string title { get; set; }
-		public DateTime starttime { get; set; }
-		public DateTime endtime { get; set; }
+		public string startTimeStr { get; set; }
 		public string description { get; set; }
+		public bool active {get; set;}
+		public string selfie { get; set; }
 		public int paymentStyle { get; set; }
 		public List<Activity> activities { get; set; }
 
@@ -20,7 +22,24 @@ namespace Lettuce.Core
 		}
 
 
+		public DateTime starttime {
+			get {
+				if (String.IsNullOrEmpty (startTimeStr))
+					return DateTime.UtcNow;
+				else {
+					DateTime newDate = DateTime.ParseExact (startTimeStr, "yyyy-MM-ddTHH:mm:ssK", System.Globalization.CultureInfo.InvariantCulture);
+					return newDate;
+				}
+			}
+
+			set {
+				string dateStr = value.ToString ("yyyy-MM-ddTHH:mm:ssK", System.Globalization.CultureInfo.InvariantCulture);
+				startTimeStr = dateStr;
+			}
+		}
+
 	}
+		
 
 
 	public class ProposedDate : BaseDate

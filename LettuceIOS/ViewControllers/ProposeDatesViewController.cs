@@ -70,9 +70,11 @@ namespace Lettuce.IOS
 				LettuceServer.Instance.CreateDate(newDate, (theDate) =>
 					{
 						newDate = theDate;
+						InvokeOnMainThread(() => {
 						DismissViewController(true, null);
 						if (DateCreated != null)
 							DateCreated(theDate);
+						});
 					});
 
 			};

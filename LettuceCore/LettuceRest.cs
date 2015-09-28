@@ -19,10 +19,11 @@ using Facebook;
 namespace Lettuce.Core
 {
 	public delegate void string_callback(String theResult);    
+	public delegate void int_callback(int theResult);    
 	public delegate void Venue_callback(Venue theResult);
 	public delegate void null_callback();
 	public delegate void BaseDate_callback(BaseDate theDate);
-
+	public delegate void BaseDateList_callback(List<BaseDate> dateList);
 	public delegate void UserRecord_callback(UserRecord theRec);
 
 	public delegate void CommittedDateList_callback(List<CommittedDate> theResult);
@@ -34,7 +35,7 @@ namespace Lettuce.Core
     {
         private RestClient apiClient;
 		private static LettuceServer _singleton = null;
-		private string apiPath = "http://lettuce-1045.appspot.com/api/v1";  //"http://localhost:8080/api/";  //"http://lettuce-1045.appspot.com/api/v1";
+		private string apiPath = "http://localhost:8080/api/v1";  //"http://localhost:8080/api/v1";  //"http://lettuce-1045.appspot.com/api/v1";
         private string _uploadURL;
         private string _catchURL;
         private string _userImageURL;
@@ -134,12 +135,143 @@ namespace Lettuce.Core
 
 		}
 
+		public void GetDatesForUser(BaseDateList_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("matches", true);
+
+			apiClient.ExecuteAsync<List<BaseDate>>(request, (response) =>
+				{
+					List<BaseDate> newDate = response.Data;
+					if (newDate != null)
+					{
+						callback(newDate);
+					}
+					else
+						callback(null);
+				});
+		}
+
+		public void CountDatesForUser(int_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("matches", true);
+			request.AddParameter ("count", true);
+			apiClient.ExecuteAsync<int>(request, (response) =>
+				{
+					int newCount = response.Data;
+					callback(newCount);
+				});
+		}
+
+		public void GetBookedDatesForUser(BaseDateList_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("booked", true);
+
+			apiClient.ExecuteAsync<List<BaseDate>>(request, (response) =>
+				{
+					List<BaseDate> newDate = response.Data;
+					if (newDate != null)
+					{
+						callback(newDate);
+					}
+					else
+						callback(null);
+				});
+		}
+
+		public void CountBookedDatesForUser(int_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("booked", true);
+			request.AddParameter ("count", true);
+			apiClient.ExecuteAsync<int>(request, (response) =>
+				{
+					int newCount = response.Data;
+					callback(newCount);
+				});
+		}
+
+		public void GetUsersOwnDates(BaseDateList_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync<List<BaseDate>>(request, (response) =>
+				{
+					List<BaseDate> newDate = response.Data;
+					if (newDate != null)
+					{
+						callback(newDate);
+					}
+					else
+						callback(null);
+				});
+		}
+
+		public void CountUsersOwnDates(int_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("count", true);
+			apiClient.ExecuteAsync<int>(request, (response) =>
+				{
+					int newCount = response.Data;
+					callback(newCount);
+				});
+		}
+
+
+		public void GetInterestedUsers(BaseDateList_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync<List<BaseDate>>(request, (response) =>
+				{
+					List<BaseDate> newDate = response.Data;
+					if (newDate != null)
+					{
+						callback(newDate);
+					}
+					else
+						callback(null);
+				});
+		}
+
+		public void CountInterestedUsers(int_callback callback)
+		{
+			string fullURL = "date";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("count", true);
+			apiClient.ExecuteAsync<int>(request, (response) =>
+				{
+					int newCount = 0;//response.Data;
+					callback(newCount);
+				});
+		}
+
+
+
 		public void CreateDate(BaseDate theDate, BaseDate_callback callback)
 		{
 			string fullURL = "date";
 
 			RestRequest request = new RestRequest(fullURL, Method.POST);
-			request.AddParameter("date", theDate);
+			request.AddParameter("date", theDate.ToJson());
 
 			apiClient.ExecuteAsync<BaseDate>(request, (response) =>
 				{
@@ -152,6 +284,8 @@ namespace Lettuce.Core
 						callback(null);
 				});
 		}
+
+
 
 		public void FacebookLogin(string userId, string token, UserRecord_callback callback)
 		{
