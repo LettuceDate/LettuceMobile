@@ -36,7 +36,13 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: David Vronay (WFXD25AJXF)</CodesignKey>
+    <CodesignProvision>bf0056e1-35c6-4ea6-8cb9-ae26c427bb19</CodesignProvision>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -236,6 +242,7 @@
     <Compile Include="ViewControllers\NewActivityController.designer.cs">
       <DependentUpon>NewActivityController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Collections\MatchingDatesTableSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
