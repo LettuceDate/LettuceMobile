@@ -4,6 +4,7 @@ using System;
 using Foundation;
 using UIKit;
 using Lettuce.Core;
+using SDWebImage;
 
 namespace Lettuce.IOS
 {
@@ -34,6 +35,21 @@ namespace Lettuce.IOS
 		public void SetCurrentDate(MatchingDate theDate) 
 		{
 			this.theDate = theDate;
+
+
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			this.DateTitleLabel.Text = theDate.title;
+			if (theDate.selfie != null)
+				SelfieView.SetImage (new Uri (theDate.selfie));
+			else
+				SelfieHeight.Constant = 0;
+			this.DateDescription.Text = theDate.description;
+			this.DatePayLabel.Text = theDate.paymentStyle.ToString ();
+
 		}
 	}
 }

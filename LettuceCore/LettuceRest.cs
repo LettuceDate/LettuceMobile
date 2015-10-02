@@ -107,7 +107,24 @@ namespace Lettuce.Core
 				return null;
 		}
 
+		public void GetUserInfo(long userId, UserRecord_callback callback)
+		{
+			string fullURL = "user/profile";
 
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter ("id", userId);
+
+			apiClient.ExecuteAsync<UserRecord>(request, (response) =>
+				{
+					UserRecord newUser = response.Data;
+					if (newUser!= null)
+					{
+						callback(newUser);
+					}
+					else
+						callback(null);
+				});
+		}
 
 
 		private void InitActivityNames(null_callback callback)
