@@ -24,6 +24,7 @@ namespace Lettuce.Core
 	public delegate void null_callback();
 	public delegate void BaseDate_callback(BaseDate theDate);
 	public delegate void BaseDateList_callback(List<BaseDate> dateList);
+	public delegate void MatchingDateList_callback(List<MatchingDate> dateList);
 	public delegate void UserRecord_callback(UserRecord theRec);
 
 	public delegate void CommittedDateList_callback(List<CommittedDate> theResult);
@@ -135,19 +136,19 @@ namespace Lettuce.Core
 
 		}
 
-		public void GetDatesForUser(BaseDateList_callback callback)
+		public void GetMatchingDatesForUser(MatchingDateList_callback callback)
 		{
 			string fullURL = "date";
 
 			RestRequest request = new RestRequest(fullURL, Method.GET);
 			request.AddParameter ("matches", true);
 
-			apiClient.ExecuteAsync<List<BaseDate>>(request, (response) =>
+			apiClient.ExecuteAsync<List<MatchingDate>>(request, (response) =>
 				{
-					List<BaseDate> newDate = response.Data;
-					if (newDate != null)
+					List<MatchingDate> newDates = response.Data;
+					if (newDates!= null)
 					{
-						callback(newDate);
+						callback(newDates);
 					}
 					else
 						callback(null);

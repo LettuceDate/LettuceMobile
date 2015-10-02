@@ -3,6 +3,8 @@ using System;
 
 using Foundation;
 using UIKit;
+using Lettuce.Core;
+
 
 namespace Lettuce.IOS
 {
@@ -10,9 +12,10 @@ namespace Lettuce.IOS
 	{
 		private CurrentDatesViewController tab1;
 		private MatchingDatesViewController tab2;
-		private AppliedDatesViewController tab3;
-		private InterestedDatesViewController tab4;
+		private InterestedDatesViewController tab3;
+		private PostedDatesViewController tab4;
 		private nint targetPage;
+		public static DateViewController Instance { get; set;}
 
 		public DateViewController () : base ("DateViewController", null)
 		{
@@ -34,22 +37,28 @@ namespace Lettuce.IOS
 
 			tab2 = new MatchingDatesViewController();
 			tab2.TabBarItem = new UITabBarItem ("MatchingDates_Tab".Localize(), UIImage.FromBundle ("MatchingDatesIcon"), 1);
-			tab2.View.BackgroundColor = UIColor.Orange;
 
-			tab3 = new AppliedDatesViewController();
+			tab3 = new InterestedDatesViewController();
 			tab3.TabBarItem = new UITabBarItem ("InterestedPeople_Tab".Localize(), UIImage.FromBundle ("AppliedDatesIcon"), 2);
-			tab3.View.BackgroundColor = UIColor.Red;
 
-			tab4 = new InterestedDatesViewController();
+			tab4 = new PostedDatesViewController();
 			tab4.TabBarItem = new UITabBarItem ("PostedDates_Tab".Localize(), UIImage.FromBundle ("PostedDatesIcon"), 2);
-			tab4.View.BackgroundColor = UIColor.Red;
-
 
 			var tabs = new UIViewController[] {
 				tab1, tab2, tab3, tab4
 			};
 
 			ViewControllers = tabs;
+			Instance = this;
+		}
+
+		public void EditDate(MatchingDate theDate)
+		{
+			DateDetailViewController dateViewer = new DateDetailViewController ();
+			if (dateViewer != null) {
+				this.NavigationController.PushViewController (dateViewer, true);
+				dateViewer.SetCurrentDate (theDate);
+			}
 		}
 
 		public override void ViewWillAppear (bool animated)

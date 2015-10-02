@@ -20,12 +20,20 @@ namespace Lettuce.IOS
 
 		[Outlet]
 		UIKit.UILabel HeaderLabel { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint TopConstraint { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (HeaderLabel != null) {
-				HeaderLabel.Dispose ();
-				HeaderLabel = null;
+			if (TopConstraint != null) {
+				TopConstraint.Dispose ();
+				TopConstraint = null;
+			}
+
+			if (CurrentDatesTableView != null) {
+				CurrentDatesTableView.Dispose ();
+				CurrentDatesTableView = null;
 			}
 
 			if (FilterBtn != null) {
@@ -33,9 +41,9 @@ namespace Lettuce.IOS
 				FilterBtn = null;
 			}
 
-			if (CurrentDatesTableView != null) {
-				CurrentDatesTableView.Dispose ();
-				CurrentDatesTableView = null;
+			if (HeaderLabel != null) {
+				HeaderLabel.Dispose ();
+				HeaderLabel = null;
 			}
 		}
 	}

@@ -18,6 +18,7 @@ namespace Lettuce.IOS
 		LoginButton loginButton;
 		ProfilePictureView pictureView;
 		UILabel nameLabel;
+		public static nfloat LayoutGuideSize = 0;
 
 		public HomeViewController () : base ()
 		{
@@ -140,11 +141,12 @@ namespace Lettuce.IOS
 		{
 			DateViewController dateViewer = new DateViewController ();
 			if (dateViewer != null) {
-
+				LayoutGuideSize = TopLayoutGuide.Length;
 				this.NavigationController.PushViewController (dateViewer, true);
 				dateViewer.SetCurrentPage (whichView);
 			}
 		}
+
 
 		private void InitFacebookLogin()
 		{

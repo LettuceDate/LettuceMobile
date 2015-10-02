@@ -12,7 +12,8 @@ namespace Lettuce.IOS
 	{
 		public static readonly UINib Nib = UINib.FromName ("MatchingDatesCell", NSBundle.MainBundle);
 		public static readonly NSString Key = new NSString ("MatchingDatesCell");
-		private BaseDate linkedDate;
+		private MatchingDate linkedDate;
+		private MatchingDatesTableSource parentSource;
 
 		public MatchingDatesCell (IntPtr handle) : base (handle)
 		{
@@ -20,19 +21,42 @@ namespace Lettuce.IOS
 
 		public static MatchingDatesCell Create ()
 		{
-			return (MatchingDatesCell)Nib.Instantiate (null, null) [0];
+			MatchingDatesCell theCell = (MatchingDatesCell)Nib.Instantiate (null, null) [0];
+
+			return theCell;
 		}
 
-		public void ConformToEmpty()
+		private void HandleClick(object sender, EventArgs e)
 		{
+			if (linkedDate != null) {
+				if (linkedDate.pinned)
+					linkedDate.pinned = false;
+				else
+					linkedDate.pinned = true;
+				parentSource.UpdateCellStatus (this, linkedDate);
+			}
+		}
+
+		public void ConformToEmpty(int section)
+		{
+			linkedDate = null;
 			PinBtn.Hidden = true;
 			SelfieView.Hidden = true;
 			DateTimeLabel.Hidden = true;
-			DateTitleLabel.Text = "No matching dates found.";
+			if (section == 0)
+				DateTitleLabel.Text = "NoAppliedDatesCell_String".Localize();
+			else if (section == 1)
+				DateTitleLabel.Text = "NoPinnedDatesCell_String".Localize();
+			else
+				DateTitleLabel.Text = "NoMatchingDatesCell_String".Localize();
+			
+			PinBtn.TouchUpInside -= HandleClick;
 		}
 
-		public void ConformToRecord(BaseDate theDate)
+		public void ConformToRecord(MatchingDate theDate, MatchingDatesTableSource theSource)
 		{
+			parentSource = theSource;
+			PinBtn.TouchUpInside -= HandleClick;
 			linkedDate = theDate;
 			PinBtn.Hidden = false;
 			SelfieView.Hidden = false;
@@ -44,6 +68,14 @@ namespace Lettuce.IOS
 			else
 				SelfieView.Image = UIImage.FromBundle ("LaunchIcon");
 
+			if (theDate.applied) {
+				PinBtn.SetTitle ("interested", UIControlState.Normal);
+			} else if (theDate.pinned) {
+				PinBtn.SetTitle ("unpin", UIControlState.Normal);
+			} else {
+				PinBtn.SetTitle ("pin", UIControlState.Normal);
+			}
+			PinBtn.TouchUpInside += HandleClick;
 		}
 	}
 }

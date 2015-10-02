@@ -29,7 +29,7 @@ namespace Lettuce.IOS
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
-			this.ResultTitle.Text = "Looking for matches...";
+			this.ResultTitle.Text = "LookingForMatchingDates_String".Localize();
 
 			this.FilterBtn.TouchUpInside += (object sender, EventArgs e) => 
 			{
@@ -38,17 +38,19 @@ namespace Lettuce.IOS
 
 			this.ResultList.RegisterNibForCellReuse (UINib.FromName (MatchingDatesCell.Key, NSBundle.MainBundle), MatchingDatesCell.Key);
 			dataSource = new MatchingDatesTableSource ();
-			ResultList.DataSource = dataSource;
-			ResultList.RowHeight = 48;
-			LettuceServer.Instance.GetDatesForUser((dateList) => {
+			ResultList.Source = dataSource;
+			ResultList.RowHeight = 64;
+			LettuceServer.Instance.GetMatchingDatesForUser((dateList) => {
 				if (dateList != null) {
 					InvokeOnMainThread(() => {
-						dataSource.Dates = dateList;
+						dataSource.SetDateList(dateList, ResultList);
 						ResultList.ReloadData();
-						this.ResultTitle.Text = String.Format("Found {0} Dates", dateList.Count);
+						this.ResultTitle.Text = String.Format("FoundMatchingDates_String".Localize(), dateList.Count);
 					});
 				}
 			});
+
+			TopConstraint.Constant = HomeViewController.LayoutGuideSize;
 		}
 	}
 }

@@ -9,41 +9,25 @@ using System.CodeDom.Compiler;
 
 namespace Lettuce.IOS
 {
-	[Register ("MatchingDatesViewController")]
-	partial class MatchingDatesViewController
+	[Register ("DateDetailViewController")]
+	partial class DateDetailViewController
 	{
 		[Outlet]
-		UIKit.UIButton FilterBtn { get; set; }
-
-		[Outlet]
-		UIKit.UITableView ResultList { get; set; }
-
-		[Outlet]
-		UIKit.UILabel ResultTitle { get; set; }
+		UIKit.UILabel HeadlineLabel { get; set; }
 
 		[Outlet]
 		UIKit.NSLayoutConstraint TopConstraint { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (HeadlineLabel != null) {
+				HeadlineLabel.Dispose ();
+				HeadlineLabel = null;
+			}
+
 			if (TopConstraint != null) {
 				TopConstraint.Dispose ();
 				TopConstraint = null;
-			}
-
-			if (FilterBtn != null) {
-				FilterBtn.Dispose ();
-				FilterBtn = null;
-			}
-
-			if (ResultList != null) {
-				ResultList.Dispose ();
-				ResultList = null;
-			}
-
-			if (ResultTitle != null) {
-				ResultTitle.Dispose ();
-				ResultTitle = null;
 			}
 		}
 	}

@@ -9,6 +9,7 @@
                 <outlet property="FilterBtn" destination="YGq-G2-DGf" id="YGq-S2-yxX"/>
                 <outlet property="ResultList" destination="qsD-aZ-T9I" id="jv0-qf-Mkg"/>
                 <outlet property="ResultTitle" destination="guc-Id-WPu" id="FHI-mQ-Jph"/>
+                <outlet property="TopConstraint" destination="xPG-Ix-Y0z" id="xv4-pP-16T"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>

@@ -9,6 +9,7 @@
                 <outlet property="CurrentDatesTableView" destination="qsD-aZ-T9I" id="sSI-NJ-byj"/>
                 <outlet property="FilterBtn" destination="YGq-G2-DGf" id="KfP-65-cks"/>
                 <outlet property="HeaderLabel" destination="guc-Id-WPu" id="aof-ai-GQK"/>
+                <outlet property="TopConstraint" destination="xPG-Ix-Y0z" id="as1-jE-aP4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>

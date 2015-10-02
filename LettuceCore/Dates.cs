@@ -52,8 +52,13 @@ namespace Lettuce.Core
 
 	public class MatchingDate : BaseDate
 	{
+		public bool applied { get; set; }
+		public bool pinned { get; set; }
+
 		public MatchingDate ()
 		{
+			applied = false;
+			pinned = false;
 		}
 	}
 
