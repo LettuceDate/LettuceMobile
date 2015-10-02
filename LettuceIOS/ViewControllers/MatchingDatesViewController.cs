@@ -11,6 +11,7 @@ namespace Lettuce.IOS
 	public partial class MatchingDatesViewController : UIViewController
 	{
 		private MatchingDatesTableSource dataSource;
+		private bool refreshNeeded = false;
 
 		public MatchingDatesViewController () : base ("MatchingDatesViewController", null)
 		{
@@ -46,11 +47,29 @@ namespace Lettuce.IOS
 						dataSource.SetDateList(dateList, ResultList);
 						ResultList.ReloadData();
 						this.ResultTitle.Text = String.Format("FoundMatchingDates_String".Localize(), dateList.Count);
+						refreshNeeded = false;
 					});
 				}
 			});
 
 			TopConstraint.Constant = HomeViewController.LayoutGuideSize;
+
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			if (refreshNeeded) {
+				dataSource.SetDateList(dataSource.Dates, ResultList);
+				ResultList.ReloadData();
+				refreshNeeded = false;
+			}
+		}
+
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			refreshNeeded = true;
 		}
 	}
 }

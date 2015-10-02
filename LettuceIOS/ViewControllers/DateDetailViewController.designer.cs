@@ -16,6 +16,9 @@ namespace Lettuce.IOS
 		UIKit.UITableView ActivityList { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint ActivityListHeight { get; set; }
+
+		[Outlet]
 		UIKit.UILabel DateDescription { get; set; }
 
 		[Outlet]
@@ -26,6 +29,12 @@ namespace Lettuce.IOS
 
 		[Outlet]
 		UIKit.UILabel HeadlineLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel NicknameLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIScrollView ScrollingView { get; set; }
 
 		[Outlet]
 		UIKit.NSLayoutConstraint SelfieHeight { get; set; }
@@ -53,24 +62,24 @@ namespace Lettuce.IOS
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (SelfieHeight != null) {
-				SelfieHeight.Dispose ();
-				SelfieHeight = null;
+			if (ScrollingView != null) {
+				ScrollingView.Dispose ();
+				ScrollingView = null;
 			}
 
-			if (DateTitleLabel != null) {
-				DateTitleLabel.Dispose ();
-				DateTitleLabel = null;
+			if (ActivityListHeight != null) {
+				ActivityListHeight.Dispose ();
+				ActivityListHeight = null;
 			}
 
-			if (HeadlineLabel != null) {
-				HeadlineLabel.Dispose ();
-				HeadlineLabel = null;
+			if (NicknameLabel != null) {
+				NicknameLabel.Dispose ();
+				NicknameLabel = null;
 			}
 
-			if (TopConstraint != null) {
-				TopConstraint.Dispose ();
-				TopConstraint = null;
+			if (ActivityList != null) {
+				ActivityList.Dispose ();
+				ActivityList = null;
 			}
 
 			if (DateDescription != null) {
@@ -83,19 +92,24 @@ namespace Lettuce.IOS
 				DatePayLabel = null;
 			}
 
-			if (ActivityList != null) {
-				ActivityList.Dispose ();
-				ActivityList = null;
+			if (DateTitleLabel != null) {
+				DateTitleLabel.Dispose ();
+				DateTitleLabel = null;
 			}
 
-			if (UserProfileImage != null) {
-				UserProfileImage.Dispose ();
-				UserProfileImage = null;
+			if (HeadlineLabel != null) {
+				HeadlineLabel.Dispose ();
+				HeadlineLabel = null;
 			}
 
-			if (UserNameLabel != null) {
-				UserNameLabel.Dispose ();
-				UserNameLabel = null;
+			if (SelfieHeight != null) {
+				SelfieHeight.Dispose ();
+				SelfieHeight = null;
+			}
+
+			if (SelfieView != null) {
+				SelfieView.Dispose ();
+				SelfieView = null;
 			}
 
 			if (UserAgeLabel != null) {
@@ -103,19 +117,29 @@ namespace Lettuce.IOS
 				UserAgeLabel = null;
 			}
 
-			if (UserLocLabel != null) {
-				UserLocLabel.Dispose ();
-				UserLocLabel = null;
-			}
-
 			if (UserDescription != null) {
 				UserDescription.Dispose ();
 				UserDescription = null;
 			}
 
-			if (SelfieView != null) {
-				SelfieView.Dispose ();
-				SelfieView = null;
+			if (UserLocLabel != null) {
+				UserLocLabel.Dispose ();
+				UserLocLabel = null;
+			}
+
+			if (UserNameLabel != null) {
+				UserNameLabel.Dispose ();
+				UserNameLabel = null;
+			}
+
+			if (UserProfileImage != null) {
+				UserProfileImage.Dispose ();
+				UserProfileImage = null;
+			}
+
+			if (TopConstraint != null) {
+				TopConstraint.Dispose ();
+				TopConstraint = null;
 			}
 		}
 	}

@@ -14,7 +14,7 @@ namespace Lettuce.IOS
 {
 	public partial class HomeViewController : JVMenuViewController
 	{
-		List<string> readPermissions = new List<string> { "public_profile", "user_birthday" };
+		List<string> readPermissions = new List<string> { "public_profile", "user_birthday", "user_location" };
 		LoginButton loginButton;
 		ProfilePictureView pictureView;
 		UILabel nameLabel;
@@ -81,7 +81,7 @@ namespace Lettuce.IOS
 		private void FinalizeLogin()
 		{
 			if (AccessToken.CurrentAccessToken != null) {
-				var request = new GraphRequest ("/me?fields=name,id,birthday,first_name,gender,last_name,interested_in", null, AccessToken.CurrentAccessToken.TokenString, null, "GET");
+				var request = new GraphRequest ("/me?fields=name,id,birthday,first_name,gender,last_name,interested_in,location", null, AccessToken.CurrentAccessToken.TokenString, null, "GET");
 				request.Start ((connection, result, error) => {
 					// Handle if something went wrong with the request
 					if (error != null) {

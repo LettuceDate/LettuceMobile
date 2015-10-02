@@ -7,7 +7,7 @@ namespace Lettuce.IOS
 {
 	public class MatchingDatesTableSource : UITableViewSource
 	{
-		private List<MatchingDate>	Dates { get; set;}
+		public List<MatchingDate>	Dates { get; set;}
 		private List<MatchingDate>	PinnedDates { get; set;}
 		private List<MatchingDate>	AppliedDates { get; set;}
 		private List<MatchingDate>	OtherDates { get; set;}

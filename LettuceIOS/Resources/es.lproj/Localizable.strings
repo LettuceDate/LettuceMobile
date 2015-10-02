@@ -27,3 +27,18 @@
 "NoMatchingDatesCell_String" = "No Matching Dates found - is your profile OK? (es)";
 "NoPinnedDatesCell_String" = "No pinned dates.  Pin a date to make it easy to find later! (es)";
 "NoAppliedDatesCell_String" = "You have not expressed interest in a date.  Check out a few now! (es)";
+"ProposedBy_String" = "(es)proposed by {0}";
+"DatePayment_0_String" = "(es){0}'s treat";
+"DatePayment_1_String" = "(es){0} is open to going Dutch";
+"DatePayment_2_String" = "(es)Let's go Dutch ";
+
+// user profile
+"AgeRaceGender_String" = "(es) A {0} year old {1} {2}";
+"CityState_String" = "(es) from {0}, {1}";
+
+// ethnicities
+"White / Caucasian_Ethnicity" = "(es)White";
+
+// genders
+"Male_Gender" = "(es)Male";
+"Female_Gender" = "(es)Female";

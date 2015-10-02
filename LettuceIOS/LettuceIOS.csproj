@@ -177,10 +177,6 @@
     <Compile Include="ViewControllers\AboutViewController.designer.cs">
       <DependentUpon>AboutViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\HomeViewController.cs" />
-    <Compile Include="ViewControllers\HomeViewController.designer.cs">
-      <DependentUpon>HomeViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\DateViewController.cs" />
     <Compile Include="ViewControllers\DateViewController.designer.cs">
       <DependentUpon>DateViewController.cs</DependentUpon>
@@ -252,6 +248,13 @@
     <Compile Include="ViewControllers\DateDetailViewController.cs" />
     <Compile Include="ViewControllers\DateDetailViewController.designer.cs">
       <DependentUpon>DateDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LettuceCore\Helpers.cs">
+      <Link>LettuceCore\Helpers.cs</Link>
+    </Compile>
+    <Compile Include="HomeViewController.cs" />
+    <Compile Include="HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

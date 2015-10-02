@@ -36,13 +36,17 @@ namespace Lettuce.Core
     {
         private RestClient apiClient;
 		private static LettuceServer _singleton = null;
-		private string apiPath = "http://lettuce-1045.appspot.com/api/v1";  //"http://localhost:8080/api/v1";  //"http://lettuce-1045.appspot.com/api/v1";
+		private static string localHostStr = "http://localhost:8080/api/v1";
+		private static string productionHostStr = "http://lettuce-1045.appspot.com/api/v1";
+		private string apiPath =   productionHostStr;
         private string _uploadURL;
         private string _catchURL;
         private string _userImageURL;
 		private UserRecord _currentUser;
 		private Dictionary<int, ActivityType>	_activityTypes = new Dictionary<int, ActivityType>();
 		private Dictionary<string, Venue>	_venueList = new Dictionary<string, Venue>();
+		private Dictionary<int, string>	_genderNames = new Dictionary<int, string>();
+		private Dictionary<int, string>	_ethnicityNames = new Dictionary<int, string>();
 		    
 		public LettuceServer()
         {
@@ -56,7 +60,16 @@ namespace Lettuce.Core
 		private void Initialize()
 		{
 
-			InitActivityNames (null);
+			InitActivityNames (() =>
+				{
+					InitGenderNames (() =>
+						{
+							InitEthnicityNames (() =>
+								{
+									Console.WriteLine("Static Tables Initialized");
+								});
+						});
+				});
 		}
 
 		public static LettuceServer Instance
@@ -89,6 +102,16 @@ namespace Lettuce.Core
 			else
 				return null;
 
+		}
+
+		public string EthnicityName(int whichEthnicity)
+		{
+			return _ethnicityNames [whichEthnicity] + "_Ethnicity";
+		}
+
+		public string GenderName(int whichGender)
+		{
+			return _genderNames [whichGender] + "_Gender";
 		}
 
 		public async Task<Venue> LoadVenue(string venueId)
@@ -145,6 +168,58 @@ namespace Lettuce.Core
 					}
 					else {
 						_activityTypes.Clear();
+					}
+
+					if (callback != null)
+						callback();
+				});
+
+		}
+
+		private void InitGenderNames(null_callback callback)
+		{
+			string fullURL = "admin/gendernames";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync<List<GenderType>>(request, (response) =>
+				{
+					List<GenderType> map = response.Data;
+
+					if (map != null) {
+						foreach (GenderType curType in map)
+						{
+							_genderNames[curType.id] = curType.typename;
+						}
+					}
+					else {
+						_genderNames.Clear();
+					}
+
+					if (callback != null)
+						callback();
+				});
+
+		}
+
+		private void InitEthnicityNames(null_callback callback)
+		{
+			string fullURL = "admin/ethnicitynames";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync<List<EthnicityType>>(request, (response) =>
+				{
+					List<EthnicityType> map = response.Data;
+
+					if (map != null) {
+						foreach (EthnicityType curType in map)
+						{
+							_ethnicityNames[curType.id] = curType.typename;
+						}
+					}
+					else {
+						_ethnicityNames.Clear();
 					}
 
 					if (callback != null)
