@@ -11,5 +11,34 @@
 "PostedDates_Tab" = "Posted";
 
 // CurrentDatesViewController
-"LookingForDates_String" = "Looking for matching dates...";
-"FoundDates_String" = "XX matching dates";
+"LookingForDates_String" = "Looking for booked dates...";
+"FoundBookedDates_String" = "{0} booked dates";
+"NoBookedDates_String" = "No Dates";
+"NoBookedDatesCell_String" = "No Dates booked - get out there!";
+"DateListToday_String" = "Today's Dates";
+"DateListTomorrow_String" = "Tomorrow's Dates";
+"DateListFuture_String" = "Upcoming Dates";
+
+"LookingForMatchingDates_String" = "Looking for matching dates...";
+"FoundMatchingDates_String" = "{0} matching dates";
+"MatchingDateListApplied_String" = "Dates you are interested in";
+"MatchingDateListPinned_String" = "Dates you have pinned";
+"MatchingDateListOther_String" = "Dates matching you";
+"NoMatchingDatesCell_String" = "No Matching Dates found - is your profile OK?";
+"NoPinnedDatesCell_String" = "No pinned dates.  Pin a date to make it easy to find later!";
+"NoAppliedDatesCell_String" = "You have not expressed interest in a date.  Check out a few now!";
+"ProposedBy_String" = "proposed by {0}";
+"DatePayment_0_String" = "{0}'s treat";
+"DatePayment_1_String" = "{0} is open to going Dutch";
+"DatePayment_2_String" = "Let's go Dutch ";
+
+// user profile
+"AgeRaceGender_String" = "A {0} year old {1} {2}";
+"CityState_String" = "from {0}, {1}";
+
+// ethnicities
+"White / Caucasian_Ethnicity" = "White";
+
+// genders
+"Male_Gender" = "Male";
+"Female_Gender" = "Female";

@@ -38,6 +38,7 @@ namespace Lettuce.IOS
 				// handle date filtering
 			};
 
+
 			CurrentDatesTableView.RegisterNibForCellReuse (UINib.FromName (CommittedDatesCell.Key, NSBundle.MainBundle), CommittedDatesCell.Key);
 			dataSource = new CurrentDatesTableSource ();
 			CurrentDatesTableView.DataSource = dataSource;
@@ -46,8 +47,17 @@ namespace Lettuce.IOS
 
 		public override void ViewWillAppear (bool animated)
 		{
-			LettuceServer.Instance.GetCurrentDates ((dateList) => {
-				dataSource.CommittedDateList = dateList;
+			TopConstraint.Constant = HomeViewController.LayoutGuideSize;
+
+			LettuceServer.Instance.GetBookedDatesForUser ((dateList) => {
+				dataSource.SetDateList(dateList);
+
+				InvokeOnMainThread(() => {
+				if ((dateList == null) || (dateList.Count == 0))
+					HeaderLabel.Text = "NoBookedDates_String".Localize();
+				else
+					HeaderLabel.Text = String.Format("FoundBookedDates_String".Localize(), dateList.Count);
+				});
 				CurrentDatesTableView.ReloadData ();
 
 			});

@@ -23,8 +23,16 @@ namespace Lettuce.IOS
 		[Outlet]
 		UIKit.UILabel ResultTitle { get; set; }
 
+		[Outlet]
+		UIKit.NSLayoutConstraint TopConstraint { get; set; }
+		
 		void ReleaseDesignerOutlets ()
 		{
+			if (TopConstraint != null) {
+				TopConstraint.Dispose ();
+				TopConstraint = null;
+			}
+
 			if (FilterBtn != null) {
 				FilterBtn.Dispose ();
 				FilterBtn = null;
@@ -33,6 +41,7 @@ namespace Lettuce.IOS
 				ResultList.Dispose ();
 				ResultList = null;
 			}
+
 			if (ResultTitle != null) {
 				ResultTitle.Dispose ();
 				ResultTitle = null;

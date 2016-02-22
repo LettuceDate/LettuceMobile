@@ -12,7 +12,7 @@ namespace Lettuce.IOS
 	{
 		public static readonly UINib Nib = UINib.FromName ("CommittedDatesCell", NSBundle.MainBundle);
 		public static readonly NSString Key = new NSString ("CommittedDatesCell");
-		private CommittedDate linkedDate;
+		private BaseDate linkedDate;
 
 
 		public CommittedDatesCell (IntPtr handle) : base (handle)
@@ -26,11 +26,14 @@ namespace Lettuce.IOS
 
 		public void ConformToEmpty()
 		{
-			DateTitle.Text = "No dates at the moment";
+			linkedDate = null;
+			DateIcon.Hidden = true;
+			DateTitle.Text = "NoBookedDatesCell_String".Localize();
 		}
 
-		public void ConformToRecord(CommittedDate theDate)
+		public void ConformToRecord(BaseDate theDate)
 		{
+			DateIcon.Hidden = false;
 			linkedDate = theDate;
 			DateTitle.Text = theDate.title;
 		}
