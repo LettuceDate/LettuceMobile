@@ -1,11 +1,13 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace Lettuce.IOS
 {
@@ -38,49 +40,41 @@ namespace Lettuce.IOS
 
 		[Outlet]
 		UIKit.UIButton ProposeDateBtn { get; set; }
-		
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (LightBox != null) {
-				LightBox.Dispose ();
-				LightBox = null;
-			}
-
 			if (ActiveDateBtn != null) {
 				ActiveDateBtn.Dispose ();
 				ActiveDateBtn = null;
 			}
-
 			if (ActiveDateString != null) {
 				ActiveDateString.Dispose ();
 				ActiveDateString = null;
 			}
-
 			if (BrowseDateBtn != null) {
 				BrowseDateBtn.Dispose ();
 				BrowseDateBtn = null;
 			}
-
 			if (DateMatchString != null) {
 				DateMatchString.Dispose ();
 				DateMatchString = null;
 			}
-
 			if (InterestedDateBtn != null) {
 				InterestedDateBtn.Dispose ();
 				InterestedDateBtn = null;
 			}
-
 			if (InterestedDateString != null) {
 				InterestedDateString.Dispose ();
 				InterestedDateString = null;
 			}
-
+			if (LightBox != null) {
+				LightBox.Dispose ();
+				LightBox = null;
+			}
 			if (LoginView != null) {
 				LoginView.Dispose ();
 				LoginView = null;
 			}
-
 			if (ProposeDateBtn != null) {
 				ProposeDateBtn.Dispose ();
 				ProposeDateBtn = null;

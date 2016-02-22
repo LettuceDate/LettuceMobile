@@ -1,11 +1,13 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace Lettuce.IOS
 {
@@ -20,22 +22,20 @@ namespace Lettuce.IOS
 
 		[Outlet]
 		UIKit.UILabel ResultTitle { get; set; }
-		
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (ResultTitle != null) {
-				ResultTitle.Dispose ();
-				ResultTitle = null;
-			}
-
 			if (FilterBtn != null) {
 				FilterBtn.Dispose ();
 				FilterBtn = null;
 			}
-
 			if (ResultList != null) {
 				ResultList.Dispose ();
 				ResultList = null;
+			}
+			if (ResultTitle != null) {
+				ResultTitle.Dispose ();
+				ResultTitle = null;
 			}
 		}
 	}

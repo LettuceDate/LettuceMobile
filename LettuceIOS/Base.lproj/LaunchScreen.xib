@@ -57,10 +57,30 @@
                     <exclude reference="rHB-Tm-4Yj"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="475" y="455"/>
+            <point key="canvasLocation" x="477" y="399"/>
         </view>
     </objects>
     <resources>
-        <image name="LaunchIcon" width="341" height="341"/>
+        <image name="LaunchIcon" width="1024" height="1024"/>
+        <image name="AboutIcon" width="24" height="24"/>
+        <image name="AppliedDatesIcon" width="24" height="24"/>
+        <image name="CurrentDatesIcon" width="25" height="25"/>
+        <image name="HomeIcon" width="24" height="24"/>
+        <image name="MatchingDatesIcon" width="24" height="24"/>
+        <image name="PostedDatesIcon" width="24" height="24"/>
+        <image name="ProfileIcon" width="24" height="24"/>
+        <image name="SettingsIcon" width="24" height="24"/>
+        <image name="about-48.png" width="24" height="24"/>
+        <image name="app_bg1.jpg" width="450.5" height="800"/>
+        <image name="app_bg2.jpg" width="372" height="696"/>
+        <image name="ask_question-48.png" width="24" height="24"/>
+        <image name="business_contact-48.png" width="24" height="24"/>
+        <image name="cancel_filled-50.png" width="25" height="25"/>
+        <image name="cancel-48.png" width="24" height="24"/>
+        <image name="delete_sign-48.png" width="24" height="24"/>
+        <image name="home-48.png" width="24" height="24"/>
+        <image name="menu_black-48.png" width="24" height="24"/>
+        <image name="menu-48.png" width="24" height="24"/>
+        <image name="settings-48.png" width="24" height="24"/>
     </resources>
 </document>
