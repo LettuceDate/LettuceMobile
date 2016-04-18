@@ -88,23 +88,23 @@
     <Reference Include="SimpleOAuth">
       <HintPath>..\packages\SimpleOAuth.Net.1.0.1\lib\net20\SimpleOAuth.dll</HintPath>
     </Reference>
-    <Reference Include="JVMenuPopover">
-      <HintPath>..\Components\jvmenupopover-1.4\lib\ios-unified\JVMenuPopover.dll</HintPath>
-    </Reference>
     <Reference Include="SharpMobileCode.ModalPicker">
       <HintPath>libraries\SharpMobileCode.ModalPicker.dll</HintPath>
-    </Reference>
-    <Reference Include="SDWebImage">
-      <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.18.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook">
-      <HintPath>..\packages\Xamarin.Facebook.iOS.4.9.1.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="Flurry.Analytics.iOS">
       <HintPath>..\packages\Flurry.Analytics.2.0.0\lib\Xamarin.iOS10\Flurry.Analytics.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="JVMenuPopover">
+      <HintPath>..\Components\jvmenupopover-1.4\lib\ios-unified\JVMenuPopover.dll</HintPath>
+    </Reference>
+    <Reference Include="SDWebImage">
+      <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Xamarin.Facebook.iOS.4.10.0.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
