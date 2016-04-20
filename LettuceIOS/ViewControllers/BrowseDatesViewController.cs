@@ -3,11 +3,10 @@ using System;
 
 using Foundation;
 using UIKit;
-using JVMenuPopover;
 
 namespace Lettuce.IOS
 {
-	public partial class BrowseDatesViewController : JVMenuViewController
+	public partial class BrowseDatesViewController : UIViewController
 	{
 		public BrowseDatesViewController () : base ()
 		{

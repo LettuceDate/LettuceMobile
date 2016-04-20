@@ -97,14 +97,14 @@
     <Reference Include="Flurry.Analytics.iOS">
       <HintPath>..\packages\Flurry.Analytics.2.0.0\lib\Xamarin.iOS10\Flurry.Analytics.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="JVMenuPopover">
-      <HintPath>..\Components\jvmenupopover-1.4\lib\ios-unified\JVMenuPopover.dll</HintPath>
-    </Reference>
     <Reference Include="SDWebImage">
       <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
     <Reference Include="Facebook">
       <HintPath>..\packages\Xamarin.Facebook.iOS.4.10.0.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin-Sidebar-Unified">
+      <HintPath>_ext\Xamarin-Sidebar-Unified.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +130,10 @@
     <InterfaceDefinition Include="Base.lproj\NewActivityController.xib" />
     <InterfaceDefinition Include="Base.lproj\PostedDatesViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\DateDetailViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\SideMenuController.xib" />
+    <InterfaceDefinition Include="Base.lproj\DateFilterViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\NotificationCell.xib" />
+    <InterfaceDefinition Include="Base.lproj\NotificationsViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -256,6 +260,37 @@
     <Compile Include="HomeViewController.designer.cs">
       <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="UITab.cs" />
+    <Compile Include="UITab.designer.cs">
+      <DependentUpon>UITab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\RootViewController.cs" />
+    <Compile Include="ViewControllers\RootViewController.designer.cs">
+      <DependentUpon>RootViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="ViewControllers\SideMenuController.cs" />
+    <Compile Include="ViewControllers\SideMenuController.designer.cs">
+      <DependentUpon>SideMenuController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\HomeScreenViewController.cs" />
+    <Compile Include="ViewControllers\HomeScreenViewController.designer.cs">
+      <DependentUpon>HomeScreenViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\DateFilterViewController.cs" />
+    <Compile Include="ViewControllers\DateFilterViewController.designer.cs">
+      <DependentUpon>DateFilterViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\NotificationsTableSource.cs" />
+    <Compile Include="LettuceCore\BaseNotification.cs" />
+    <Compile Include="Views\NotificationCell.cs" />
+    <Compile Include="Views\NotificationCell.designer.cs">
+      <DependentUpon>NotificationCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\NotificationsViewController.cs" />
+    <Compile Include="ViewControllers\NotificationsViewController.designer.cs">
+      <DependentUpon>NotificationsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -269,10 +304,6 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="servicestacktext">
       <Version>3.9.61.3</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="jvmenupopover">
-      <Version>1.4</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="restsharp">
@@ -396,5 +427,8 @@
   <ItemGroup>
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />
     <ITunesArtwork Include="Resources\iTunesArtwork%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 </Project>

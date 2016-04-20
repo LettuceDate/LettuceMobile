@@ -1,11 +1,13 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace Lettuce.IOS
 {
@@ -59,87 +61,68 @@ namespace Lettuce.IOS
 
 		[Outlet]
 		UIKit.UIImageView UserProfileImage { get; set; }
-		
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (ScrollingView != null) {
-				ScrollingView.Dispose ();
-				ScrollingView = null;
-			}
-
-			if (ActivityListHeight != null) {
-				ActivityListHeight.Dispose ();
-				ActivityListHeight = null;
-			}
-
-			if (NicknameLabel != null) {
-				NicknameLabel.Dispose ();
-				NicknameLabel = null;
-			}
-
 			if (ActivityList != null) {
 				ActivityList.Dispose ();
 				ActivityList = null;
 			}
-
+			if (ActivityListHeight != null) {
+				ActivityListHeight.Dispose ();
+				ActivityListHeight = null;
+			}
 			if (DateDescription != null) {
 				DateDescription.Dispose ();
 				DateDescription = null;
 			}
-
 			if (DatePayLabel != null) {
 				DatePayLabel.Dispose ();
 				DatePayLabel = null;
 			}
-
 			if (DateTitleLabel != null) {
 				DateTitleLabel.Dispose ();
 				DateTitleLabel = null;
 			}
-
-			if (HeadlineLabel != null) {
-				HeadlineLabel.Dispose ();
-				HeadlineLabel = null;
+			if (NicknameLabel != null) {
+				NicknameLabel.Dispose ();
+				NicknameLabel = null;
 			}
-
+			if (ScrollingView != null) {
+				ScrollingView.Dispose ();
+				ScrollingView = null;
+			}
 			if (SelfieHeight != null) {
 				SelfieHeight.Dispose ();
 				SelfieHeight = null;
 			}
-
 			if (SelfieView != null) {
 				SelfieView.Dispose ();
 				SelfieView = null;
 			}
-
+			if (TopConstraint != null) {
+				TopConstraint.Dispose ();
+				TopConstraint = null;
+			}
 			if (UserAgeLabel != null) {
 				UserAgeLabel.Dispose ();
 				UserAgeLabel = null;
 			}
-
 			if (UserDescription != null) {
 				UserDescription.Dispose ();
 				UserDescription = null;
 			}
-
 			if (UserLocLabel != null) {
 				UserLocLabel.Dispose ();
 				UserLocLabel = null;
 			}
-
 			if (UserNameLabel != null) {
 				UserNameLabel.Dispose ();
 				UserNameLabel = null;
 			}
-
 			if (UserProfileImage != null) {
 				UserProfileImage.Dispose ();
 				UserProfileImage = null;
-			}
-
-			if (TopConstraint != null) {
-				TopConstraint.Dispose ();
-				TopConstraint = null;
 			}
 		}
 	}

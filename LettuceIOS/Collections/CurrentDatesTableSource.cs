@@ -26,6 +26,9 @@ namespace Lettuce.IOS
 
 		public void SetDateList(List<BaseDate> theList)
 		{
+			if (theList == null)
+				theList = new List<BaseDate> ();
+			
 			CommittedDateList = theList;
 			DateTime today = DateTime.UtcNow.Date;
 			DateTime tomorrow = today.AddDays (1);
@@ -68,11 +71,11 @@ namespace Lettuce.IOS
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
 			if (section == 0)
-				return "DateListToday_String".Localize();
+				return "ConfirmedDates_String".Localize();
 			else if (section == 1)
-				return "DateListTomorrow_String".Localize();
+				return "DatesWithApplications_String".Localize();
 			else
-				return "DateListFuture_String".Localize();
+				return "OpenDates_String".Localize();
 		}
 			
 		public override nint NumberOfSections (UITableView tableView)

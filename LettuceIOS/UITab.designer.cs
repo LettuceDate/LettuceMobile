@@ -11,8 +11,8 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("PostedDatesViewController")]
-	partial class PostedDatesViewController
+	[Register ("UITab")]
+	partial class UITab
 	{
 		void ReleaseDesignerOutlets ()
 		{

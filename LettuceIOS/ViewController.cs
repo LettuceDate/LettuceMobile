@@ -6,12 +6,11 @@ using Facebook.LoginKit;
 using Facebook.CoreKit;
 using CoreGraphics;
 using Foundation;
-using JVMenuPopover;
 
 
 namespace Lettuce.IOS
 {
-	public partial class ViewController : JVMenuViewController
+	public partial class ViewController : UIViewController
 	{
 		public ViewController (IntPtr handle) : base (handle)
 		{

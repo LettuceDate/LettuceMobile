@@ -3,7 +3,6 @@ using System;
 
 using Foundation;
 using UIKit;
-using JVMenuPopover;
 using Facebook.LoginKit;
 using Facebook.CoreKit;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using CoreGraphics;
 
 namespace Lettuce.IOS
 {
-	public partial class ProfileViewController : JVMenuViewController
+	public partial class ProfileViewController : UIViewController
 	{
 		List<string> readPermissions = new List<string> { "public_profile" };
 		LoginButton loginButton;
@@ -21,6 +20,16 @@ namespace Lettuce.IOS
 
 		public ProfileViewController () : base ()
 		{
+			this.Title = "OpenDate Profile";
+			UIBarButtonItem menuBtn = new UIBarButtonItem ("Menu", UIBarButtonItemStyle.Plain, null);
+			UIBarButtonItem newBtn = new UIBarButtonItem (UIBarButtonSystemItem.Add);
+			this.NavigationItem.SetLeftBarButtonItem (menuBtn, false);
+			this.NavigationItem.SetRightBarButtonItem (newBtn, true);
+
+			menuBtn.Clicked += (object sender, EventArgs e) => 
+			{
+				SidebarController.ToggleMenu();
+			};
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -104,6 +113,19 @@ namespace Lettuce.IOS
 			View.AddSubview (loginButton);
 			View.AddSubview (pictureView);
 			View.AddSubview (nameLabel);
+		}
+
+		protected SidebarNavigation.SidebarController SidebarController { 
+			get {
+				return (UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.SidebarController;
+			} 
+		}
+
+		// provide access to the sidebar controller to all inheriting controllers
+		protected NavController NavController { 
+			get {
+				return (UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.NavController;
+			} 
 		}
 	}
 }

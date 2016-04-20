@@ -5,7 +5,6 @@ using HockeyApp;
 using System;
 using System.Threading.Tasks;
 using Facebook.CoreKit;
-using JVMenuPopover;
 using System.Collections.Generic;
 
 
@@ -30,6 +29,9 @@ namespace Lettuce.IOS
 			get;
 			set;
 		}
+
+		public RootViewController RootViewController { get { return Window.RootViewController as RootViewController; } }
+
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
@@ -84,46 +86,11 @@ namespace Lettuce.IOS
 
 		private void ConfigNavMenu()
 		{
+			/*
 			//create the initial view controller
 			//var rootController = (UIViewController)board.InstantiateViewController ("HomeViewController");
 			var rootController = new HomeViewController();
-			ProfileController = new ProfileViewController ();
 
-			//build the shared menu
-			JVMenuPopoverConfig.SharedInstance.MenuItems = new List<JVMenuItem>()
-			{
-				new JVMenuViewControllerItem()
-				{
-					//View exisiting view controller, will be reused everytime the item is selected
-					Icon = UIImage.FromBundle(@"HomeIcon"),
-					Title = "Home_Menu".Localize(),
-					ViewController = rootController,
-				},
-
-				new JVMenuViewControllerItem()
-				{
-					//New view controller, will be reused everytime the item is selected
-					Icon = UIImage.FromBundle(@"ProfileIcon"),
-					Title = "Profile_Menu".Localize(),
-					ViewController = ProfileController
-				},
-
-
-				new JVMenuViewControllerItem()
-				{
-					//New view controller, will be reused everytime the item is selected
-					Icon = UIImage.FromBundle(@"SettingsIcon"),
-					Title = "Settings_Menu".Localize(),
-					ViewController = new SettingsViewController()
-				},
-
-				new JVMenuViewControllerItem()
-				{
-					Icon = UIImage.FromBundle(@"AboutIcon"),
-					Title = "About_Menu".Localize(),
-					ViewController = new AboutViewController()
-				},
-			};
 
 			//create a Nav controller an set the root controller
 			NavigationController = new UINavigationController(rootController);
@@ -132,9 +99,19 @@ namespace Lettuce.IOS
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 			Window.RootViewController = NavigationController;
 			Window.ContentMode = UIViewContentMode.ScaleAspectFill;
-			Window.BackgroundColor = UIColor.FromPatternImage(JVMenuHelper.ImageWithImage(UIImage.FromBundle("app_bg1.jpg"),this.Window.Frame.Width));
+			//Window.BackgroundColor = UIColor.FromPatternImage(JVMenuHelper.ImageWithImage(UIImage.FromBundle("app_bg1.jpg"),this.Window.Frame.Width));
 			Window.Add(NavigationController.View);
 			Window.MakeKeyAndVisible();
+			*/
+
+			Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+			// If you have defined a root view controller, set it here:
+			Window.RootViewController = new RootViewController();
+
+			// make the window visible
+			Window.MakeKeyAndVisible();
+
 
 		}
 

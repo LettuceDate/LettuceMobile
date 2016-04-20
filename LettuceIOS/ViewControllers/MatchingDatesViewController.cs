@@ -15,6 +15,7 @@ namespace Lettuce.IOS
 
 		public MatchingDatesViewController () : base ("MatchingDatesViewController", null)
 		{
+			
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -28,6 +29,12 @@ namespace Lettuce.IOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			FilterBtn.TouchUpInside += (object sender, EventArgs e) => 
+			{
+				PresentModalViewController( new DateFilterViewController(), true);
+			};
+
 			
 			// Perform any additional setup after loading the view, typically from a nib.
 			this.ResultTitle.Text = "LookingForMatchingDates_String".Localize();
@@ -52,13 +59,16 @@ namespace Lettuce.IOS
 				}
 			});
 
-			TopConstraint.Constant = HomeViewController.LayoutGuideSize;
+
 
 		}
 
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+			TopConstraint.Constant = 64;//HomeViewController.LayoutGuideSize;
+			UpdateViewConstraints ();
+
 			if (refreshNeeded) {
 				dataSource.SetDateList(dataSource.Dates, ResultList);
 				ResultList.ReloadData();

@@ -3,14 +3,23 @@ using System;
 
 using Foundation;
 using UIKit;
-using JVMenuPopover;
 
 namespace Lettuce.IOS
 {
-	public partial class SettingsViewController : JVMenuViewController
+	public partial class SettingsViewController : UIViewController
 	{
 		public SettingsViewController () : base ()
 		{
+			this.Title = "OpenDate Settings";
+			UIBarButtonItem menuBtn = new UIBarButtonItem ("Menu", UIBarButtonItemStyle.Plain, null);
+			UIBarButtonItem newBtn = new UIBarButtonItem (UIBarButtonSystemItem.Add);
+			this.NavigationItem.SetLeftBarButtonItem (menuBtn, false);
+			this.NavigationItem.SetRightBarButtonItem (newBtn, true);
+
+			menuBtn.Clicked += (object sender, EventArgs e) => 
+			{
+				SidebarController.ToggleMenu();
+			};
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -26,6 +35,19 @@ namespace Lettuce.IOS
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
+		}
+
+		protected SidebarNavigation.SidebarController SidebarController { 
+			get {
+				return (UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.SidebarController;
+			} 
+		}
+
+		// provide access to the sidebar controller to all inheriting controllers
+		protected NavController NavController { 
+			get {
+				return (UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.NavController;
+			} 
 		}
 	}
 }

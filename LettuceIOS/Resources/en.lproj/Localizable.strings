@@ -9,8 +9,13 @@
 "MatchingDates_Tab" = "Matching";
 "InterestedPeople_Tab" = "Interested";
 "PostedDates_Tab" = "Posted";
+"Notifications_Tab" = "Notifications";
 
 // CurrentDatesViewController
+"ConfirmedDates_String" = "Confirmed Dates";
+"DatesWithApplications_String" = "Dates With Applications";
+"OpenDates_String" = "Your Open Dates";
+
 "LookingForDates_String" = "Looking for booked dates...";
 "FoundBookedDates_String" = "{0} booked dates";
 "NoBookedDates_String" = "No Dates";
@@ -42,3 +47,6 @@
 // genders
 "Male_Gender" = "Male";
 "Female_Gender" = "Female";
+
+// NotificationsTableSource
+"Notification_Header" = "Notifications";

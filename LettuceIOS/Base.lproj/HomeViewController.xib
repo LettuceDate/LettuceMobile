@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
-                <outlet property="ActiveDateBtn" destination="pgc-mo-fbZ" id="VaW-A3-7eh"/>
-                <outlet property="ActiveDateString" destination="9SF-P7-PIU" id="XJ6-fL-Q4s"/>
-                <outlet property="BrowseDateBtn" destination="NYD-4j-FT5" id="Ucu-4o-Osi"/>
-                <outlet property="DateMatchString" destination="dYo-Ut-pes" id="Psu-xV-8H7"/>
-                <outlet property="InterestedDateBtn" destination="6Xa-hL-Noh" id="i5Y-vS-T1W"/>
-                <outlet property="InterestedDateString" destination="0KJ-NM-vnG" id="P6e-4o-oLs"/>
                 <outlet property="LightBox" destination="yKy-4f-m8E" id="Jho-ln-LE2"/>
                 <outlet property="LoginView" destination="BpH-vO-xlk" id="YE8-NO-f01"/>
                 <outlet property="ProposeDateBtn" destination="aLm-Hx-WgA" id="rO4-tS-2SN"/>
@@ -20,70 +14,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="94" width="320" height="474"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Date Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLf-BQ-CEg">
-                    <rect key="frame" x="8" y="64" width="304" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OpenDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1L-eN-UsW">
+                    <rect key="frame" x="121" y="8" width="78" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have X active dates" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-P7-PIU">
-                    <rect key="frame" x="8" y="101" width="304" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-mo-fbZ">
-                    <rect key="frame" x="60" y="130" width="200" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="OiA-J5-ckF"/>
-                        <constraint firstAttribute="height" constant="30" id="Qjo-VO-ppG"/>
-                    </constraints>
-                    <state key="normal" title="View Active Dates">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vM-ae-lKy">
+                    <rect key="frame" x="281" y="0.0" width="31" height="30"/>
+                    <state key="normal" title="New"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have X people Interested in your dates" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KJ-NM-vnG" userLabel="You have Y new people interested">
-                    <rect key="frame" x="8" y="176" width="304" height="41"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xa-hL-Noh">
-                    <rect key="frame" x="60" y="225" width="200" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="5gW-jG-2Xg"/>
-                        <constraint firstAttribute="height" constant="30" id="Jgk-Pw-CBv"/>
-                    </constraints>
-                    <state key="normal" title="View Interested">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are X dates that match your profile" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-Ut-pes">
-                    <rect key="frame" x="8" y="271" width="304" height="41"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYD-4j-FT5">
-                    <rect key="frame" x="60" y="320" width="200" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="uOQ-5u-CzS"/>
-                        <constraint firstAttribute="width" constant="200" id="vxY-eN-Y0l"/>
-                    </constraints>
-                    <state key="normal" title="Browse Dates">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jump in and propose a date of your own" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-De-qbr">
-                    <rect key="frame" x="8" y="366" width="304" height="41"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLm-Hx-WgA">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLm-Hx-WgA">
                     <rect key="frame" x="60" y="415" width="200" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="5tc-lP-t84"/>
@@ -93,11 +37,11 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKy-4f-m8E" userLabel="Lightbox">
+                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKy-4f-m8E" userLabel="Lightbox">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpH-vO-xlk" userLabel="Login View">
+                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BpH-vO-xlk" userLabel="Login View">
                     <rect key="frame" x="32" y="64" width="256" height="440"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to OpenDate.  Please Sign in to get started." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ9-8M-q3I">
@@ -121,38 +65,21 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Z1L-eN-UsW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4JL-f3-EXo"/>
                 <constraint firstAttribute="trailing" secondItem="yKy-4f-m8E" secondAttribute="trailing" id="7Cv-og-MU3"/>
-                <constraint firstAttribute="trailing" secondItem="dYo-Ut-pes" secondAttribute="trailing" constant="8" id="7dm-lj-jMB"/>
-                <constraint firstItem="9SF-P7-PIU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="8IC-5v-CFU"/>
                 <constraint firstAttribute="bottom" secondItem="yKy-4f-m8E" secondAttribute="bottom" id="9Xv-BI-YeN"/>
                 <constraint firstItem="yKy-4f-m8E" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ayh-zs-zpI"/>
-                <constraint firstAttribute="centerX" secondItem="6Xa-hL-Noh" secondAttribute="centerX" id="B4F-zH-Wv3"/>
-                <constraint firstAttribute="trailing" secondItem="9SF-P7-PIU" secondAttribute="trailing" constant="8" id="Bki-Yo-7be"/>
                 <constraint firstItem="yKy-4f-m8E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="F1c-iE-xd1"/>
-                <constraint firstItem="OLf-BQ-CEg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Kce-vW-pf7"/>
-                <constraint firstItem="0KJ-NM-vnG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MOS-2o-0Ad"/>
-                <constraint firstItem="Cfu-De-qbr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Pcv-Ve-2mc"/>
-                <constraint firstItem="Cfu-De-qbr" firstAttribute="top" secondItem="NYD-4j-FT5" secondAttribute="bottom" constant="16" id="RSR-FF-Gp0"/>
-                <constraint firstAttribute="trailing" secondItem="Cfu-De-qbr" secondAttribute="trailing" constant="8" id="Rfx-iK-3H0"/>
-                <constraint firstAttribute="centerX" secondItem="pgc-mo-fbZ" secondAttribute="centerX" id="SeJ-5k-xis"/>
-                <constraint firstItem="aLm-Hx-WgA" firstAttribute="top" secondItem="Cfu-De-qbr" secondAttribute="bottom" constant="8" id="UTE-kh-lPX"/>
-                <constraint firstItem="9SF-P7-PIU" firstAttribute="top" secondItem="OLf-BQ-CEg" secondAttribute="bottom" constant="16" id="W89-wb-vJC"/>
+                <constraint firstItem="1vM-ae-lKy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IbY-SC-hFd"/>
+                <constraint firstItem="Z1L-eN-UsW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="TCP-1D-fk3"/>
                 <constraint firstItem="BpH-vO-xlk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="fS3-gO-B47"/>
-                <constraint firstAttribute="trailing" secondItem="OLf-BQ-CEg" secondAttribute="trailing" constant="8" id="gxN-uM-gve"/>
+                <constraint firstAttribute="trailing" secondItem="1vM-ae-lKy" secondAttribute="trailing" constant="8" id="lv8-rN-oFp"/>
                 <constraint firstAttribute="bottom" secondItem="BpH-vO-xlk" secondAttribute="bottom" constant="64" id="lyM-zg-eeC"/>
                 <constraint firstAttribute="trailing" secondItem="BpH-vO-xlk" secondAttribute="trailing" constant="32" id="qeZ-Fb-eQX"/>
-                <constraint firstItem="dYo-Ut-pes" firstAttribute="top" secondItem="6Xa-hL-Noh" secondAttribute="bottom" constant="16" id="rF7-ym-gh8"/>
-                <constraint firstItem="pgc-mo-fbZ" firstAttribute="top" secondItem="9SF-P7-PIU" secondAttribute="bottom" constant="8" id="rRj-Cu-T2Q"/>
-                <constraint firstItem="OLf-BQ-CEg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="rjZ-cZ-D0X"/>
                 <constraint firstAttribute="centerX" secondItem="aLm-Hx-WgA" secondAttribute="centerX" id="teu-Q2-b9B"/>
                 <constraint firstItem="BpH-vO-xlk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="uMs-JW-AUC"/>
-                <constraint firstItem="0KJ-NM-vnG" firstAttribute="top" secondItem="pgc-mo-fbZ" secondAttribute="bottom" constant="16" id="utg-hc-qRm"/>
-                <constraint firstItem="dYo-Ut-pes" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xDt-O2-Syb"/>
-                <constraint firstItem="6Xa-hL-Noh" firstAttribute="top" secondItem="0KJ-NM-vnG" secondAttribute="bottom" constant="8" id="zDe-j1-Smf"/>
-                <constraint firstAttribute="trailing" secondItem="0KJ-NM-vnG" secondAttribute="trailing" constant="8" id="zJ5-oY-A9C"/>
-                <constraint firstItem="NYD-4j-FT5" firstAttribute="top" secondItem="dYo-Ut-pes" secondAttribute="bottom" constant="8" id="zin-4q-kmu"/>
-                <constraint firstAttribute="centerX" secondItem="NYD-4j-FT5" secondAttribute="centerX" id="zml-Y6-kux"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO"/>
         </view>
     </objects>
 </document>

@@ -3,25 +3,51 @@ using System;
 
 using Foundation;
 using UIKit;
-using JVMenuPopover;
 using Facebook.LoginKit;
 using Facebook.CoreKit;
 using CoreGraphics;
 using System.Collections.Generic;
 using Lettuce.Core;
+using SidebarNavigation;
 
 namespace Lettuce.IOS
 {
-	public partial class HomeViewController : JVMenuViewController
+	public partial class HomeViewController : UITabBarController
 	{
 		List<string> readPermissions = new List<string> { "public_profile", "user_birthday", "user_location" };
 		LoginButton loginButton;
 		ProfilePictureView pictureView;
 		UILabel nameLabel;
 		public static nfloat LayoutGuideSize = 0;
+		UIViewController myDatesView, openDatesView, notificationsView;
+		public SidebarController SidebarController { get; private set; }
 
 		public HomeViewController () : base ()
 		{
+			myDatesView = new CurrentDatesViewController();
+			myDatesView.TabBarItem = new UITabBarItem ("CurrentDates_Tab".Localize(), UIImage.FromBundle ("CurrentDatesIcon"), 0);
+
+
+			openDatesView = new MatchingDatesViewController();
+			openDatesView.TabBarItem = new UITabBarItem ("MatchingDates_Tab".Localize(), UIImage.FromBundle ("MatchingDatesIcon"), 1);
+
+			notificationsView = new InterestedDatesViewController();
+			notificationsView.TabBarItem = new UITabBarItem ("Notifications_Tab".Localize(), UIImage.FromBundle ("AppliedDatesIcon"), 2);
+
+
+			var tabs = new UIViewController[] {
+				myDatesView, openDatesView, notificationsView
+			};
+
+			ViewControllers = tabs;
+			this.Title = "OpenDate";
+			UIBarButtonItem theItem = new UIBarButtonItem ("Menu", UIBarButtonItemStyle.Plain, null);
+			UIBarButtonItem newItem = new UIBarButtonItem (UIBarButtonSystemItem.Add);
+			this.NavigationItem.SetLeftBarButtonItem (theItem, false);
+			this.NavigationItem.SetRightBarButtonItem (newItem, true);
+			theItem.Clicked += (object sender, EventArgs e) => {
+				SidebarController.ToggleMenu();
+			};
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -37,6 +63,12 @@ namespace Lettuce.IOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			UIViewController contentController = new UIViewController ();
+
+
+			// create the controller
+			SidebarController = new SidebarController(this, contentController, new SideMenuController());
+
 
 			// If was send true to Profile.EnableUpdatesOnAccessTokenChange method
 			// this notification will be called after the user is logged in and
@@ -48,6 +80,7 @@ namespace Lettuce.IOS
 				FinalizeLogin ();
 			}
 
+			/*
 			// set up events
 			ActiveDateBtn.TouchUpInside += (object sender, EventArgs e) => 
 			{
@@ -63,7 +96,9 @@ namespace Lettuce.IOS
 			{
 				ShowDateView(4);
 			};
+			*/
 
+			/*
 			ProposeDateBtn.TouchUpInside += (object sender, EventArgs e) => 
 			{
 				ProposeDatesViewController proposeController = new ProposeDatesViewController ();
@@ -72,6 +107,7 @@ namespace Lettuce.IOS
 					this.NavigationController.PresentModalViewController (proposeController, true);
 				}
 			};
+			*/
 
 
 
@@ -131,9 +167,11 @@ namespace Lettuce.IOS
 		private void UpdateCounters(int numMatches, int numBooked, int numOwn, int numInterested)
 		{
 			InvokeOnMainThread (() => {
+				/*
 				ActiveDateString.Text = String.Format("You have {0} booked dates and {1} active", numBooked, numOwn);
 				DateMatchString.Text = String.Format("{0} dates match your profile", numMatches);
 				InterestedDateString.Text = String.Format("You have {0} interested in your dates!", numInterested);
+				*/
 			});
 		}
 
@@ -150,6 +188,8 @@ namespace Lettuce.IOS
 
 		private void InitFacebookLogin()
 		{
+			return;
+
 			LoginView.Hidden = false;
 			Profile.Notifications.ObserveDidChange ((sender, e) => {
 

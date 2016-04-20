@@ -11,7 +11,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Browse Date View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQN-x7-6ZN">
@@ -29,4 +29,27 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <resources>
+        <image name="AboutIcon" width="24" height="24"/>
+        <image name="AppliedDatesIcon" width="24" height="24"/>
+        <image name="CurrentDatesIcon" width="25" height="25"/>
+        <image name="HomeIcon" width="24" height="24"/>
+        <image name="MatchingDatesIcon" width="24" height="24"/>
+        <image name="PostedDatesIcon" width="24" height="24"/>
+        <image name="ProfileIcon" width="24" height="24"/>
+        <image name="SettingsIcon" width="24" height="24"/>
+        <image name="LaunchIcon" width="1024" height="1024"/>
+        <image name="about-48.png" width="24" height="24"/>
+        <image name="app_bg1.jpg" width="450.5" height="800"/>
+        <image name="app_bg2.jpg" width="372" height="696"/>
+        <image name="ask_question-48.png" width="24" height="24"/>
+        <image name="business_contact-48.png" width="24" height="24"/>
+        <image name="cancel_filled-50.png" width="25" height="25"/>
+        <image name="cancel-48.png" width="24" height="24"/>
+        <image name="delete_sign-48.png" width="24" height="24"/>
+        <image name="home-48.png" width="24" height="24"/>
+        <image name="menu_black-48.png" width="24" height="24"/>
+        <image name="menu-48.png" width="24" height="24"/>
+        <image name="settings-48.png" width="24" height="24"/>
+    </resources>
 </document>

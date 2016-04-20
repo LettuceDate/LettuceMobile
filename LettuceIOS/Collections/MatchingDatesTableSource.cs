@@ -29,13 +29,16 @@ namespace Lettuce.IOS
 			AppliedDates.Clear ();
 			OtherDates.Clear ();
 
-			foreach (MatchingDate curDate in theList) {
-				if (curDate.applied)
-					AppliedDates.Add (curDate);
-				else if (curDate.pinned)
-					PinnedDates.Add (curDate);
-				else
-					OtherDates.Add (curDate);
+			if (theList != null) {
+
+				foreach (MatchingDate curDate in theList) {
+					if (curDate.applied)
+						AppliedDates.Add (curDate);
+					else if (curDate.pinned)
+						PinnedDates.Add (curDate);
+					else
+						OtherDates.Add (curDate);
+				}
 			}
 		}
 
