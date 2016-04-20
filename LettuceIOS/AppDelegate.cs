@@ -86,24 +86,6 @@ namespace Lettuce.IOS
 
 		private void ConfigNavMenu()
 		{
-			/*
-			//create the initial view controller
-			//var rootController = (UIViewController)board.InstantiateViewController ("HomeViewController");
-			var rootController = new HomeViewController();
-
-
-			//create a Nav controller an set the root controller
-			NavigationController = new UINavigationController(rootController);
-
-			//setup the window
-			Window = new UIWindow(UIScreen.MainScreen.Bounds);
-			Window.RootViewController = NavigationController;
-			Window.ContentMode = UIViewContentMode.ScaleAspectFill;
-			//Window.BackgroundColor = UIColor.FromPatternImage(JVMenuHelper.ImageWithImage(UIImage.FromBundle("app_bg1.jpg"),this.Window.Frame.Width));
-			Window.Add(NavigationController.View);
-			Window.MakeKeyAndVisible();
-			*/
-
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
 			// If you have defined a root view controller, set it here:

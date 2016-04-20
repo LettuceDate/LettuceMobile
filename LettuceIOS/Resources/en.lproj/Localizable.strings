@@ -50,3 +50,4 @@
 
 // NotificationsTableSource
 "Notification_Header" = "Notifications";
+"NotificationsHeader_String" = "{0} Notifications";

@@ -26,7 +26,7 @@ namespace Lettuce.Core
 	public delegate void BaseDateList_callback(List<BaseDate> dateList);
 	public delegate void MatchingDateList_callback(List<MatchingDate> dateList);
 	public delegate void UserRecord_callback(UserRecord theRec);
-
+	public delegate void NotificationList_callback(List<BaseNotification> notifyList);
 	public delegate void CommittedDateList_callback(List<CommittedDate> theResult);
 
 
@@ -226,6 +226,25 @@ namespace Lettuce.Core
 						callback();
 				});
 
+		}
+
+		// GetNotificationsForUser
+		public void GetNotificationsForUser(NotificationList_callback callback)
+		{
+			string fullURL = "notifications";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync<List<BaseNotification>>(request, (response) =>
+				{
+					List<BaseNotification> newNotifications = response.Data;
+					if (newNotifications!= null)
+					{
+						callback(newNotifications);
+					}
+					else
+						callback(null);
+				});
 		}
 
 		public void GetMatchingDatesForUser(MatchingDateList_callback callback)

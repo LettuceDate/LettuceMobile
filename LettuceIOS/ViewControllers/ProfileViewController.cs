@@ -22,9 +22,7 @@ namespace Lettuce.IOS
 		{
 			this.Title = "OpenDate Profile";
 			UIBarButtonItem menuBtn = new UIBarButtonItem ("Menu", UIBarButtonItemStyle.Plain, null);
-			UIBarButtonItem newBtn = new UIBarButtonItem (UIBarButtonSystemItem.Add);
 			this.NavigationItem.SetLeftBarButtonItem (menuBtn, false);
-			this.NavigationItem.SetRightBarButtonItem (newBtn, true);
 
 			menuBtn.Clicked += (object sender, EventArgs e) => 
 			{

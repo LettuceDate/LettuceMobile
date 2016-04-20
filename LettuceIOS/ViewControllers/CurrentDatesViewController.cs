@@ -37,7 +37,7 @@ namespace Lettuce.IOS
 
 		public override void ViewWillAppear (bool animated)
 		{
-			TopConstraint.Constant = HomeViewController.LayoutGuideSize;
+			TopConstraint.Constant = HomeScreenViewController.LayoutGuideSize;
 			UpdateViewConstraints ();
 			LettuceServer.Instance.GetBookedDatesForUser ((dateList) => {
 				dataSource.SetDateList(dateList);

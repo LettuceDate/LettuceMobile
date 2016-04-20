@@ -31,7 +31,7 @@ namespace Lettuce.IOS
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
-			TopConstraint.Constant = HomeViewController.LayoutGuideSize;
+			TopConstraint.Constant = HomeScreenViewController.LayoutGuideSize;
 		}
 
 		public void SetCurrentDate(MatchingDate theDate) 

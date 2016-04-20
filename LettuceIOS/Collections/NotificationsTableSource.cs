@@ -1,13 +1,15 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
 using UIKit;
 using System.Collections.Generic;
 using Lettuce.Core;
 
+
 namespace Lettuce.IOS
 {
-	public class NotificationsTableSource : UITableViewDataSource
+	public class NotificationsTableSource : UITableViewSource
 	{
-		private List<BaseNotification>	NotificationList { get; set;}
+		public List<BaseNotification>	NotificationList { get; set;}
 
 
 
@@ -56,13 +58,13 @@ namespace Lettuce.IOS
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			CommittedDatesCell cell = tableView.DequeueReusableCell(NotificationCell.Key, indexPath) as NotificationCell;
+			NotificationCell cell = tableView.DequeueReusableCell(NotificationCell.Key, indexPath) as NotificationCell;
 
 
 			if ((NotificationList == null) || (NotificationList.Count == 0))
 				cell.ConformToEmpty ();
 			else
-				cell.ConformToRecord(NotificationList[indexPath.Row]);
+				cell.ConformToRecord(NotificationList[indexPath.Row], this);
 
 			return cell;
 		}

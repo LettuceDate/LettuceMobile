@@ -7,6 +7,7 @@ namespace Lettuce.IOS
 	public partial class HomeScreenViewController : UITabBarController
 	{
 		UIViewController myDatesView, openDatesView, notificationsView;
+		public static nfloat LayoutGuideSize = 0;
 
 		public HomeScreenViewController () : base (null, null)
 		{
@@ -36,6 +37,15 @@ namespace Lettuce.IOS
 				{
 					SidebarController.ToggleMenu();
 				};
+
+			newBtn.Clicked += (object sender, EventArgs e) => 
+			{
+				ProposeDatesViewController proposeController = new ProposeDatesViewController ();
+				if (proposeController != null) {
+
+					this.NavigationController.PresentModalViewController (proposeController, true);
+				}
+			};
 
 
 		}

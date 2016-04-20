@@ -113,7 +113,6 @@
     <InterfaceDefinition Include="Base.lproj\BrowseDatesViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\CurrentDatesViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\DateViewController.xib" />
-    <InterfaceDefinition Include="Base.lproj\HomeViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\InterestedDatesViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\MatchingDatesViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\ProfileViewController.xib" />
@@ -255,10 +254,6 @@
     </Compile>
     <Compile Include="..\LettuceCore\Helpers.cs">
       <Link>LettuceCore\Helpers.cs</Link>
-    </Compile>
-    <Compile Include="HomeViewController.cs" />
-    <Compile Include="HomeViewController.designer.cs">
-      <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="UITab.cs" />
     <Compile Include="UITab.designer.cs">
