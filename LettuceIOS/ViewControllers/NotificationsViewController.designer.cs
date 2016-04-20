@@ -16,6 +16,10 @@ namespace Lettuce.IOS
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton MarkAllReadBtn { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel NotifyHeader { get; set; }
 
 		[Outlet]
@@ -28,6 +32,10 @@ namespace Lettuce.IOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (MarkAllReadBtn != null) {
+				MarkAllReadBtn.Dispose ();
+				MarkAllReadBtn = null;
+			}
 			if (NotifyHeader != null) {
 				NotifyHeader.Dispose ();
 				NotifyHeader = null;

@@ -8,8 +8,9 @@
             <connections>
                 <outlet property="NotifyHeader" destination="5" id="name-outlet-5"/>
                 <outlet property="ResultList" destination="6" id="name-outlet-6"/>
-                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
                 <outlet property="TopConstraint" destination="PrR-Ra-bvf" id="name-outlet-PrR-Ra-bvf"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="MarkAllReadBtn" destination="4Gx-A9-hdH" id="name-outlet-4Gx-A9-hdH"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,34 +24,55 @@
                         <constraint firstAttribute="height" constant="21" id="vmW-w6-seZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="vmW-w6-seZ"/>
                         </mask>
                     </variation>
-                    <variation key="widthClass=compact" misplaced="YES">
+                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="8" y="64" width="42" height="21"/>
                         <mask key="constraints">
                             <include reference="vmW-w6-seZ"/>
                         </mask>
-                        <rect key="frame" x="8" y="64" width="284" height="21"/>
                     </variation>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6">
                     <rect key="frame" x="-129" y="-7" width="198" height="211"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gx-A9-hdH">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Lnu-Lc-chK"/>
+                    </constraints>
+                    <state key="normal" title="Mark All Read"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Lnu-Lc-chK"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="-23" y="59.5" width="46" height="30"/>
+                        <mask key="constraints">
+                            <include reference="Lnu-Lc-chK"/>
+                        </mask>
+                    </variation>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="4Gx-A9-hdH" firstAttribute="leading" secondItem="5" secondAttribute="trailing" constant="16" id="Aex-45-p5O"/>
                 <constraint firstAttribute="trailing" secondItem="5" secondAttribute="trailing" constant="108" id="Bfo-fd-csv">
                     <variation key="widthClass=compact" constant="8"/>
                 </constraint>
                 <constraint firstItem="5" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64" id="PrR-Ra-bvf"/>
+                <constraint firstItem="4Gx-A9-hdH" firstAttribute="centerY" secondItem="5" secondAttribute="centerY" id="RWj-9n-jGB"/>
                 <constraint firstAttribute="trailing" secondItem="6" secondAttribute="trailing" constant="8" id="RZ5-OS-38I"/>
                 <constraint firstAttribute="bottom" secondItem="6" secondAttribute="bottom" id="TQ4-4O-FnK"/>
                 <constraint firstItem="5" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="8" id="aKW-qp-65X"/>
+                <constraint firstAttribute="trailing" secondItem="4Gx-A9-hdH" secondAttribute="trailing" constant="8" id="eXO-XF-Ng3"/>
                 <constraint firstItem="6" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="8" id="ghE-Hp-jAZ"/>
                 <constraint firstItem="6" firstAttribute="top" secondItem="5" secondAttribute="bottom" constant="64" id="wKD-Tx-6yz">
                     <variation key="widthClass=compact" constant="8"/>
@@ -60,6 +82,7 @@
                 <mask key="subviews">
                     <exclude reference="5"/>
                     <exclude reference="6"/>
+                    <exclude reference="4Gx-A9-hdH"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="Bfo-fd-csv"/>
@@ -69,21 +92,28 @@
                     <exclude reference="TQ4-4O-FnK"/>
                     <exclude reference="ghE-Hp-jAZ"/>
                     <exclude reference="wKD-Tx-6yz"/>
+                    <exclude reference="Aex-45-p5O"/>
+                    <exclude reference="RWj-9n-jGB"/>
+                    <exclude reference="eXO-XF-Ng3"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="5"/>
                     <include reference="6"/>
+                    <include reference="4Gx-A9-hdH"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="Bfo-fd-csv"/>
+                    <exclude reference="Bfo-fd-csv"/>
                     <include reference="PrR-Ra-bvf"/>
                     <include reference="aKW-qp-65X"/>
                     <include reference="RZ5-OS-38I"/>
                     <include reference="TQ4-4O-FnK"/>
                     <include reference="ghE-Hp-jAZ"/>
                     <include reference="wKD-Tx-6yz"/>
+                    <include reference="Aex-45-p5O"/>
+                    <include reference="RWj-9n-jGB"/>
+                    <include reference="eXO-XF-Ng3"/>
                 </mask>
             </variation>
         </view>
