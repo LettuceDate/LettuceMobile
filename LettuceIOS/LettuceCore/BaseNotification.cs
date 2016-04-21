@@ -13,6 +13,17 @@ namespace Lettuce.Core
 		public BaseNotification ()
 		{
 		}
+
+		public static BaseNotification CreateSample() {
+			BaseNotification newGuy = new BaseNotification();
+			newGuy.date = DateTime.Now;
+			newGuy.id = 1;
+			newGuy.detail = "Hey you were notified of something";
+			newGuy.type = 2;
+			newGuy.read = false;
+
+			return newGuy;
+		}
 	}
 }
 

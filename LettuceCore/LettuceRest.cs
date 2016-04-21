@@ -117,17 +117,27 @@ namespace Lettuce.Core
 		public async Task<Venue> LoadVenue(string venueId)
 		{
 			Yelp.YelpAPI yelp = new Yelp.YelpAPI ();
+			Yelp.Business result = null;
 
-			string resultStr = await yelp.GetBusinessAsync (venueId);
-			Yelp.Business result = resultStr.FromJson<Yelp.Business> ();
-
-			if (result != null) {
-				var newVenue = new Venue (result);
-				_venueList [newVenue.id] = newVenue;
-				return newVenue;
+			try
+			{
+				string resultStr = await yelp.GetBusinessAsync (venueId);
+				result = resultStr.FromJson<Yelp.Business> ();
 			}
-			else
-				return null;
+			catch (Exception exp)
+			{
+				Console.WriteLine("error fetching yelp business: " + exp.Message);
+			}
+
+			if (result == null) {
+				// create placeholder
+				result = Yelp.Business.CreateSample ();
+			}
+
+			// return venue from result
+			var newVenue = new Venue (result);
+			_venueList [newVenue.id] = newVenue;
+			return newVenue;
 		}
 
 		public void GetUserInfo(long userId, UserRecord_callback callback)
@@ -168,6 +178,9 @@ namespace Lettuce.Core
 					}
 					else {
 						_activityTypes.Clear();
+						_activityTypes.Add(1, Lettuce.Core.ActivityType.CreateSample(1, "coffee"));
+						_activityTypes.Add(2, Lettuce.Core.ActivityType.CreateSample(2, "lunch"));
+						_activityTypes.Add(3, Lettuce.Core.ActivityType.CreateSample(3, "dinner"));
 					}
 
 					if (callback != null)
@@ -242,8 +255,13 @@ namespace Lettuce.Core
 					{
 						callback(newNotifications);
 					}
-					else
-						callback(null);
+					else {
+						newNotifications = new List<BaseNotification>();
+						newNotifications.Add(BaseNotification.CreateSample());
+						newNotifications.Add(BaseNotification.CreateSample());
+						newNotifications.Add(BaseNotification.CreateSample());
+						callback(newNotifications);
+					}
 				});
 		}
 

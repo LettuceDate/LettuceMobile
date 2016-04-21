@@ -28,12 +28,17 @@ namespace Lettuce.IOS
 		{
 			linkedBiz = theBiz;
 			VenueName.Text = linkedBiz.name;
-			if (linkedBiz.image_url != null)
+			if (!String.IsNullOrEmpty(linkedBiz.image_url ))
 				VenueImage.SetImage (new NSUrl (linkedBiz.image_url));
 			else {
-				// VenueImage.SetImage(placeholderImage);
+				// VenueImage.SetImage(locationPlaceholderImage);
 			}
-			VenueRatingImage.SetImage (new NSUrl (linkedBiz.rating_img_url_large));
+
+			if (!String.IsNullOrEmpty (linkedBiz.rating_img_url_large))
+				VenueRatingImage.SetImage (new NSUrl (linkedBiz.rating_img_url_large));
+			else {
+				// VenueRatingImage.SetImage(starPlaceholderImage);
+			}
 		}
 	}
 }

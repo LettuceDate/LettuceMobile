@@ -62,6 +62,17 @@ namespace Lettuce.Core.Yelp
         public string id { get; set; }
         public bool is_closed { get; set; }
         public Location location { get; set; }
+
+		public static Business CreateSample()
+		{
+			Business newGuy = new Business ();
+
+			System.Random rnd = new System.Random ();
+			newGuy.rating = rnd.Next (1, 4);
+			newGuy.name = "Some Cool Place";
+			newGuy.id = "id_" + rnd.Next (1000).ToString();
+			return newGuy;
+		}
     }
 
     public class YelpResults
@@ -69,5 +80,18 @@ namespace Lettuce.Core.Yelp
         public Region region { get; set; }
         public int total { get; set; }
         public List<Business> businesses { get; set; }
+
+		public static YelpResults CreateSample() {
+			YelpResults results = new YelpResults ();
+
+			results.total = 3;
+			results.businesses = new List<Business> ();
+			results.businesses.Add (Business.CreateSample ());
+			results.businesses.Add (Business.CreateSample ());
+			results.businesses.Add (Business.CreateSample ());
+
+			return results;
+
+		}
     }
 }

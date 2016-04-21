@@ -80,20 +80,12 @@ namespace Lettuce.IOS
 			};
 
 			AddActivityBtn.TouchUpInside += (sender, e) => {
-				NewActivityController newActivityController = new NewActivityController ();
-				if (newActivityController != null) {
-					newActivityController.ActivityCreated += (Activity newActivity) => {
-						// add the new activity
-						if (newDate.activities == null)
-							newDate.activities = new List<Activity>();
-						newDate.activities.Add(newActivity);
-						ActivityTableView.ReloadData();
-						RedoLayoutSizes();
-
-					};
-					PresentModalViewController (newActivityController, true);
-				}
+				if ((newDate.activities == null) || (newDate.activities.Count == 0))
+					AddNewActivityToDate ();
+				else
+					RemoveAllActivitiesFromDate ();
 			};
+				
 
 			ActivityTableView.RegisterNibForCellReuse (UINib.FromName (ActivitySummaryCell.Key, NSBundle.MainBundle), ActivitySummaryCell.Key);
 			ActivityTableView.Source = new DateActivityDataSource (this.newDate);
@@ -104,8 +96,31 @@ namespace Lettuce.IOS
 				newDate.title = HeadlineText.Text;
 				UpdateCreateButton();
 			});
+		}
 
+		private void AddNewActivityToDate()
+		{
+			NewActivityController newActivityController = new NewActivityController ();
+			if (newActivityController != null) {
+				newActivityController.ActivityCreated += (Activity newActivity) => {
+					// add the new activity
+					if (newDate.activities == null)
+						newDate.activities = new List<Activity>();
+					newDate.activities.Add(newActivity);
+					ActivityTableView.ReloadData();
+					RedoLayoutSizes();
 
+				};
+				PresentModalViewController (newActivityController, true);
+			}
+		}
+
+		private void RemoveAllActivitiesFromDate()
+		{
+			if (newDate.activities != null)
+				newDate.activities.Clear();
+			ActivityTableView.ReloadData();
+			RedoLayoutSizes();
 		}
 
 		private void RedoLayoutSizes()
@@ -113,7 +128,10 @@ namespace Lettuce.IOS
 			ActivityTableView.LayoutIfNeeded();
 			var contentSize = new CGSize (Scroller.Bounds.Width, 400 + ActivityTableView.ContentSize.Height);
 			Scroller.ContentSize = contentSize;
-
+			if ((newDate.activities == null) || (newDate.activities.Count == 0))
+				AddActivityBtn.SetTitle ("Add", UIControlState.Normal);
+			else
+				AddActivityBtn.SetTitle ("Remove", UIControlState.Normal);
 		}
 
 		public override void ViewWillUnload ()

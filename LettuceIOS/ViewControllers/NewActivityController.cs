@@ -100,7 +100,13 @@ namespace Lettuce.IOS
 
 			string resultStr = yelp.Search (SearchField.Text, "Beverly Hills, CA");
 
-			YelpResults resultSet = resultStr.FromJson<YelpResults> ();
+			YelpResults resultSet = null;
+
+			if (!String.IsNullOrEmpty (resultStr))
+				resultSet = resultStr.FromJson<YelpResults> ();
+			else {
+				resultSet = YelpResults.CreateSample ();
+			}
 			dataSource.resultSet = resultSet;
 			ResultTable.ReloadData ();
 

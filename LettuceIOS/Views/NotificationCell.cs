@@ -52,6 +52,7 @@ namespace Lettuce.IOS
 		{
 			parentSource = theSource;
 			linkedNotification = theNotif;
+			NotifLabel.Text = theNotif.detail;
 			/*
 			PinBtn.TouchUpInside -= HandleClick;
 			linkedDate = theDate;

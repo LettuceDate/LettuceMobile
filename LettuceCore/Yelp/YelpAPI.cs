@@ -139,14 +139,22 @@ namespace Lettuce.Core.Yelp
         /// <returns>The JSON response from the API.</returns>
         public string Search(string term, string location)
         {
-            string baseURL = API_HOST + SEARCH_PATH;
-            var queryParams = new Dictionary<string, string>()
-            {
-                { "term", term },
-                { "location", location },
-                { "limit", SEARCH_LIMIT.ToString() }
-            };
-            return PerformRequest(baseURL, queryParams);
+			try {
+				
+	            string baseURL = API_HOST + SEARCH_PATH;
+	            var queryParams = new Dictionary<string, string>()
+	            {
+	                { "term", term },
+	                { "location", location },
+	                { "limit", SEARCH_LIMIT.ToString() }
+	            };
+	            return PerformRequest(baseURL, queryParams);
+			}
+			catch (Exception exp)
+			{
+				Console.WriteLine("error searching yelp");
+					return null;
+			}
         }
 
         /// <summary>

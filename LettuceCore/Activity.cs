@@ -22,6 +22,14 @@ namespace Lettuce.Core
 		public int id {get; set;}
 		public string typename {get; set;}
 		public string icon { get; set;}
+
+		public static ActivityType CreateSample(int theId, string typeName) {
+			ActivityType newGuy = new ActivityType();
+			newGuy.id = theId;
+			newGuy.typename = typeName;
+
+			return newGuy;
+		}
 	}
 }
 
