@@ -1,6 +1,7 @@
 ﻿using System;
 
 using UIKit;
+using Lettuce.Core;
 
 namespace Lettuce.IOS
 {
@@ -54,6 +55,21 @@ namespace Lettuce.IOS
 		{
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			LettuceServer.Instance.GetNotificationCountForUser ((theCount) => {
+				InvokeOnMainThread(() => {
+				if (theCount > 0)
+					notificationsView.TabBarItem.BadgeValue = theCount.ToString();
+				else
+					notificationsView.TabBarItem.BadgeValue = null;
+				});
+
+			});
+		
 		}
 
 		public override void DidReceiveMemoryWarning ()

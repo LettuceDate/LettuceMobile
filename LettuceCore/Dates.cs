@@ -15,6 +15,7 @@ namespace Lettuce.Core
 		public string selfie { get; set; }
 		public int paymentStyle { get; set; }
 		public List<Activity> activities { get; set; }
+		public bool hasApplication { get; set; }
 
 		public BaseDate()
 		{

@@ -39,20 +39,21 @@ namespace Lettuce.IOS
 		{
 			TopConstraint.Constant = HomeScreenViewController.LayoutGuideSize;
 			UpdateViewConstraints ();
-			LettuceServer.Instance.GetBookedDatesForUser ((dateList) => {
-				dataSource.SetDateList(dateList);
+			LettuceServer.Instance.GetBookedDatesForUser ((bookedDateList) => {
+				dataSource.SetBookedDateList(bookedDateList);
 
 				InvokeOnMainThread(() => {
-					/*
-				if ((dateList == null) || (dateList.Count == 0))
-					HeaderLabel.Text = "NoBookedDates_String".Localize();
-				else
-					HeaderLabel.Text = String.Format("FoundBookedDates_String".Localize(), dateList.Count);
-					*/
 					CurrentDatesTableView.ReloadData ();
+					LettuceServer.Instance.GetUsersOwnDates ((userDateList) => {
+						dataSource.SetUsersDateList(userDateList);
+
+						InvokeOnMainThread(() => {
+							CurrentDatesTableView.ReloadData ();
+
+						});
+
+					});
 				});
-
-
 
 			});
 		}

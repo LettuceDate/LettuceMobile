@@ -4,11 +4,11 @@ namespace Lettuce.Core
 {
 	public class BaseNotification
 	{
-		public long id;
-		public DateTime	date;
-		public string	detail;
-		public int		type;
-		public bool		read;
+		public long id { get; set;}
+		public DateTime	date { get; set;}
+		public string	detail { get; set;}
+		public int		type { get; set;}
+		public bool		read { get; set;}
 
 		public BaseNotification ()
 		{

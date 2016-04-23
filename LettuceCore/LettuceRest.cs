@@ -37,8 +37,9 @@ namespace Lettuce.Core
         private RestClient apiClient;
 		private static LettuceServer _singleton = null;
 		private static string localHostStr = "http://localhost:8080/api/v1";
+		private static string networkHostStr = "http://192.168.0.4:8080/api/v1";
 		private static string productionHostStr = "http://lettuce-1045.appspot.com/api/v1";
-		private string apiPath =   productionHostStr;
+		private string apiPath =   networkHostStr;
         private string _uploadURL;
         private string _catchURL;
         private string _userImageURL;
@@ -265,6 +266,23 @@ namespace Lettuce.Core
 				});
 		}
 
+		public void GetNotificationCountForUser(int_callback callback)
+		{
+			string fullURL = "notifications";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			request.AddParameter ("count", true);
+			apiClient.ExecuteAsync<int>(request, (response) =>
+				{
+					if (response.ResponseStatus == ResponseStatus.Completed)
+					{
+						int newCount = response.Data;
+						callback(newCount);
+					}
+				});
+		}
+
 		public void GetMatchingDatesForUser(MatchingDateList_callback callback)
 		{
 			string fullURL = "date";
@@ -284,7 +302,7 @@ namespace Lettuce.Core
 				});
 		}
 
-		public void CountDatesForUser(int_callback callback)
+		public void CountMatchingDatesForUser(int_callback callback)
 		{
 			string fullURL = "date";
 
@@ -389,7 +407,7 @@ namespace Lettuce.Core
 			request.AddParameter ("count", true);
 			apiClient.ExecuteAsync<int>(request, (response) =>
 				{
-					int newCount = 0;//response.Data;
+					int newCount = response.Data;
 					callback(newCount);
 				});
 		}

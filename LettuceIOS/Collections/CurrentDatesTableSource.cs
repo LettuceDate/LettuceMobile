@@ -9,43 +9,39 @@ namespace Lettuce.IOS
 	public class CurrentDatesTableSource : UITableViewDataSource
 	{
 		private List<BaseDate>	CommittedDateList { get; set;}
-		private List<BaseDate>	TodayList { get; set;}
-
-		private List<BaseDate>	TomorrowList { get; set;}
-
-		private List<BaseDate>	RestList { get; set;}
+		private List<BaseDate>	DatesWithApplicantsList { get; set;}
+		private List<BaseDate>	UsersDateList { get; set;}
 
 
 		public CurrentDatesTableSource ()
 		{
-			TodayList = new List<BaseDate> ();
-			TomorrowList = new List<BaseDate> ();
-			RestList = new List<BaseDate> ();			
+	
 		}
 
 
-		public void SetDateList(List<BaseDate> theList)
+		public void SetBookedDateList(List<BaseDate> theList)
 		{
 			if (theList == null)
 				theList = new List<BaseDate> ();
 			
 			CommittedDateList = theList;
-			DateTime today = DateTime.UtcNow.Date;
-			DateTime tomorrow = today.AddDays (1);
-			TodayList.Clear ();
-			TomorrowList.Clear ();
-			RestList.Clear ();
 
-			foreach (BaseDate curDate in theList) {
-				DateTime curDateDate = curDate.starttime.Date;
-				if (curDateDate.CompareTo (today) == 0)
-					TodayList.Add (curDate);
-				else if (curDateDate.CompareTo (tomorrow) == 0)
-					TomorrowList.Add (curDate);
-				else
-					RestList.Add (curDate);
+		}
 
+		public void SetUsersDateList(List<BaseDate> theList)
+		{
+			if (theList != null) {
+				UsersDateList = new List<BaseDate> ();
+				DatesWithApplicantsList = new List<BaseDate> ();
+
+				foreach (BaseDate curDate in theList) {
+					if (curDate.hasApplication)
+						DatesWithApplicantsList.Add (curDate);
+					else
+						UsersDateList.Add (curDate);
+				}
 			}
+
 		}
 			
 		public override nint RowsInSection (UITableView tableview, nint section)
@@ -54,11 +50,11 @@ namespace Lettuce.IOS
 			List<BaseDate> sectionList;
 
 			if (section == 0)
-				sectionList = TodayList;
+				sectionList = CommittedDateList;
 			else if (section == 1)
-				sectionList = TomorrowList;
+				sectionList = DatesWithApplicantsList;
 			else
-				sectionList = RestList;
+				sectionList = UsersDateList;
 
 			if ((sectionList == null) || (sectionList.Count == 0))
 				numDates = 1;
@@ -92,11 +88,11 @@ namespace Lettuce.IOS
 			List<BaseDate> sectionList;
 
 			if (indexPath.Section == 0)
-				sectionList = TodayList;
+				sectionList = CommittedDateList;
 			else if (indexPath.Section == 1)
-				sectionList = TomorrowList;
+				sectionList = DatesWithApplicantsList;
 			else
-				sectionList = RestList;
+				sectionList = UsersDateList;
 			
 			if ((sectionList == null) || (sectionList.Count == 0))
 				cell.ConformToEmpty ();

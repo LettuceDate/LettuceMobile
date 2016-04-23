@@ -75,25 +75,53 @@ namespace Lettuce.IOS
 
 			// create a slideout navigation controller with the top navigation controller and the menu view controller
 			NavController = new NavController();
-			NavController.PushViewController(HomeController, false);
+
 			SidebarController = new SidebarNavigation.SidebarController(this, NavController, new SideMenuController());
 			SidebarController.MenuWidth = 220;
 			SidebarController.ReopenOnRotate = false;
 			SidebarController.MenuLocation = SidebarNavigation.SidebarController.MenuLocations.Left;
+			NavController.PushViewController (HomeController , false);
+			NavController.PushViewController (new AboutViewController (), false);
+
+		}
+
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
 
 			if (AccessToken.CurrentAccessToken == null) {
 				InitFacebookLogin ();
 			} else {
 				FinalizeLogin ();
 			}
+
 		}
+			
 
 		private void InitFacebookLogin()
 		{
-			return;
+			FacebookLoginController fbLogin = new FacebookLoginController ();
+			fbLogin.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+
+			NavController.PushViewController(fbLogin, false);
 
 
+
+			//NavController.PresentViewController (fbLogin, true, () => { FinalizeLogin(); });
+
+			/*
+			// get login ready
+			CGRect windowRect = this.View.Bounds;
+			LightBox.Bounds = windowRect;
+			LightBox.BackgroundColor = new UIColor (1, 0, 0, 1);
+			this.View.AddSubview (LightBox);
+			LightBox.Hidden = false;
+
+			windowRect = windowRect.Inset (32, 32);
+			LoginView.Bounds = windowRect;
+			this.View.AddSubview (LoginView);
 			LoginView.Hidden = false;
+
 			Profile.Notifications.ObserveDidChange ((sender, e) => {
 
 				if (e.NewProfile == null)
@@ -164,10 +192,12 @@ namespace Lettuce.IOS
 			LoginView.AddSubview (loginButton);
 			LoginView.AddSubview (pictureView);
 			LoginView.AddSubview (nameLabel);
+			*/
 		}
 
 		private void FinalizeLogin()
 		{
+			
 			if (AccessToken.CurrentAccessToken != null) {
 				var request = new GraphRequest ("/me?fields=name,id,birthday,first_name,gender,last_name,interested_in,location", null, AccessToken.CurrentAccessToken.TokenString, null, "GET");
 				request.Start ((connection, result, error) => {
@@ -182,8 +212,7 @@ namespace Lettuce.IOS
 
 					LettuceServer.Instance.FacebookLogin (userInfo["id"].ToString(), AccessToken.CurrentAccessToken.TokenString, (theUser) => {
 						InvokeOnMainThread(() => {
-							LoginView.Hidden = true;
-							LightBox.Hidden = true;
+							NavController.PopToRootViewController(true);
 						});
 					});
 				});

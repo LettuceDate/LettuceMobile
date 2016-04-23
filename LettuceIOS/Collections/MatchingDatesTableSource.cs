@@ -62,7 +62,11 @@ namespace Lettuce.IOS
 				theDate = sectionList [indexPath.Row];
 
 			if (theDate != null) {
-				DateViewController.Instance.EditDate (theDate);
+				DateDetailViewController dateViewer = new DateDetailViewController ();
+				if (dateViewer != null) {
+					(UIApplication.SharedApplication.Delegate as AppDelegate).RootViewController.NavController.PushViewController (dateViewer, true);
+					dateViewer.SetCurrentDate (theDate);
+				}
 
 			}
 			
