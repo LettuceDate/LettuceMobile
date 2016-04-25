@@ -51,3 +51,8 @@
 // NotificationsTableSource
 "Notification_Header" = "Notifications";
 "NotificationsHeader_String" = "{0} Notifications";
+
+// Loading screen
+"TryingFacebook_string" = "Connecting to Facebook...";
+"TryingServer_string" = "Connecting to OpenDate server...";
+"FacebookConnectFailed_string" = "Unabled to Connect to Facebook.  Please quit the app and try again later.";

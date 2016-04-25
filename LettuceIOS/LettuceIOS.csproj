@@ -134,6 +134,7 @@
     <InterfaceDefinition Include="Base.lproj\NotificationCell.xib" />
     <InterfaceDefinition Include="Base.lproj\NotificationsViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\FacebookLoginController.xib" />
+    <InterfaceDefinition Include="Base.lproj\InitialLoadViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -290,6 +291,10 @@
     <Compile Include="ViewControllers\FacebookLoginController.cs" />
     <Compile Include="ViewControllers\FacebookLoginController.designer.cs">
       <DependentUpon>FacebookLoginController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\InitialLoadViewController.cs" />
+    <Compile Include="ViewControllers\InitialLoadViewController.designer.cs">
+      <DependentUpon>InitialLoadViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
