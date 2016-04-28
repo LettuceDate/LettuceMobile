@@ -60,6 +60,7 @@ namespace Lettuce.IOS
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+			NavigationController.NavigationBarHidden = false;
 			LettuceServer.Instance.GetNotificationCountForUser ((theCount) => {
 				InvokeOnMainThread(() => {
 				if (theCount > 0)

@@ -31,6 +31,7 @@ namespace Lettuce.IOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			NavigationController.NavigationBarHidden = false;
 			
 			// Perform any additional setup after loading the view, typically from a nib.
 		}

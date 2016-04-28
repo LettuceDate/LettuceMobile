@@ -41,6 +41,7 @@ namespace Lettuce.IOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			NavigationController.NavigationBarHidden = false;
 			InitFacebookLogin ();
 
 		}

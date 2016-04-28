@@ -91,9 +91,6 @@
     <Reference Include="SharpMobileCode.ModalPicker">
       <HintPath>libraries\SharpMobileCode.ModalPicker.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.18.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
     <Reference Include="Flurry.Analytics.iOS">
       <HintPath>..\packages\Flurry.Analytics.2.0.0\lib\Xamarin.iOS10\Flurry.Analytics.iOS.dll</HintPath>
     </Reference>
@@ -105,6 +102,9 @@
     </Reference>
     <Reference Include="Xamarin-Sidebar-Unified">
       <HintPath>_ext\Xamarin-Sidebar-Unified.dll</HintPath>
+    </Reference>
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.19.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -303,10 +303,6 @@
       <Version>3.7.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-    <XamarinComponentReference Include="facebookios">
-      <Version>4.5.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="servicestacktext">
       <Version>3.9.61.3</Version>
       <Visible>False</Visible>
@@ -317,6 +313,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="sdwebimage">
       <Version>3.7.1.4</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="facebookios">
+      <Version>4.10.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

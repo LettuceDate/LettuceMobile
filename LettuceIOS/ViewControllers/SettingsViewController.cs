@@ -33,6 +33,7 @@ namespace Lettuce.IOS
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
+			NavigationController.NavigationBarHidden = false;
 		}
 
 		protected SidebarNavigation.SidebarController SidebarController { 
