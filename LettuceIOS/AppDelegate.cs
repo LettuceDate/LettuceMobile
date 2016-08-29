@@ -72,10 +72,12 @@ namespace Lettuce.IOS
 					Setup.ThrowExceptionAsNative(e.Exception);
 			});
 
-			// Facebook
+			// Facebooke
+
 			Profile.EnableUpdatesOnAccessTokenChange (true);
 			Settings.AppID = FacebookAppID;
 			Settings.DisplayName = FacebookAppName;
+
 
 			//create the initial view controller
 			ConfigNavMenu ();
@@ -87,6 +89,7 @@ namespace Lettuce.IOS
 		private void ConfigNavMenu()
 		{
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
+			Window.BackgroundColor = LettuceColor.BoyBlue;
 
 			// If you have defined a root view controller, set it here:
 			Window.RootViewController = new RootViewController();

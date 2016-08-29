@@ -56,3 +56,18 @@
 "TryingFacebook_string" = "Connecting to Facebook...";
 "TryingServer_string" = "Connecting to OpenDate server...";
 "FacebookConnectFailed_string" = "Unabled to Connect to Facebook.  Please quit the app and try again later.";
+
+// ODHomeVC
+"Loading_Confirmed" = "Checking confirmed dates...";
+"Loading_Applied" = "Checking for new applicants...";
+"Loading_Open" = "Checking for open dates...";
+
+"No_Confirmed_Dates" = "No confirmed dates";
+"Confirmed_Dates_Count" = "{0} confirmed dates";
+
+"No_Applied_Dates" = "No confirmed dates";
+"Applied_Dates_Count" = "{0} confirmed dates";
+
+"No_Open_Dates" = "No open dates";
+"Open_Dates_Count" = "{0} open dates";
+

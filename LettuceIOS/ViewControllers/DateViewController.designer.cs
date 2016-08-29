@@ -11,11 +11,11 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("DateViewController")]
-	partial class DateViewController
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("DateViewController")]
+    partial class DateViewController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

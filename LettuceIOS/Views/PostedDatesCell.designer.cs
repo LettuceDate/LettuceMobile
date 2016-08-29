@@ -11,11 +11,11 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("PostedDatesCell")]
-	partial class PostedDatesCell
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("PostedDatesCell")]
+    partial class PostedDatesCell
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

@@ -11,39 +11,45 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("MatchingDatesCell")]
-	partial class MatchingDatesCell
-	{
-		[Outlet]
-		UIKit.UILabel DateTimeLabel { get; set; }
+    [Register ("MatchingDatesCell")]
+    partial class MatchingDatesCell
+    {
+        [Outlet]
+        UIKit.UILabel DateTimeLabel { get; set; }
 
-		[Outlet]
-		UIKit.UILabel DateTitleLabel { get; set; }
 
-		[Outlet]
-		UIKit.UIButton PinBtn { get; set; }
+        [Outlet]
+        UIKit.UILabel DateTitleLabel { get; set; }
 
-		[Outlet]
-		UIKit.UIImageView SelfieView { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (DateTimeLabel != null) {
-				DateTimeLabel.Dispose ();
-				DateTimeLabel = null;
-			}
-			if (DateTitleLabel != null) {
-				DateTitleLabel.Dispose ();
-				DateTitleLabel = null;
-			}
-			if (PinBtn != null) {
-				PinBtn.Dispose ();
-				PinBtn = null;
-			}
-			if (SelfieView != null) {
-				SelfieView.Dispose ();
-				SelfieView = null;
-			}
-		}
-	}
+        [Outlet]
+        UIKit.UIButton PinBtn { get; set; }
+
+
+        [Outlet]
+        UIKit.UIImageView SelfieView { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (DateTimeLabel != null) {
+                DateTimeLabel.Dispose ();
+                DateTimeLabel = null;
+            }
+
+            if (DateTitleLabel != null) {
+                DateTitleLabel.Dispose ();
+                DateTitleLabel = null;
+            }
+
+            if (PinBtn != null) {
+                PinBtn.Dispose ();
+                PinBtn = null;
+            }
+
+            if (SelfieView != null) {
+                SelfieView.Dispose ();
+                SelfieView = null;
+            }
+        }
+    }
 }

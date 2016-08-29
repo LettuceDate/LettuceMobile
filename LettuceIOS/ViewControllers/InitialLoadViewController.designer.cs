@@ -11,19 +11,19 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("InitialLoadViewController")]
-	partial class InitialLoadViewController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel StatusLabel { get; set; }
+    [Register ("InitialLoadViewController")]
+    partial class InitialLoadViewController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel StatusLabel { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (StatusLabel != null) {
-				StatusLabel.Dispose ();
-				StatusLabel = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (StatusLabel != null) {
+                StatusLabel.Dispose ();
+                StatusLabel = null;
+            }
+        }
+    }
 }

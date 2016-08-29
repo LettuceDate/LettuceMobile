@@ -11,27 +11,28 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("NotificationCell")]
-	partial class NotificationCell
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView NotifImage { get; set; }
+    [Register ("NotificationCell")]
+    partial class NotificationCell
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView NotifImage { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel NotifLabel { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NotifLabel { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (NotifImage != null) {
-				NotifImage.Dispose ();
-				NotifImage = null;
-			}
-			if (NotifLabel != null) {
-				NotifLabel.Dispose ();
-				NotifLabel = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (NotifImage != null) {
+                NotifImage.Dispose ();
+                NotifImage = null;
+            }
+
+            if (NotifLabel != null) {
+                NotifLabel.Dispose ();
+                NotifLabel = null;
+            }
+        }
+    }
 }

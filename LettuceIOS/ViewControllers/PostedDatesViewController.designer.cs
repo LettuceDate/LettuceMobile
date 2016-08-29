@@ -11,11 +11,11 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("PostedDatesViewController")]
-	partial class PostedDatesViewController
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("PostedDatesViewController")]
+    partial class PostedDatesViewController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

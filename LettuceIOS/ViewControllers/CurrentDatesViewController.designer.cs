@@ -11,31 +11,35 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("CurrentDatesViewController")]
-	partial class CurrentDatesViewController
-	{
-		[Outlet]
-		UIKit.UITableView CurrentDatesTableView { get; set; }
+    [Register ("CurrentDatesViewController")]
+    partial class CurrentDatesViewController
+    {
+        [Outlet]
+        UIKit.UITableView CurrentDatesTableView { get; set; }
 
-		[Outlet]
-		UIKit.UIButton FilterBtn { get; set; }
 
-		[Outlet]
-		UIKit.UILabel HeaderLabel { get; set; }
+        [Outlet]
+        UIKit.UIButton FilterBtn { get; set; }
 
-		[Outlet]
-		UIKit.NSLayoutConstraint TopConstraint { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (CurrentDatesTableView != null) {
-				CurrentDatesTableView.Dispose ();
-				CurrentDatesTableView = null;
-			}
-			if (TopConstraint != null) {
-				TopConstraint.Dispose ();
-				TopConstraint = null;
-			}
-		}
-	}
+        [Outlet]
+        UIKit.UILabel HeaderLabel { get; set; }
+
+
+        [Outlet]
+        UIKit.NSLayoutConstraint TopConstraint { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (CurrentDatesTableView != null) {
+                CurrentDatesTableView.Dispose ();
+                CurrentDatesTableView = null;
+            }
+
+            if (TopConstraint != null) {
+                TopConstraint.Dispose ();
+                TopConstraint = null;
+            }
+        }
+    }
 }

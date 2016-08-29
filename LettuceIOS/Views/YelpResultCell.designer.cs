@@ -11,32 +11,36 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("YelpResultCell")]
-	partial class YelpResultCell
-	{
-		[Outlet]
-		UIKit.UIImageView VenueImage { get; set; }
+    [Register ("YelpResultCell")]
+    partial class YelpResultCell
+    {
+        [Outlet]
+        UIKit.UIImageView VenueImage { get; set; }
 
-		[Outlet]
-		UIKit.UILabel VenueName { get; set; }
 
-		[Outlet]
-		UIKit.UIImageView VenueRatingImage { get; set; }
+        [Outlet]
+        UIKit.UILabel VenueName { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (VenueImage != null) {
-				VenueImage.Dispose ();
-				VenueImage = null;
-			}
-			if (VenueName != null) {
-				VenueName.Dispose ();
-				VenueName = null;
-			}
-			if (VenueRatingImage != null) {
-				VenueRatingImage.Dispose ();
-				VenueRatingImage = null;
-			}
-		}
-	}
+
+        [Outlet]
+        UIKit.UIImageView VenueRatingImage { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (VenueImage != null) {
+                VenueImage.Dispose ();
+                VenueImage = null;
+            }
+
+            if (VenueName != null) {
+                VenueName.Dispose ();
+                VenueName = null;
+            }
+
+            if (VenueRatingImage != null) {
+                VenueRatingImage.Dispose ();
+                VenueRatingImage = null;
+            }
+        }
+    }
 }

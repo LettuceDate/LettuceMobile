@@ -31,10 +31,17 @@ namespace Lettuce.IOS
 		private static UIColor _blackStandard = UIColor.FromRGB(0,0,0);
 		private static UIColor _whiteStandard = UIColor.FromRGB(255,255,255);
 
+		private static UIColor _girlPink = UIColor.FromRGB(230, 0, 76);
+		private static UIColor _boyBlue = UIColor.FromRGB(37, 175, 177);
+
+
 
 		public LettuceColor ()
 		{
 		}
+
+		public static UIColor GirlPink { get { return _girlPink; } }
+		public static UIColor BoyBlue { get { return _boyBlue; } }
 
 		public static UIColor Pink {get { return _pinkStandard; }}
 		public static UIColor Purple {get { return _purpleStandard; }}

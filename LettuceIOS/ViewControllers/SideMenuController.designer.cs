@@ -11,51 +11,55 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("SideMenuController")]
-	partial class SideMenuController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton AboutBtn { get; set; }
+    [Register ("SideMenuController")]
+    partial class SideMenuController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton AboutBtn { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton HomeBtn { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton HomeBtn { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView MenuImage { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView MenuImage { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton ProfileBtn { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ProfileBtn { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton SettingsBtn { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SettingsBtn { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (AboutBtn != null) {
-				AboutBtn.Dispose ();
-				AboutBtn = null;
-			}
-			if (HomeBtn != null) {
-				HomeBtn.Dispose ();
-				HomeBtn = null;
-			}
-			if (MenuImage != null) {
-				MenuImage.Dispose ();
-				MenuImage = null;
-			}
-			if (ProfileBtn != null) {
-				ProfileBtn.Dispose ();
-				ProfileBtn = null;
-			}
-			if (SettingsBtn != null) {
-				SettingsBtn.Dispose ();
-				SettingsBtn = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (AboutBtn != null) {
+                AboutBtn.Dispose ();
+                AboutBtn = null;
+            }
+
+            if (HomeBtn != null) {
+                HomeBtn.Dispose ();
+                HomeBtn = null;
+            }
+
+            if (MenuImage != null) {
+                MenuImage.Dispose ();
+                MenuImage = null;
+            }
+
+            if (ProfileBtn != null) {
+                ProfileBtn.Dispose ();
+                ProfileBtn = null;
+            }
+
+            if (SettingsBtn != null) {
+                SettingsBtn.Dispose ();
+                SettingsBtn = null;
+            }
+        }
+    }
 }

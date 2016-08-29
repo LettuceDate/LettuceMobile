@@ -11,11 +11,11 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("InterestedPersonCell")]
-	partial class InterestedPersonCell
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("InterestedPersonCell")]
+    partial class InterestedPersonCell
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

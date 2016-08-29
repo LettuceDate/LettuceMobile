@@ -11,25 +11,27 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("CommittedDatesCell")]
-	partial class CommittedDatesCell
-	{
-		[Outlet]
-		UIKit.UIImageView DateIcon { get; set; }
+    [Register ("CommittedDatesCell")]
+    partial class CommittedDatesCell
+    {
+        [Outlet]
+        UIKit.UIImageView DateIcon { get; set; }
 
-		[Outlet]
-		UIKit.UILabel DateTitle { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (DateIcon != null) {
-				DateIcon.Dispose ();
-				DateIcon = null;
-			}
-			if (DateTitle != null) {
-				DateTitle.Dispose ();
-				DateTitle = null;
-			}
-		}
-	}
+        [Outlet]
+        UIKit.UILabel DateTitle { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (DateIcon != null) {
+                DateIcon.Dispose ();
+                DateIcon = null;
+            }
+
+            if (DateTitle != null) {
+                DateTitle.Dispose ();
+                DateTitle = null;
+            }
+        }
+    }
 }

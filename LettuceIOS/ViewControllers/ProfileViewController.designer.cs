@@ -11,11 +11,11 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("ProfileViewController")]
-	partial class ProfileViewController
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("ProfileViewController")]
+    partial class ProfileViewController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

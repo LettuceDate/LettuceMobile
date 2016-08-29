@@ -65,10 +65,11 @@ namespace Lettuce.IOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			View.BackgroundColor = LettuceColor.BoyBlue;
 
 			// create a slideout navigation controller with the top navigation controller and the menu view controller
 			NavController = new NavController();
-
+			NavController.NavigationBar.BackgroundColor = LettuceColor.BoyBlue;
 			SidebarController = new SidebarNavigation.SidebarController(this, NavController, new SideMenuController());
 			SidebarController.MenuWidth = 220;
 			SidebarController.ReopenOnRotate = false;

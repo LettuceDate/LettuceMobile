@@ -97,14 +97,14 @@
     <Reference Include="SDWebImage">
       <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook">
-      <HintPath>..\packages\Xamarin.Facebook.iOS.4.10.0.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin-Sidebar-Unified">
       <HintPath>_ext\Xamarin-Sidebar-Unified.dll</HintPath>
     </Reference>
     <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.19.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.19.2\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Xamarin.Facebook.iOS.4.13.1\lib\Xamarin.iOS10\Facebook.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +135,8 @@
     <InterfaceDefinition Include="Base.lproj\NotificationsViewController.xib" />
     <InterfaceDefinition Include="Base.lproj\FacebookLoginController.xib" />
     <InterfaceDefinition Include="Base.lproj\InitialLoadViewController.xib" />
+    <InterfaceDefinition Include="Base.lproj\ODHomeVC.xib" />
+    <InterfaceDefinition Include="Base.lproj\DateSummaryCollectionViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -296,6 +298,17 @@
     <Compile Include="ViewControllers\InitialLoadViewController.designer.cs">
       <DependentUpon>InitialLoadViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ODHomeVC.cs" />
+    <Compile Include="ViewControllers\ODHomeVC.designer.cs">
+      <DependentUpon>ODHomeVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateSummaryCollectionViewCell.cs" />
+    <Compile Include="Views\DateSummaryCollectionViewCell.designer.cs">
+      <DependentUpon>DateSummaryCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\UIImageHelper.cs" />
+    <Compile Include="Helpers\reachability.cs" />
+    <Compile Include="Collections\DateCollectionSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -316,7 +329,7 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="facebookios">
-      <Version>4.10.0.0</Version>
+      <Version>4.13.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
@@ -428,6 +441,7 @@
     <BundleResource Include="Resources\zh-Hans.lproj\Localizable.strings" />
     <BundleResource Include="Resources\en.lproj\CurrentDatesViewController.strings" />
     <BundleResource Include="Resources\en.lproj\Localizable.stringsdict" />
+    <BundleResource Include="Resources\header.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />

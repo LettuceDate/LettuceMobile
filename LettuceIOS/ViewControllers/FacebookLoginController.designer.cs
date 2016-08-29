@@ -11,19 +11,19 @@ using UIKit;
 
 namespace Lettuce.IOS
 {
-	[Register ("FacebookLoginController")]
-	partial class FacebookLoginController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView LoginView { get; set; }
+    [Register ("FacebookLoginController")]
+    partial class FacebookLoginController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView LoginView { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (LoginView != null) {
-				LoginView.Dispose ();
-				LoginView = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (LoginView != null) {
+                LoginView.Dispose ();
+                LoginView = null;
+            }
+        }
+    }
 }

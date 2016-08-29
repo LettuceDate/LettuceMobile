@@ -39,7 +39,7 @@ namespace Lettuce.Core
 		private static string localHostStr = "http://localhost:8080/api/v1";
 		private static string networkHostStr = "http://192.168.0.4:8080/api/v1";
 		private static string productionHostStr = "http://lettuce-1045.appspot.com/api/v1";
-		private string apiPath =   productionHostStr;
+		private string apiPath =   localHostStr;
         private string _uploadURL;
         private string _catchURL;
         private string _userImageURL;
