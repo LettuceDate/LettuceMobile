@@ -32,6 +32,10 @@ namespace Lettuce.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint AppliedDateViewHeight { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UICollectionView ConfirmedDatesCollection { get; set; }
 
         [Outlet]
@@ -48,6 +52,10 @@ namespace Lettuce.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint ConfirmedDateViewHeight { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UICollectionView OpenDatesCollection { get; set; }
 
         [Outlet]
@@ -61,6 +69,10 @@ namespace Lettuce.IOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel OpenDatesViewAll { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint OpenDateViewHeight { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -84,6 +96,11 @@ namespace Lettuce.IOS
                 ApplicationCollection = null;
             }
 
+            if (AppliedDateViewHeight != null) {
+                AppliedDateViewHeight.Dispose ();
+                AppliedDateViewHeight = null;
+            }
+
             if (ConfirmedDatesCollection != null) {
                 ConfirmedDatesCollection.Dispose ();
                 ConfirmedDatesCollection = null;
@@ -104,6 +121,11 @@ namespace Lettuce.IOS
                 ConfirmedDatesViewAll = null;
             }
 
+            if (ConfirmedDateViewHeight != null) {
+                ConfirmedDateViewHeight.Dispose ();
+                ConfirmedDateViewHeight = null;
+            }
+
             if (OpenDatesCollection != null) {
                 OpenDatesCollection.Dispose ();
                 OpenDatesCollection = null;
@@ -122,6 +144,11 @@ namespace Lettuce.IOS
             if (OpenDatesViewAll != null) {
                 OpenDatesViewAll.Dispose ();
                 OpenDatesViewAll = null;
+            }
+
+            if (OpenDateViewHeight != null) {
+                OpenDateViewHeight.Dispose ();
+                OpenDateViewHeight = null;
             }
         }
     }

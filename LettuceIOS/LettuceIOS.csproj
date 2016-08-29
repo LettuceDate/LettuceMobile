@@ -442,6 +442,8 @@
     <BundleResource Include="Resources\en.lproj\CurrentDatesViewController.strings" />
     <BundleResource Include="Resources\en.lproj\Localizable.stringsdict" />
     <BundleResource Include="Resources\header.png" />
+    <BundleResource Include="Resources\mailbadge.png" />
+    <BundleResource Include="Resources\newbadge.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />

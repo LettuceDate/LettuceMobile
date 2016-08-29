@@ -10,6 +10,7 @@ namespace Lettuce.Core
 		public string image { get; set;}
 		public double rating { get; set;}
 		public string ratingImage { get; set;}
+		public string address { get; set; }
 
 
 		public Venue ()
@@ -23,6 +24,7 @@ namespace Lettuce.Core
 			image = theBusiness.image_url;
 			rating = theBusiness.rating;
 			ratingImage = theBusiness.rating_img_url_large;
+			address = theBusiness.location.address[0];
 
 		}
 

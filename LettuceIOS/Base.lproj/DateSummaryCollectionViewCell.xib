@@ -123,6 +123,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Dgd-jp-uXC" firstAttribute="leading" secondItem="q46-sJ-z5f" secondAttribute="trailing" constant="10" id="2pu-bK-iVc"/>
                 <constraint firstAttribute="trailing" secondItem="BkR-6D-hV3" secondAttribute="trailing" id="3cr-ao-V8z"/>
@@ -159,22 +160,23 @@
                 <constraint firstItem="BkR-6D-hV3" firstAttribute="leading" secondItem="cZE-iV-UFb" secondAttribute="leading" id="yXH-Vs-0Xv"/>
                 <constraint firstItem="Va9-da-nRg" firstAttribute="leading" secondItem="cZE-iV-UFb" secondAttribute="leading" constant="10" id="znr-Qu-gjJ"/>
             </constraints>
-            <point key="canvasLocation" x="465.5" y="435.5"/>
             <connections>
-                <outlet property="VenueImage" destination="WC3-tb-C8h" id="name-outlet-WC3-tb-C8h"/>
-                <outlet property="VenueNameLabel" destination="Va9-da-nRg" id="name-outlet-Va9-da-nRg"/>
-                <outlet property="VenueAddressLabel" destination="0KJ-KC-ihG" id="name-outlet-0KJ-KC-ihG"/>
-                <outlet property="NoticeImg" destination="bhT-Iu-2ep" id="name-outlet-bhT-Iu-2ep"/>
-                <outlet property="DateTypeLabel" destination="6PP-yq-JSm" id="name-outlet-6PP-yq-JSm"/>
-                <outlet property="DateTreatLabel" destination="bh4-cf-nye" id="name-outlet-bh4-cf-nye"/>
-                <outlet property="RelativeDayLabel" destination="wq6-e4-oTn" id="name-outlet-wq6-e4-oTn"/>
-                <outlet property="DateTimeLabel" destination="hJp-qK-o98" id="name-outlet-hJp-qK-o98"/>
-                <outlet property="PersonImage" destination="q46-sJ-z5f" id="name-outlet-q46-sJ-z5f"/>
-                <outlet property="NameLabel" destination="Dgd-jp-uXC" id="name-outlet-Dgd-jp-uXC"/>
                 <outlet property="AgeLabel" destination="nJB-FR-jYS" id="name-outlet-nJB-FR-jYS"/>
                 <outlet property="CommIcon" destination="sjm-vT-akg" id="name-outlet-sjm-vT-akg"/>
                 <outlet property="CountLabel" destination="tEc-Y2-xzu" id="name-outlet-tEc-Y2-xzu"/>
+                <outlet property="DateTimeLabel" destination="hJp-qK-o98" id="name-outlet-hJp-qK-o98"/>
+                <outlet property="DateTreatLabel" destination="bh4-cf-nye" id="name-outlet-bh4-cf-nye"/>
+                <outlet property="DateTypeLabel" destination="6PP-yq-JSm" id="name-outlet-6PP-yq-JSm"/>
+                <outlet property="NameLabel" destination="Dgd-jp-uXC" id="name-outlet-Dgd-jp-uXC"/>
+                <outlet property="NoticeImg" destination="bhT-Iu-2ep" id="name-outlet-bhT-Iu-2ep"/>
+                <outlet property="PersonImage" destination="q46-sJ-z5f" id="name-outlet-q46-sJ-z5f"/>
+                <outlet property="RelativeDayLabel" destination="wq6-e4-oTn" id="name-outlet-wq6-e4-oTn"/>
+                <outlet property="VenueAddressLabel" destination="0KJ-KC-ihG" id="name-outlet-0KJ-KC-ihG"/>
+                <outlet property="VenueImage" destination="WC3-tb-C8h" id="name-outlet-WC3-tb-C8h"/>
+                <outlet property="VenueNameLabel" destination="Va9-da-nRg" id="name-outlet-Va9-da-nRg"/>
+                <outlet property="CountView" destination="FOG-UX-L8E" id="name-outlet-FOG-UX-L8E"/>
             </connections>
+            <point key="canvasLocation" x="465.5" y="435.5"/>
         </collectionViewCell>
     </objects>
     <resources>
@@ -200,5 +202,7 @@
         <image name="menu-48.png" width="24" height="24"/>
         <image name="settings-48.png" width="24" height="24"/>
         <image name="header.png" width="750" height="90"/>
+        <image name="mailbadge.png" width="120" height="120"/>
+        <image name="newbadge.png" width="88" height="88"/>
     </resources>
 </document>

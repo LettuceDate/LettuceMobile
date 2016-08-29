@@ -28,6 +28,10 @@ namespace Lettuce.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView CountView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel DateTimeLabel { get; set; }
 
         [Outlet]
@@ -81,6 +85,11 @@ namespace Lettuce.IOS
             if (CountLabel != null) {
                 CountLabel.Dispose ();
                 CountLabel = null;
+            }
+
+            if (CountView != null) {
+                CountView.Dispose ();
+                CountView = null;
             }
 
             if (DateTimeLabel != null) {

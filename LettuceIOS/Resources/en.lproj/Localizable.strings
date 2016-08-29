@@ -65,9 +65,21 @@
 "No_Confirmed_Dates" = "No confirmed dates";
 "Confirmed_Dates_Count" = "{0} confirmed dates";
 
-"No_Applied_Dates" = "No confirmed dates";
-"Applied_Dates_Count" = "{0} confirmed dates";
+"No_Applied_Dates" = "No dates with new interest";
+"Applied_Dates_Count" = "{0} dates with new interest!";
 
 "No_Open_Dates" = "No open dates";
 "Open_Dates_Count" = "{0} open dates";
 
+// DateSummaryCollectionViewCell
+"DatePayment_Summary_0_str" = "YOUR TREAT";
+"DatePayment_Summary_1_str" = "DUTCH";
+"DatePayment_Summary_2_str" = "THEIR TREAT";
+
+"DateType_1_str" = "DINNER";
+"DateType_2_str" = "LUNCH";
+"DateType_3_str" = "COFFEE";
+"DateType_4_str" = "DRINKS";
+
+"Date_Today_Str" = "TODAY";
+"Date_Tomorrow_Str" = "TOMORROW";

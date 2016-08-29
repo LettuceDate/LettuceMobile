@@ -51,7 +51,6 @@ namespace Lettuce.IOS
 
 			// load the various data
 			PrepareAllForLoad();
-
 			StartConfirmedDatesLoad();
 			StartAppliedDatesLoad();
 			StartOpenDatesLoad();
@@ -103,6 +102,11 @@ namespace Lettuce.IOS
 				UpdateConfirmedDatesHeader(dateList);
 				confirmedDateSource.SetData(dateList);
 				ConfirmedDatesCollection.ReloadData();
+				if ((dateList == null) || (dateList.Count == 0))
+					ConfirmedDateViewHeight.Constant = 50;
+				else
+					ConfirmedDateViewHeight.Constant = 465;
+				
 			});
 		}
 
@@ -127,6 +131,10 @@ namespace Lettuce.IOS
 				UpdateApplieddDatesHeader(dateList);
 				applicantDataSource.SetData(dateList);
 				ApplicationCollection.ReloadData();
+				if ((dateList == null) || (dateList.Count == 0))
+					AppliedDateViewHeight.Constant = 50;
+				else
+					AppliedDateViewHeight.Constant = 465;
 			});
 		}
 
@@ -146,11 +154,18 @@ namespace Lettuce.IOS
 
 		private void UpdateOpenDates(List<BaseDate> dateList)
 		{
+			dateList.Add(dateList[0]);
+			dateList.Add(dateList[0]);
+
 			InvokeOnMainThread(() =>
 			{
 				UpdateOpenDatesHeader(dateList);
 				openDataSource.SetData(dateList);
 				OpenDatesCollection.ReloadData();
+				if ((dateList == null) || (dateList.Count == 0))
+					OpenDateViewHeight.Constant = 50;
+				else
+					OpenDateViewHeight.Constant = 465;
 			});
 		}
 

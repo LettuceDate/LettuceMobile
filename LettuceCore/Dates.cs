@@ -9,17 +9,22 @@ namespace Lettuce.Core
 		public long id { get; set; }
 		public long proposerid { get; set; }
 		public string title { get; set; }
-		public string startTimeStr { get; set; }
+
 		public string description { get; set; }
 		public bool active {get; set;}
 		public string selfie { get; set; }
 		public int paymentStyle { get; set; }
 		public List<Activity> activities { get; set; }
 		public bool hasApplication { get; set; }
-
+		public int proposerAge { get; set; }
+		public int messageCount { get; set;}
+		public string proposerName { get; set;}
+		public string startTimeStr { get; set;}
 		public BaseDate()
 		{
-			
+			proposerAge = 30;
+			messageCount = 2;
+			proposerName = "SuperDave";
 		}
 
 
@@ -39,8 +44,17 @@ namespace Lettuce.Core
 			}
 		}
 
+		public string shortTimeStr
+		{
+			get
+			{
+				return string.Format("{0} {1}@{2}", starttime.Day, starttime.ToString("MMMM"), starttime.ToShortTimeString());
+			}
+		}
+
 	}
-		
+
+
 
 
 	public class ProposedDate : BaseDate
