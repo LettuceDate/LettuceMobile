@@ -8,28 +8,29 @@ namespace Lettuce.IOS
 {
 	public partial class HomeScreenViewController : UITabBarController
 	{
-		UIViewController myDatesView, matchingDatesView, notificationsView;
+		UIViewController homeDateView, matchingDatesView, notificationsView;
 		public static nfloat LayoutGuideSize = 0;
 
 		public HomeScreenViewController () : base (null, null)
 		{
-			myDatesView = new ODHomeVC();
-			myDatesView.TabBarItem = new UITabBarItem ("CurrentDates_Tab".Localize(), UIImage.FromBundle ("CurrentDatesIcon"), 0);
 
+			//PrepareChannelBar();
+			homeDateView = new ODHomeVC();
+			homeDateView.TabBarItem = new UITabBarItem ("HomeDates_Tab".Localize(), UIImage.FromBundle ("home_off_black"), 0);
 
 			matchingDatesView = new MatchingDatesViewController();
-			matchingDatesView.TabBarItem = new UITabBarItem ("MatchingDates_Tab".Localize(), UIImage.FromBundle ("MatchingDatesIcon"), 1);
+			matchingDatesView.TabBarItem = new UITabBarItem ("MatchingDates_Tab".Localize(), UIImage.FromBundle ("matches_on_black"), 1);
 
 			notificationsView = new NotificationsViewController();
-			notificationsView.TabBarItem = new UITabBarItem ("Notifications_Tab".Localize(), UIImage.FromBundle ("AppliedDatesIcon"), 2);
+			notificationsView.TabBarItem = new UITabBarItem ("Notifications_Tab".Localize(), UIImage.FromBundle ("messages_on_black"), 2);
 
 
 			var tabs = new UIViewController[] {
-				myDatesView, matchingDatesView, notificationsView
+				homeDateView, matchingDatesView, notificationsView
 			};
 
 			ViewControllers = tabs;
-			this.Title = "OpenDate";
+			//this.Title = "OpenDate";
 			UIBarButtonItem menuBtn = new UIBarButtonItem ("Menu", UIBarButtonItemStyle.Plain, null);
 			UIBarButtonItem newBtn = new UIBarButtonItem (UIBarButtonSystemItem.Add);
 			this.NavigationItem.SetLeftBarButtonItem (menuBtn, false);
@@ -48,6 +49,8 @@ namespace Lettuce.IOS
 					this.NavigationController.PresentModalViewController (proposeController, true);
 				}
 			};
+
+			TabBar.TintColor = LettuceColor.BoyBlue;
 
 
 		}
@@ -71,44 +74,40 @@ namespace Lettuce.IOS
 				});
 
 			});
-
 			PrepareChannelBar();
 		}
 
 		private void PrepareChannelBar()
 		{
-			string headerImage =  "";//"header";
-			if (String.IsNullOrEmpty(headerImage))
+			Title = "";
+			UIImage theImage = UIImage.FromBundle("header");
+			//this.NavigationController.NavigationBar.SetBackgroundImage(theImage, UIBarMetrics.Default);
+			//this.NavigationController.NavigationBar.Layer.Contents = theImage.CGImage;
+			//return;
+			if (theImage != null)
 			{
-				Title = "OpenDate";
-				this.NavigationController.NavigationBar.SetBackgroundImage(null, UIBarMetrics.Default);
-			}
-			else {
-				Title = "";
-				UIImage theImage = UIImage.FromBundle(headerImage); //UIImageHelper.ImageFromUrl(headerImage);
-				if (theImage != null)
+				CGRect theRect = this.NavigationController.NavigationBar.Frame;
+				theRect.Width *= UIScreen.MainScreen.Scale;
+				theRect.Height *= UIScreen.MainScreen.Scale;
+				nfloat aspectRatio = theImage.Size.Width / theImage.Size.Height;
+				nfloat newWidth = theRect.Width;
+				nfloat newHeight = newWidth / aspectRatio;
+				nfloat offset = (newHeight - theRect.Height) / 2;
+				if (newHeight < theRect.Height)
 				{
-					CGRect theRect = this.NavigationController.NavigationBar.Frame;
-					theRect.Width *= UIScreen.MainScreen.Scale;
-					theRect.Height *= UIScreen.MainScreen.Scale;
-					nfloat aspectRatio = theImage.Size.Width / theImage.Size.Height;
-					nfloat newWidth = theRect.Width;
-					nfloat newHeight = newWidth / aspectRatio;
-					nfloat offset = (newHeight - theRect.Height) / 2;
-					if (newHeight < theRect.Height)
-					{
-						newHeight = theRect.Height;
-						newWidth = newHeight * aspectRatio;
-						offset = 0;
-					}
-
-					UIGraphics.BeginImageContext(theRect.Size);
-					theImage.Draw(new CGRect(0, -offset, newWidth, newHeight));
-					UIImage newImage = UIGraphics.GetImageFromCurrentImageContext();
-					UIGraphics.EndImageContext();
-					this.NavigationController.NavigationBar.SetBackgroundImage(newImage, UIBarMetrics.Default);
-					theImage.Dispose();
+					newHeight = theRect.Height;
+					newWidth = newHeight * aspectRatio;
+					offset = 0;
 				}
+
+				theRect.Height += 20 * UIScreen.MainScreen.Scale;
+				UIGraphics.BeginImageContext(theRect.Size);
+				theImage.Draw(new CGRect(0, 20 * UIScreen.MainScreen.Scale, newWidth, newHeight));
+				UIImage newImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				newImage = newImage.CreateResizableImage(UIEdgeInsets.Zero, UIImageResizingMode.Stretch);
+
+				this.NavigationController.NavigationBar.SetBackgroundImage(newImage, UIBarMetrics.Default);
 			}
 		}
 

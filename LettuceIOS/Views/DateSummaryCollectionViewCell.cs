@@ -23,6 +23,23 @@ namespace Lettuce.IOS
 			// Note: this .ctor should not contain any initialization logic.
 		}
 
+		public override void MovedToSuperview()
+		{
+			base.MovedToSuperview();
+			CommIcon.Layer.CornerRadius = 30;
+			PersonImage.Layer.CornerRadius = 30;
+			NoticeImg.Layer.CornerRadius = 22;
+			CountView.Layer.CornerRadius = 12;
+
+			this.Layer.MasksToBounds = false;
+			this.Layer.ShadowOffset = new CoreGraphics.CGSize(8, 0);
+			this.Layer.ShadowOpacity = .75f;
+			this.Layer.ShadowRadius = 16;
+			this.Layer.ShadowColor = new CoreGraphics.CGColor(0.5f, 0.5f, 0.5f, 1);
+			this.Layer.ShadowPath = UIBezierPath.FromRect(this.Layer.Bounds).CGPath;
+
+		}
+
 		public void ConformToEmpty()
 		{
 			linkedDate = null;
@@ -30,25 +47,39 @@ namespace Lettuce.IOS
 			//DateTitle.Text = "NoBookedDatesCell_String".Localize();
 		}
 
-		public void ConformToRecord(BaseDate theDate)
+		// celltypes
+		// 1 - booked date
+		// 2 - date with applicant
+		// 3 - open date
+		// 4 - proposed date
+		// 5 - date in the past
+		public void ConformToRecord(BaseDate theDate, int cellType)
 		{
 			linkedDate = theDate;
 			AgeLabel.Text = theDate.proposerAge.ToString();
 			CommIcon.Image = UIImage.FromBundle("mailbadge");
-			CommIcon.Layer.CornerRadius = 30;
-			PersonImage.Layer.CornerRadius = 30;
-			NoticeImg.Layer.CornerRadius = 22;
-			CountView.Layer.CornerRadius = 12;
 
 
-
-			if (theDate.messageCount > 0)
+			if (cellType == 1)
 			{
-				CountLabel.Hidden = false;
-				CountLabel.Text = theDate.messageCount.ToString();
+				CommIcon.Hidden = false;
+
+				if (theDate.messageCount > 0)
+				{
+					CountView.Hidden = false;
+					CountLabel.Hidden = false;
+					CountLabel.Text = theDate.messageCount.ToString();
+				}
+				else {
+					CountLabel.Hidden = true;
+					CountView.Hidden = true;
+				}
 			}
-			else
+			else {
+				CountView.Hidden = true;
 				CountLabel.Hidden = true;
+				CommIcon.Hidden = true;
+			}
 
 			DateTimeLabel.Text = theDate.shortTimeStr;
 

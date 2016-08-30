@@ -24,18 +24,44 @@ namespace Lettuce.IOS
 			// set up the collections
 			ConfirmedDatesCollection.RegisterNibForCell(UINib.FromName(DateSummaryCollectionViewCell.Key, NSBundle.MainBundle), DateSummaryCollectionViewCell.Key);
 			confirmedDateSource = new DateCollectionSource();
+			confirmedDateSource.collectionType = 1;
 			ConfirmedDatesCollection.DataSource = confirmedDateSource;
 
 
 			ApplicationCollection.RegisterNibForCell(UINib.FromName(DateSummaryCollectionViewCell.Key, NSBundle.MainBundle), DateSummaryCollectionViewCell.Key);
 			applicantDataSource = new DateCollectionSource();
+			applicantDataSource.collectionType = 2;
 			ApplicationCollection.DataSource = applicantDataSource;
 
 			OpenDatesCollection.RegisterNibForCell(UINib.FromName(DateSummaryCollectionViewCell.Key, NSBundle.MainBundle), DateSummaryCollectionViewCell.Key);
 			openDataSource = new DateCollectionSource();
+			openDataSource.collectionType = 3;
 			OpenDatesCollection.DataSource = openDataSource;
 
+			// buttons
+			var tapGesture1 = new UITapGestureRecognizer((obj) =>
+			{
+				Console.WriteLine("Click on Confirmed Dates!");
+			});
 
+			ConfirmedDatesViewAll.UserInteractionEnabled = true;
+			ConfirmedDatesViewAll.AddGestureRecognizer(tapGesture1);
+
+			var tapGesture2 = new UITapGestureRecognizer((obj) =>
+			{
+				Console.WriteLine("Click on Applied Dates");
+			});
+
+			ApplicantDatesViewAll.UserInteractionEnabled = true;
+			ApplicantDatesViewAll.AddGestureRecognizer(tapGesture2);
+
+			var tapGesture3 = new UITapGestureRecognizer((obj) =>
+			{
+				Console.WriteLine("Click on Open Dates!");
+			});
+
+			OpenDatesViewAll.UserInteractionEnabled = true;
+			OpenDatesViewAll.AddGestureRecognizer(tapGesture3);
 
 		}
 
@@ -118,10 +144,11 @@ namespace Lettuce.IOS
 
 			if (dateCount == 0)
 				ConfirmedDatesLabel.Text = "No_Confirmed_Dates".Localize();
-			else
+			else {
 				ConfirmedDatesLabel.Text = string.Format("Confirmed_Dates_Count".Localize(), dateCount);
 
-			ConfirmedDatesViewAll.Hidden = false;
+				ConfirmedDatesViewAll.Hidden = false;
+			}
 		}
 
 		private void UpdateApplieddDates(List<BaseDate> dateList)
@@ -146,10 +173,11 @@ namespace Lettuce.IOS
 
 			if (dateCount == 0)
 				ApplicantDatesLabel.Text = "No_Applied_Dates".Localize();
-			else
+			else {
 				ApplicantDatesLabel.Text = string.Format("Applied_Dates_Count".Localize(), dateCount);
 
-			ApplicantDatesViewAll.Hidden = false;
+				ApplicantDatesViewAll.Hidden = false;
+			}
 		}
 
 		private void UpdateOpenDates(List<BaseDate> dateList)
@@ -177,10 +205,11 @@ namespace Lettuce.IOS
 
 			if (dateCount == 0)
 				OpenDatesLabel.Text = "No_Open_Dates".Localize();
-			else
+			else {
 				OpenDatesLabel.Text = string.Format("Open_Dates_Count".Localize(), dateCount);
 
-			OpenDatesViewAll.Hidden = false;
+				OpenDatesViewAll.Hidden = false;
+			}
 		}
 
 	}

@@ -86,5 +86,12 @@
 	<string>OpenDate</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fonts/MavenPro-Black.ttf</string>
+		<string>fonts/MavenPro-Bold.ttf</string>
+		<string>fonts/MavenPro-Medium.ttf</string>
+		<string>fonts//MavenPro-Regular.ttf</string>
+	</array>
 </dict>
 </plist>

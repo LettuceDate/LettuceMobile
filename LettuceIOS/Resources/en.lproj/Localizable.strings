@@ -5,7 +5,7 @@
 "About_Menu" = "About";
 
 // Dates Screen Tabs
-"CurrentDates_Tab" = "Current";
+"HomeDates_Tab" = "Home";
 "MatchingDates_Tab" = "Matching";
 "InterestedPeople_Tab" = "Interested";
 "PostedDates_Tab" = "Posted";

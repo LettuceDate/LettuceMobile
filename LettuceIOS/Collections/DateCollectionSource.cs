@@ -9,6 +9,7 @@ namespace Lettuce.IOS
 	public class DateCollectionSource : UICollectionViewDataSource
 	{
 		private List<BaseDate> dateList { get; set; }
+		public int collectionType { get; set;}
 
 		public DateCollectionSource()
 		{
@@ -35,7 +36,7 @@ namespace Lettuce.IOS
 			if ((dateList == null) || (dateList.Count == 0))
 				cell.ConformToEmpty();
 			else
-				cell.ConformToRecord(dateList[indexPath.Row]);
+				cell.ConformToRecord(dateList[indexPath.Row], collectionType);
 
 			return cell;
 		}

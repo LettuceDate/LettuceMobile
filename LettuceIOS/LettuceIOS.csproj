@@ -444,6 +444,15 @@
     <BundleResource Include="Resources\header.png" />
     <BundleResource Include="Resources\mailbadge.png" />
     <BundleResource Include="Resources\newbadge.png" />
+    <BundleResource Include="Resources\home_off_black%403x.png" />
+    <BundleResource Include="Resources\messages_on_black%403x.png" />
+    <BundleResource Include="Resources\matches_on_black%403x.png" />
+    <BundleResource Include="Resources\header_b.png" />
+    <BundleResource Include="Resources\header_c.png" />
+    <BundleResource Include="Resources\fonts\MavenPro-Black.ttf" />
+    <BundleResource Include="Resources\fonts\MavenPro-Bold.ttf" />
+    <BundleResource Include="Resources\fonts\MavenPro-Medium.ttf" />
+    <BundleResource Include="Resources\fonts\MavenPro-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />

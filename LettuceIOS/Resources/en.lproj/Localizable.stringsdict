@@ -5,7 +5,7 @@
         <key>CurrentDatesCount_String</key>
         <dict>
             <key>NSStringLocalizedFormatKey</key>
-            <string>%#@dates@</string>
+            <string>%#@dates@ dates</string>
             <key>dates</key>
             <dict>
                 <key>NSStringFormatSpecTypeKey</key>
